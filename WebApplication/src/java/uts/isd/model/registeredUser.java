@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  * @author Kira
  */
-public class registeredUser implements Serializable {
+public class registeredUser extends unregisteredUser implements Serializable {
 
     private String password;
     private String paymentMethod;
@@ -17,7 +17,8 @@ public class registeredUser implements Serializable {
     private String savedAddress;
     private boolean activated;
 
-    public registeredUser(String password, String paymentMethod, String paymentDetail, String savedAddress, boolean activated) {
+    public registeredUser(String fname, String lname, String email, int mobile, String password, String paymentMethod, String paymentDetail, String savedAddress, boolean activated) {
+        super(fname, lname, email, mobile, 'R');       
         this.password = password;
         this.paymentMethod = paymentMethod;
         this.paymentDetail = paymentDetail;
