@@ -23,7 +23,7 @@ public class registeredUser extends unregisteredUser implements Serializable {
         this.paymentMethod = paymentMethod;
         this.paymentDetail = paymentDetail;
         this.savedAddress = savedAddress;
-        this.activated = activated;
+        this.activated = true;
     }
 
     public String getPassword() {
