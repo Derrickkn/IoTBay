@@ -11,13 +11,14 @@ import java.io.Serializable;
  *
  * @author bappa
  */
-public class staff implements Serializable {
+public class staff extends unregisteredUser implements Serializable {
 
     private String password;
     private String emergencyContact;
     private String staffType;
 
-    public staff(String password, String emergencyContact, String staffType) {
+    public staff(String fname, String lname, String email, int mobile, String password, String emergencyContact, String staffType) {
+        super(fname, lname, email, mobile, 'S');
         this.password = password;
         this.emergencyContact = emergencyContact;
         this.staffType = staffType;
