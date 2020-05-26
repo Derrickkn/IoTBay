@@ -14,16 +14,12 @@
 		<h1>Sign Up</h1>
 		<form method="post" action="welcome.jsp">
 			<table>
-				<tr><td>Name</td><td><input type="text" placeholder="Enter name" name="name"></td></tr>
+				<tr><td>First Name</td><td><input type="text" placeholder="Enter name" name="fname"></td></tr>
+                                <tr><td>Last Name</td><td><input type="text" placeholder="Enter name" name="lname"></td></tr>
 				<tr><td>Email</td><td><input type="text" placeholder="Enter email" name="email"></td></tr>
 				<tr><td>Password</td><td><input type="password" placeholder="Enter password" name="password"></td></tr>
-				<tr><td>Date of Birth</td><td><input type="date" name="dob"></td></tr>
-                                <tr><td>Gender</td>
-                                    <td><select id="gender" name="gender">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="unknown">Prefer not to say</option>
-                                </select></td></tr>
+                                <tr><td>Mobile</td><td><input type="text" placeholder="Enter mobile" name="mobile"></td></tr>
+                                <tr><td>Address</td><td><input type="text" placeholder="Enter address" name="password"></td></tr>
                                 <tr><td><input class="button" type="submit" value="Sign Up"></td></tr> 
 			</table>
 		</form>

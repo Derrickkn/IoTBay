@@ -16,7 +16,8 @@
             </div>
 --%>
 
-<%@page import="uts.isd.model.Customer"%>
+<%@page import="com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int"%>
+<%@page import="uts.isd.model.registeredUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -28,11 +29,12 @@
 	</head>
 	<body>
             <% 
-                String name = request.getParameter("name");
+                String fname = request.getParameter("fname");
+                String lname = request.getParameter("lname");
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
-                String dob = request.getParameter("dob");
-                String gender = request.getParameter("gender");
+                Int mobile = request.getParameter("mobile");
+                String savedAddress = request.getParameter("address");
             %> 
       
             <div class="header">
@@ -44,16 +46,17 @@
             </div>
             <div class="container">
 
-                <h1>Welcome <%= name%>!</h1>
+                <h1>Welcome <%= fname%>!</h1>
+                <h1>Your last name is: <%= lname%></h1>
                 <p>Your email is: <%= email%></p>
                 <p>Your password is: <%= password%></p>
-                <p>Your DOB is: <%= dob%></p>
+                <p>Your mobile is: <%= mobile%></p>
                 <p>Your email is: <%= email%></p>
-                <p>Your gender is: <%= gender%></p>
+                <p>Your gender is: <%= savedAddress%></p>
             </div>
                 <%
-                    Customer customer = new Customer (name, email, password, dob, gender);
-                    session.setAttribute("customer", customer);
+                    registeredUser regUser = new registeredUser(fname, lname, email, mobile, password, savedAddress);
+                    session.setAttribute("regUser", regUser);
                 %>
                 
         </body>
