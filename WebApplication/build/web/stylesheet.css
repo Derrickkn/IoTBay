@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    background-image: url("image.jpg");
+    background-image: url("resources/image.jpg");
     color: #FFFFFF;
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     font-weight: 300;
