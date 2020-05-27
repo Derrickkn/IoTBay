@@ -21,7 +21,8 @@ public registeredUser findUser(String email, String password) throws SQLExceptio
    //setup the select sql query string       
    //execute this query using the statement field       
    //add the results to a ResultSet       
-   //search the ResultSet for a user using the parameters               
+   //search the ResultSet for a user using the parameters  
+   String query = "Select * from unregisteredUser NATURAL JOIN registeredUser";
    return null;   
 }
 
