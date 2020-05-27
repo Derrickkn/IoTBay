@@ -17,10 +17,10 @@ public class unregisteredUser implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private int mobile;
+    private String mobile;
     private char userType;
 
-    public unregisteredUser(int UserID, String firstName, String lastName, String email, int mobile, char userType) {
+    public unregisteredUser(int UserID, String firstName, String lastName, String email, String mobile, char userType) {
         this.UserID = UserID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,7 +29,7 @@ public class unregisteredUser implements Serializable {
         this.userType = userType;
     }
     
-     public unregisteredUser(String firstName, String lastName, String email, int mobile, char userType) {
+     public unregisteredUser(String firstName, String lastName, String email, String mobile, char userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -69,11 +69,11 @@ public class unregisteredUser implements Serializable {
         this.email = email;
     }
 
-    public int getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 
