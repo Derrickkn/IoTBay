@@ -19,7 +19,7 @@
 				<tr><td>Email</td><td><input type="text" placeholder="Enter email" name="email"></td></tr>
 				<tr><td>Password</td><td><input type="password" placeholder="Enter password" name="password"></td></tr>
                                 <tr><td>Mobile</td><td><input type="text" placeholder="Enter mobile" name="mobile"></td></tr>
-                                <tr><td>Address</td><td><input type="text" placeholder="Enter address" name="address"></td></tr>
+                                <tr><td>Address</td><td><input type="text" placeholder="Enter address" name="password"></td></tr>
                                 <tr><td><input class="button" type="submit" value="Sign Up"></td></tr> 
 			</table>
 		</form>

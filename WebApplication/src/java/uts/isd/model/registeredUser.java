@@ -17,7 +17,7 @@ public class registeredUser extends unregisteredUser implements Serializable {
     private String savedAddress;
     private boolean activated;
 
-    public registeredUser(String fname, String lname, String email, String mobile, String password, String savedAddress) {
+    public registeredUser(String fname, String lname, String email, int mobile, String password, String savedAddress) {
         super(fname, lname, email, mobile, 'R');       
         this.password = password;
         this.paymentMethod = paymentMethod;
