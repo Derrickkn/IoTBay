@@ -15,8 +15,8 @@ public class DBManager {
         st = conn.createStatement();   
     }
 
-    //Find user by email and password in the database   
-    public registeredUser findUser(String email, String password) throws SQLException {       
+    //Login Function
+    public registeredUser Login(String email, String password) throws SQLException {       
 
         String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email + "')";
         ResultSet rs = st.executeQuery(query);
