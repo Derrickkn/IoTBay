@@ -16,7 +16,7 @@
 			<table>
 				<tr><td>Email</td><td><input type="text" placeholder="Enter email" name="name"></td></tr>
 				<tr><td>Password</td><td><input type="password" placeholder="Enter password" name="name"></td></tr>
-				<tr><td><input class="button" type="submit" value="Log In"></input></td></tr>
+				<tr><td><input class="button" type="submit" value="Log In"></td></tr>
 			</table>
                     <p>Don't have an account? <a href="register.jsp">Register here</a></p>
 		</form>
