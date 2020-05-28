@@ -9,7 +9,7 @@
  */
 
 CREATE TABLE Order_Table (
-OrderID INT NOT NULL,
+OrderID INT NOT NULL GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),
 UserID  INT NOT NULL,
 OrderDate DATE NOT NULL,
 TrackingNumber INT,
@@ -22,7 +22,7 @@ CardNo VARCHAR(4),
 CONSTRAINT Order_PK PRIMARY KEY (OrderID),
 CONSTRAINT Order_FK FOREIGN KEY (UserID) REFERENCES UnregisteredUser_Table(UserID));
 
-INSERT INTO Order_Table (OrderID, UserID, OrderDate, TrackingNumber, OrderPaid, ShipmentAddress, OrderStatus, OrderCost, PaymentMethod, CardNo)
+INSERT INTO Order_Table (UserID, OrderDate, TrackingNumber, OrderPaid, ShipmentAddress, OrderStatus, OrderCost, PaymentMethod, CardNo)
 VALUES  (401,141,'2019-02-20',50001,TRUE,'VIC, Telford, 12 Myrtle Street','Delivered',140.00,'Mastercard','1234'),
         (402,142,'2019-02-20',50002,TRUE,'QLD, Turkey Beach, 83 Masthead Drive','Shipping',140.00,'Visa','2222'),
         (403,143,'2019-02-20',50003,TRUE,'NSW, Burwood North, 93 Edward Bennett Drive','Delivered',140.00,'Visa','1111'),
