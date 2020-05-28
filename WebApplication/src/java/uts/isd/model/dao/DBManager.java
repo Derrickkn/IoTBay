@@ -1,5 +1,4 @@
 package uts.isd.model.dao;
-
 import uts.isd.model.registeredUser;
 import java.sql.*;
 
@@ -10,39 +9,38 @@ import java.sql.*;
 
 public class DBManager {
 
-private Statement st;
+    private Statement st;
    
-public DBManager(Connection conn) throws SQLException {       
-   st = conn.createStatement();   
-}
+    public DBManager(Connection conn) throws SQLException {       
+        st = conn.createStatement();   
+    }
 
-//Find user by email and password in the database   
-public registeredUser findUser(String email, String password) throws SQLException {       
-   //setup the select sql query string       
-   //execute this query using the statement field       
-   //add the results to a ResultSet       
-   //search the ResultSet for a user using the parameters  
-   String query = "Select * from unregisteredUser NATURAL JOIN registeredUser";
-   return null;   
-}
+    //Find user by email and password in the database   
+    public registeredUser findUser(String email, String password) throws SQLException {       
 
-//Add a user-data into the database   
-public void addUser(String email, String name, String password, String gender, String favcol) throws SQLException {                   //code for add-operation       
-  st.executeUpdate("sql query");   
+        String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email + "')";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            if (rs.getString(7).equals(password)) {
+                System.out.println("Password Correct!");
+                return new registeredUser("Test", "Test", "Test", 1, "Test", "Test");
+            }
+        }
+        return null;   
+    }
 
-}
+    //Add a user-data into the database   
+    public void addUser(String email, String name, String password, String gender, String favcol) throws SQLException {                   //code for add-operation       
+        st.executeUpdate("sql query");   
+    }
 
-//update a user details in the database   
-public void updateUser( String email, String name, String password, String gender, String favcol) throws SQLException {       
-   //code for update-operation   
+    //update a user details in the database   
+    public void updateUser( String email, String name, String password, String gender, String favcol) throws SQLException {       
+        //code for update-operation   
+    }       
 
-}       
-
-//delete a user from the database   
-public void deleteUser(String email) throws SQLException{       
-   //code for delete-operation   
-
-}
-
-
+    //delete a user from the database   
+    public void deleteUser(String email) throws SQLException{       
+        //code for delete-operation   
+    }
 }
