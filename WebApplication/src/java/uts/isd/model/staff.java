@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author bappa
+ * @author group 57 isd
  */
 public class staff extends unregisteredUser implements Serializable {
 
@@ -17,10 +17,9 @@ public class staff extends unregisteredUser implements Serializable {
     private String emergencyContact;
     private String staffType;
 
-    public staff(String fname, String lname, String email, String mobile, String password, String emergencyContact, String staffType) {
-        super(fname, lname, email, mobile, 'S');
+    public staff(String password, String staffType, int UserID, String firstName, String lastName, String email, String mobile, String userType) {
+        super(UserID, firstName, lastName, email, mobile, userType);
         this.password = password;
-        this.emergencyContact = emergencyContact;
         this.staffType = staffType;
     }
 
@@ -47,5 +46,6 @@ public class staff extends unregisteredUser implements Serializable {
     public void setStaffType(String staffType) {
         this.staffType = staffType;
     }
-
+    
+    
 }

@@ -7,7 +7,7 @@ package uts.isd.model;
 
 /**
  *
- * @author bappa
+ * @author group 57 isd
  */
 import java.io.Serializable;
 
@@ -17,16 +17,16 @@ public class product implements Serializable {
     private String name;
     private float price;
     private String description;
-    private int amountOnHand;
+    private int quantity;
     private String suppliedDate;
 
 //arg constructor
-    public product(int productID, String name, float price, String description, int amountOnHand, String suppliedDate) {
+    public product(int productID, String name, float price, String description, int quantity, String suppliedDate) {
         this.productID = productID;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.amountOnHand = amountOnHand;
+        this.quantity = quantity;
         this.suppliedDate = suppliedDate;
     }
 
@@ -62,12 +62,12 @@ public class product implements Serializable {
         this.description = description;
     }
 
-    public int getAmountOnHand() {
-        return amountOnHand;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setAmountOnHand(int amountOnHand) {
-        this.amountOnHand = amountOnHand;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getSuppliedDate() {
@@ -77,5 +77,7 @@ public class product implements Serializable {
     public void setSuppliedDate(String suppliedDate) {
         this.suppliedDate = suppliedDate;
     }
+
+    
 
 }

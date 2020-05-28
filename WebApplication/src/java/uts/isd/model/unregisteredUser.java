@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author bappa
+ * @author group 57 isd
  */
 public class unregisteredUser implements Serializable {
 
@@ -18,18 +18,10 @@ public class unregisteredUser implements Serializable {
     private String lastName;
     private String email;
     private String mobile;
-    private char userType;
+    private String userType;
 
-    public unregisteredUser(int UserID, String firstName, String lastName, String email, String mobile, char userType) {
+    public unregisteredUser(int UserID, String firstName, String lastName, String email, String mobile, String userType) {
         this.UserID = UserID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.mobile = mobile;
-        this.userType = userType;
-    }
-    
-     public unregisteredUser(String firstName, String lastName, String email, String mobile, char userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -77,12 +69,14 @@ public class unregisteredUser implements Serializable {
         this.mobile = mobile;
     }
 
-    public char getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(char userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
+
+   
 
 }

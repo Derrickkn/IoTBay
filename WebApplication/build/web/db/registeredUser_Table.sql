@@ -15,7 +15,7 @@ PaymentMethod VARCHAR(20),
 Payment VARCHAR(20),
 SavedAddress VARCHAR(100),
 Activated BOOLEAN NOT NULL,
-CONSTRAINT RegisteredUser_PK PRIMARY KEY (UserID)
+CONSTRAINT RegisteredUser_PK PRIMARY KEY (UserID),
 CONSTRAINT RegisteredUser_FK FOREIGN KEY (UserID) REFERENCES UnregisteredUser_Table(UserID));
 
 INSERT INTO RegisteredUser_Table (UserID, Password, PaymentMethod, Payment, SavedAddress, Activated)

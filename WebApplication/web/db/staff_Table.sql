@@ -13,7 +13,7 @@ UserID INT NOT NULL,
 Password VARCHAR(20) NOT NULL,
 EContact VARCHAR(50) NOT NULL,
 StaffType VARCHAR(10) NOT NULL,
-CONSTRAINT Staff_PK PRIMARY KEY (UserID)
+CONSTRAINT Staff_PK PRIMARY KEY (UserID),
 CONSTRAINT Staff_FK FOREIGN KEY (UserID) REFERENCES UnregisteredUser_Table(UserID));
 
 INSERT INTO Staff_Table (UserID, Password, EContact, StaffType)
