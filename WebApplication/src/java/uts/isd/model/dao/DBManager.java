@@ -22,10 +22,17 @@ public class DBManager {
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             if (rs.getString(7).equals(password)) {
-                System.out.println("Password Correct!");
-                return new registeredUser("Test", "Test", "Test", 1, "Test", "Test");
+                int userID = rs.getInt(1);
+                String fName = rs.getString(2);
+                String lName = rs.getString(3);
+                String userEmail = rs.getString(4);
+                String mobile = rs.getString(5);
+                String userType = rs.getString(6);
+                String userPassword = rs.getString(7);
+                return new registeredUser(userID, userPassword, fName, lName, userEmail, mobile, userType);
             }
         }
+        System.out.println("Email not found or password incorrect.");
         return null;   
     }
 

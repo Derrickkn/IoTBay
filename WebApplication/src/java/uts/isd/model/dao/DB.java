@@ -9,7 +9,7 @@ import java.sql.Connection;
 
 public abstract class DB {   
 
-protected String URL = "jdbc:derby://localhost:1527/";//replace this string with your jdbc:derby local host url   
+protected String URL = "jdbc:derby://localhost:1527/usersdb";//replace this string with your jdbc:derby local host url   
 protected String db = "usersdb";//name of the database   
 protected String dbuser = "isduser";//db root user   
 protected String dbpass = "admin"; //db root password   

@@ -60,4 +60,4 @@ INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType
             (140,'Ava', 'Hannah', 'Ava.Han@outlook.com','0353703240', 'S'),
             (141,'Sam', 'Standley', 'SamStandley@outlook.com','0883353112', 'U'),
             (142,'Samuel', 'Davitt', 'Sam.Dav@hotmail.com','0353503156', 'U'),
-            (143'Spencer', 'Murnin', 'Spence.M1928@outlook.com','0740642625', 'U');
+            (143,'Spencer', 'Murnin', 'Spence.M1928@outlook.com','0740642625', 'U');

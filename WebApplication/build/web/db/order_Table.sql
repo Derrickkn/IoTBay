@@ -43,3 +43,5 @@ VALUES  (401,141,'2019-02-20',50001,TRUE,'VIC, Telford, 12 Myrtle Street','Deliv
         (418,117,'2019-05-10',50018,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Delivered',50.00,'Mastercard','0777'),
         (419,117,'2019-05-20',50019,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Shipping',80.00,'Mastercard','0777'),
         (420,117,'2019-05-30',50020,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Shipping',220.00,'Mastercard','0777');
+
+Select * from Order_table where userID = 141;
