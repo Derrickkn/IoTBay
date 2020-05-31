@@ -20,19 +20,22 @@ public class UserDao {
         statement = conn.createStatement();
     }
     
-    
+    //Adds a user to the users database.
     public void addUser(String email, String password, String mobile, String firstName, String lastName) throws SQLException {
-        int userID = 9999;
+        int userID = 9999; //Will fix later.
+        
+        //Query for adding a new row in the unregistered users table.
         String unregisteredQuery = "INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType)";
         unregisteredQuery += "VALUES (" + userID + ", '" + firstName + "', '" + lastName + "', '" + email + "', '" + mobile + "', 'R')";
         statement.executeUpdate(unregisteredQuery);
         
+        //Query for adding a new row in the registered users table.
         String registeredQuery = "INSERT INTO RegisteredUser_Table (UserID, Password, Activated)";
         registeredQuery += "VALUES (" + userID + ",'" + password + "',TRUE)";
         statement.executeUpdate(registeredQuery);
     }
     
-    
+    //Checks whether a user exists in the database given their email address.
     public boolean userExists(String email) throws SQLException {
         String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email+ "')";
         ResultSet result = statement.executeQuery(query);
@@ -42,6 +45,7 @@ public class UserDao {
         return false;
     }
     
+    //Gets a User from the users database only if both email and password is correct. Returns a user(registereduser) as a bean.
     public registeredUser getUser(String email, String password) throws SQLException {
         String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email+ "')";
         ResultSet result = statement.executeQuery(query);
