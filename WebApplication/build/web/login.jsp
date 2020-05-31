@@ -12,7 +12,7 @@
             </div>
             <div class="container">
 		<h1>Log In</h1>
-		<form method="post" action="welcome.jsp">
+		<form method="post" action="main2.jsp">
 			<table>
 				<tr><td>Email</td><td><input type="text" placeholder="Enter email" name="name"></td></tr>
 				<tr><td>Password</td><td><input type="password" placeholder="Enter password" name="name"></td></tr>
