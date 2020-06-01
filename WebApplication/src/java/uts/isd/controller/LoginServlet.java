@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.isd.model.dao.DBConnector;
 import uts.isd.model.registeredUser;
-import uts.isd.model.dao.DBManager;
 import uts.isd.model.dao.UserDao;
 
 public class LoginServlet extends HttpServlet {
@@ -23,6 +22,7 @@ public class LoginServlet extends HttpServlet {
         Validator validator = new Validator();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        session.setAttribute("loginError", null);
         
         try {
             DBConnector connector = new DBConnector();
@@ -36,17 +36,17 @@ public class LoginServlet extends HttpServlet {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-            if (validator.checkEmpty(email, password)) {
+            if (validator.isLoginEmpty(email, password)) {
                 session.setAttribute("loginError", "Please fill in all login fields!");
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
             
-            if (!validator.validateEmail(email) && !validator.checkEmpty(email, password)) {
+            if (!validator.validateEmail(email) && !validator.isLoginEmpty(email, password)) {
                 session.setAttribute("loginError", "Please enter a valid email address!");
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
             
-            if (validator.validateEmail(email) && !validator.checkEmpty(email, password)) {
+            if (validator.validateEmail(email) && !validator.isLoginEmpty(email, password)) {
                 if (registeredUser == null) {
                     session.setAttribute("loginError", "Incorrect email or password!");
                     request.getRequestDispatcher("login.jsp").include(request, response);

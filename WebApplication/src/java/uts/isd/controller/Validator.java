@@ -9,44 +9,36 @@ package uts.isd.controller;
 
  
    private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
-   private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
-   private String passwordPattern = "[*]";       
+   private String mobilePattern = "[0-9]{8,10}";       
+   private String passwordPattern = ".{8,}";       
               
    public Validator(){    }       
-
 
    public boolean validate(String pattern, String input){       
       Pattern regEx = Pattern.compile(pattern);       
       Matcher match = regEx.matcher(input);       
-
       return match.matches(); 
-
    }       
 
-   public boolean checkEmpty(String email, String password){       
-
-      return  email.isEmpty() || password.isEmpty();   
-
-   }
-
-   
-   public boolean validateEmail(String email){                       
-
+      public boolean validateEmail(String email){                       
       return validate(emailPattern,email);   
-
    }
-
-       
-   public boolean validateName(String name){
-
-      return validate(namePattern,name); 
-
-   }       
-   
 
    public boolean validatePassword(String password){
-
       return validate(passwordPattern,password); 
-
-   }          
+   }    
+   
+   public boolean validateMobile(String password){
+      return validate(mobilePattern,password); 
+   }    
+   
+   
+   public boolean isLoginEmpty(String email, String password){       
+      return  email.isEmpty() || password.isEmpty(); 
+   }
+   
+   public boolean isFieldEmpty(String field) {
+       return field.isEmpty();
+   }
+      
 }
