@@ -12,12 +12,11 @@ public class DBManager {
     private Statement st;
    
     public DBManager(Connection conn) throws SQLException {       
-        st = conn.createStatement();   
+        st = conn.createStatement();
     }
-
-    //Login Function
-    public registeredUser Login(String email, String password) throws SQLException {       
-
+    
+    //Gets a registered user given their email and password.
+    public registeredUser getRegisteredUser(String email, String password) throws SQLException {
         String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email + "')";
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
@@ -32,9 +31,31 @@ public class DBManager {
                 return new registeredUser(userID, userPassword, fName, lName, userEmail, mobile, userType);
             }
         }
-        System.out.println("Email not found or password incorrect.");
-        return null;   
+        return null;  
     }
+    
+    public boolean userExists(String email) throws SQLException {
+        String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email + "')";
+        ResultSet rs = st.executeQuery(query);
+        return true;
+    }
+    
+    public void addRegisteredUser() {
+        
+    }
+    
+    public void addUnregisteredUser() {
+        
+    }
+    
+    public void deleteUser() {
+        
+    }
+    
+    public void deactivateUser() {
+        
+    }
+    
 
     //Add a user-data into the database   
     public void addUser(String email, String name, String password, String gender, String favcol) throws SQLException {                   //code for add-operation       
