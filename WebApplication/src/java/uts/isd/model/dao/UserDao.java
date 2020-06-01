@@ -21,8 +21,13 @@ public class UserDao {
     }
     
     //Adds a user to the users database.
-    public void addUser(String email, String password, String mobile, String firstName, String lastName) throws SQLException {
-        int userID = 9999; //Will fix later.
+    public void addRegisteredUser(String email, String password, String mobile, String firstName, String lastName) throws SQLException {
+        
+        ResultSet result = statement.executeQuery("SELECT max(USERID) from unregistereduser_table");
+        int userID = 0;
+        while (result.next()) {
+            userID = result.getInt(1) + 1;
+        }
         
         //Query for adding a new row in the unregistered users table.
         String unregisteredQuery = "INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType)";
@@ -33,6 +38,24 @@ public class UserDao {
         String registeredQuery = "INSERT INTO RegisteredUser_Table (UserID, Password, Activated)";
         registeredQuery += "VALUES (" + userID + ",'" + password + "',TRUE)";
         statement.executeUpdate(registeredQuery);
+    }
+    
+    public void addUnregisteredUser(String email, String mobile, String firstName, String lastName) throws SQLException {
+        ResultSet result = statement.executeQuery("SELECT max(USERID) from unregistereduser_table");
+        int userID = 0;
+        while (result.next()) {
+            userID = result.getInt(1) + 1;
+        }
+        
+        String unregisteredQuery = "INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType)";
+        unregisteredQuery += "VALUES (" + userID + ", '" + firstName + "', '" + lastName + "', '" + email + "', '" + mobile + "', 'U')";
+        statement.executeUpdate(unregisteredQuery);
+    }
+    
+    //Deletes a registered user by their userid.
+    public void deleteRegisteredUser(int userID) throws SQLException {
+        String query = "DELETE FROM registeredUser_Table where userid = " + userID;
+        statement.executeUpdate(query);
     }
     
     //Checks whether a user exists in the database given their email address.
