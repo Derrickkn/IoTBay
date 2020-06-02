@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import uts.isd.model.registeredUser;
 
 public class UserDao {
@@ -95,10 +97,28 @@ public class UserDao {
         }
         return null;
     }
-
-    public void addUser(String testemail, String testpassword, String testmobile, String derrick, String nguyen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    //Creates an access log given a users id.
+    public int accessLogStart(int userID) throws SQLException {
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        
+        ResultSet result = statement.executeQuery("SELECT max(accesslogid) from accesslog_table");
+        int accessLogID = 0;
+        while (result.next()) {
+            accessLogID = result.getInt(1) + 1;
+        }
+        //String query = "INSERT INTO AccessLog_Table (AccessLogID, UserID, LoginStart) VALUES  (" + accessLogID + " , " + userID + ",'" + accessTime + "')";
+        String query = "INSERT INTO AccessLog_Table (AccessLogID, UserID, LoginStart) VALUES  (" + accessLogID +" , " + userID + ",'" + timestamp + "')";
+        statement.executeUpdate(query);
+        return accessLogID;
     }
     
-
+    public void accessLogEnd(int accessLogID) throws SQLException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String query = "UPDATE AccessLog_Table Set LoginEnd = '" + timestamp + "' WHERE AccessLogID = " + accessLogID + "";
+        statement.executeUpdate(query);
+    }
 }

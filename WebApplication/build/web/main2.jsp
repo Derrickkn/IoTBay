@@ -27,12 +27,11 @@
                 
             %>
             
-            
             <div class="header">
                 <a href="#default" class="logo">&#10070 &#8464oTBay</a>
                 <div class="header-right">
                 <a class="active" href="main.jsp">Main Page</a>
-                <a href="logout.jsp">Logout</a>
+                <a href="LogoutServlet">Logout</a>
                 </div>
             </div>
             
