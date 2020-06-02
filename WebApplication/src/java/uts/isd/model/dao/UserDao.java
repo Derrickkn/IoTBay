@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import uts.isd.model.accessLog;
 import uts.isd.model.registeredUser;
 
 public class UserDao {
@@ -109,7 +111,6 @@ public class UserDao {
         while (result.next()) {
             accessLogID = result.getInt(1) + 1;
         }
-        //String query = "INSERT INTO AccessLog_Table (AccessLogID, UserID, LoginStart) VALUES  (" + accessLogID + " , " + userID + ",'" + accessTime + "')";
         String query = "INSERT INTO AccessLog_Table (AccessLogID, UserID, LoginStart) VALUES  (" + accessLogID +" , " + userID + ",'" + timestamp + "')";
         statement.executeUpdate(query);
         return accessLogID;
@@ -119,6 +120,29 @@ public class UserDao {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String query = "UPDATE AccessLog_Table Set LoginEnd = '" + timestamp + "' WHERE AccessLogID = " + accessLogID + "";
+        statement.executeUpdate(query);
+    }
+    
+    public ArrayList<accessLog> getAccessLogs(int userID) throws SQLException {
+        ArrayList<accessLog> arrayList = new ArrayList();
+        String query = "SELECT * FROM ISDUSER.ACCESSLOG_TABLE WHERE USERID = " + userID;
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+            accessLog log = new accessLog(result.getInt(1), result.getInt(2), result.getString(3), result.getString(4));
+            arrayList.add(log);
+        }
+        return arrayList;
+    }
+    
+    public void updateAll(int userID, String firstName, String lastName, String email, String password, String mobile, String address, String paymentDetail, String paymentMethod) throws SQLException {
+        String query1 = "UPDATE ISDUSER.UNREGISTEREDUSER_TABLE SET FNAME = '" + firstName + "', LNAME = '" + lastName + "', EMAIL = '" + email + "', Phone = '" + mobile + "' WHERE USERID = " + userID;
+        String query2 = "UPDATE ISDUSER.REGISTEREDUSER_TABLE SET PASSWORD = '" + password + "', PAYMENTMETHOD = '" + paymentMethod + "', PAYMENT = '" + paymentDetail + "', SAVEDADDRESS = '" + address + "' WHERE USERID =" + userID;
+        statement.executeUpdate(query1);
+        statement.executeUpdate(query2);
+    }
+    
+    public void deactivateAccount(int userID) throws SQLException {
+        String query = "UPDATE ISDUSER.REGISTEREDUSER_TABLE SET ACTIVATED =  FALSE WHERE USERID = " + userID;
         statement.executeUpdate(query);
     }
 }

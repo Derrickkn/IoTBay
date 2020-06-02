@@ -31,13 +31,21 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("loginError", "Please enter a valid email address!");
         }
         
+        if (validator.isLoginEmpty(email,password) || !validator.validateEmail(email)) {
+            request.getRequestDispatcher("login.jsp").include(request, response);
+        }
+        
         else {
             try {
                 DBConnector connector = new DBConnector();
                 Connection conn = connector.openConnection();
                 UserDao userdao = new UserDao(conn);
                 registeredUser = userdao.getUser(email, password);
-                if (registeredUser != null) { session.setAttribute("accessLogID", userdao.accessLogStart(registeredUser.getUserID())); }
+                if (registeredUser != null) { 
+                    session.setAttribute("accessLogID", userdao.accessLogStart(registeredUser.getUserID()));
+                    session.setAttribute("accessLogs", userdao.getAccessLogs(registeredUser.getUserID()));
+                    session.setAttribute("userID", registeredUser.getUserID());
+                }
                 connector.closeConnection();
             } catch (SQLException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,16 +55,14 @@ public class LoginServlet extends HttpServlet {
             
             if (registeredUser != null) {
                 session.setAttribute("regUser", registeredUser);
+                session.setAttribute("userID", registeredUser.getUserID());
                 request.getRequestDispatcher("main2.jsp").include(request, response);
             }
             
             else {
                 session.setAttribute("loginError", "Incorrect email or password!");
+                request.getRequestDispatcher("login.jsp").include(request, response);
             }
-        }
-        
-        if (validator.isLoginEmpty(email,password) || !validator.validateEmail(email)) {
-            request.getRequestDispatcher("login.jsp").include(request, response);
         }
     }
     
