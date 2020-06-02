@@ -8,7 +8,7 @@
  * Created: 26/05/2020
  * Edited by: kira
  */
-
+DROP TABLE Order_Table;
 CREATE TABLE Order_Table (
 OrderID INT NOT NULL,
 UserID  INT NOT NULL,

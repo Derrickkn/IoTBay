@@ -7,7 +7,7 @@
  * Author:  luke.galic
  * Created: 26/05/2020
  */
-
+DROP TABLE Staff_Table;
 CREATE TABLE Staff_Table (
 UserID INT NOT NULL,
 Password VARCHAR(20) NOT NULL,
