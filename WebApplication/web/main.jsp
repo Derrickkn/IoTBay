@@ -3,7 +3,7 @@
     Created on : Apr 30, 2020, 14:25:40 PM
     Author     : Kira
 --%>
-<%@page import="uts.isd.model.Customer"%>
+<%@page import="uts.isd.model.registeredUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
 	</head>
 	<body>
             <%
-                Customer customer = (Customer)session.getAttribute("customer");
+                registeredUser regUser = (registeredUser)session.getAttribute("regUser");
             %>
             <div class="header">
                 <a href="#default" class="logo">&#10070 &#8464oTBay</a>
@@ -27,19 +27,21 @@
                 <h1>Customer Dashboard</h1>
                 <table class="table">
                     <thead>
-                        <th>Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Email</th>
                         <th>Password</th>
-                        <th>Date of Birth</th>
-                        <th>Gender</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>${customer.name}</td>
-                            <td>${customer.email}</td>
-                            <td>${customer.password}</td>
-                            <td>${customer.dob}</td>
-                            <td>${customer.gender}</td>
+                            <td>${regUser.fname}</td>
+                            <td>${regUser.lname}</td>
+                            <td>${regUser.email}</td>
+                            <td>${regUser.password}</td>
+                            <td>${regUser.mobile}</td>
+                            <td>${regUser.address}</td>
                         </tr>
                     </tbody>
                 </table>

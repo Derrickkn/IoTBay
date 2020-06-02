@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author bappa
+ * @author group 57 isd
  */
 public class order implements Serializable {
 
@@ -24,17 +24,16 @@ public class order implements Serializable {
     private String paymentMethod;
     private int cardNo;
 
-    public order(int orderID, int userID, String orderDate, int trackingNo, boolean orderPaid, String shipmentAddress, String orderStatus, float totalCost, String paymentMethod, int cardNo) {
+    public order(int orderID, int userID, String orderDate, boolean orderPaid, String shipmentAddress, float totalCost, String paymentMethod, int cardNo) {
         this.orderID = orderID;
         this.userID = userID;
         this.orderDate = orderDate;
-        this.trackingNo = trackingNo;
         this.orderPaid = orderPaid;
         this.shipmentAddress = shipmentAddress;
-        this.orderStatus = orderStatus;
         this.totalCost = totalCost;
         this.paymentMethod = paymentMethod;
         this.cardNo = cardNo;
+        this.orderStatus = "Ordered";
     }
 
     public int getOrderID() {

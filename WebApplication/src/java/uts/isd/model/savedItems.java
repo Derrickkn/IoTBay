@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author bappa
+ * @author group 57 isd
  */
 public class savedItems implements Serializable {
 
