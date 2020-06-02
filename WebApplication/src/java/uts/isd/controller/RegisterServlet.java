@@ -52,6 +52,11 @@ public class RegisterServlet extends HttpServlet {
                     UserDao userdao = new UserDao(conn);
                     userdao.addRegisteredUser(email, password, mobile, fname, lname);
                     registeredUser = userdao.getUser(email, password);
+                    if (registeredUser != null) { 
+                    session.setAttribute("accessLogID", userdao.accessLogStart(registeredUser.getUserID()));
+                    session.setAttribute("accessLogs", userdao.getAccessLogs(registeredUser.getUserID()));
+                    session.setAttribute("userID", registeredUser.getUserID());
+                }
                     connector.closeConnection();
                 } catch (SQLException ex) {
                     Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,6 +68,7 @@ public class RegisterServlet extends HttpServlet {
         
         if (registeredUser == null) {
         request.getRequestDispatcher("register.jsp").include(request, response);
+            session.setAttribute("regError", "Email address already exists!");
         }
         
         if (registeredUser != null) {

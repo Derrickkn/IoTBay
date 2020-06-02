@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String loginError = (String) session.getAttribute("loginError"); %>
+<% String deactivatedError = (String) session.getAttribute("deactivatedError"); %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,7 +19,8 @@
 				<tr><td>Email</td><td><input type="text" placeholder="Enter email" name="email"></td></tr>
 				<tr><td>Password</td><td><input type="password" placeholder="Enter password" name="password"></td></tr>
                                 <tr><td><input class="button" type="submit" value="Log In"></td><td><% if (loginError != null) { %> <%=loginError%> <%}%> <td></tr>
-			</table>
+                        </table>
+                        <% if (deactivatedError != null) { %> <%=deactivatedError%> <%}%>
                     <p>Don't have an account? <a href="register.jsp">Register here</a></p>
 		</form>
             </div>
