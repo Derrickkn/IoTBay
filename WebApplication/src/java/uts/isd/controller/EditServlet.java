@@ -19,6 +19,7 @@ public class EditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
+        session.setAttribute("editError", null);
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -28,7 +29,14 @@ public class EditServlet extends HttpServlet {
         String address = request.getParameter("savedAddress");
         String pamynetDetail = request.getParameter("paymentDetail");
         String paymentMethod = request.getParameter("paymentMethod");
-        
+        if (validator.isFieldEmpty(email) || validator.isFieldEmpty(password) || validator.isFieldEmpty(mobile) || validator.isFieldEmpty(fname) || validator.isFieldEmpty(lname)) {
+            session.setAttribute("editError", "Please fill in all required fields.");
+            request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
+        }
+        else {
+            if (validator.validateMobile(mobile)) {
+                session.setAttribute("editMobileError", "Please Enter a valid number"); 
+            }
         try {
                     DBConnector connector = new DBConnector();
                     Connection conn = connector.openConnection();
@@ -43,7 +51,6 @@ public class EditServlet extends HttpServlet {
                     Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }  
         request.getRequestDispatcher("main2.jsp").include(request, response);   
+        }
     }
-        
-    
 }
