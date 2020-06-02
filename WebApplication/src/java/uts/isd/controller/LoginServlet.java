@@ -41,10 +41,12 @@ public class LoginServlet extends HttpServlet {
                 Connection conn = connector.openConnection();
                 UserDao userdao = new UserDao(conn);
                 registeredUser = userdao.getUser(email, password);
-                if (registeredUser != null) { 
+                if (registeredUser != null && registeredUser.isActivated()) { 
                     session.setAttribute("accessLogID", userdao.accessLogStart(registeredUser.getUserID()));
                     session.setAttribute("accessLogs", userdao.getAccessLogs(registeredUser.getUserID()));
-                    session.setAttribute("userID", registeredUser.getUserID());
+                }
+                else if (registeredUser != null && !registeredUser.isActivated()) {
+                    session.setAttribute("deactivatedError", "This account has been deactivated, please contact our support team to reactivate your account.");
                 }
                 connector.closeConnection();
             } catch (SQLException ex) {
@@ -53,14 +55,17 @@ public class LoginServlet extends HttpServlet {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            if (registeredUser != null) {
+            if (registeredUser != null && registeredUser.isActivated()) {
                 session.setAttribute("regUser", registeredUser);
                 session.setAttribute("userID", registeredUser.getUserID());
                 request.getRequestDispatcher("main2.jsp").include(request, response);
             }
             
-            else {
+            else if (registeredUser == null ) {
                 session.setAttribute("loginError", "Incorrect email or password!");
+                request.getRequestDispatcher("login.jsp").include(request, response);
+            }
+            else {
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
         }
