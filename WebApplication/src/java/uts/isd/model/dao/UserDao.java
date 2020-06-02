@@ -95,6 +95,10 @@ public class UserDao {
         }
         return null;
     }
+
+    public void addUser(String testemail, String testpassword, String testmobile, String derrick, String nguyen) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
 }

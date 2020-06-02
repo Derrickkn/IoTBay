@@ -23,6 +23,6 @@
         <div class="container">
             <h3>Welcome to IoYbay portal, please login or register to use it!</h3>
         </div>
-        <jsp:include page="/ConnServlet" flush="true" />
+        
     </body>
 </html>

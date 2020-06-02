@@ -1,5 +1,5 @@
 <%-- 
-    Document   : edit page
+    Document   : personal edit page
     Created on : May 30, 2020, 8:53:01 PM
     Author     : Kira
 --%>
