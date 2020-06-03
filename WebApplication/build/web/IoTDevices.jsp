@@ -14,9 +14,16 @@
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
         </div>
         <div class="container">
-            <h1>IoT Devices</h1>
-            <h2><%= request.getAttribute("name")%></h2>
-            <table>
+            <div class="devices-container">
+                <h1>IoT Devices</h1>
+                <a class="button devices-create-btn" href="createDevice.jsp">Create</a>
+            </div>
+            <form action="IoTDevices" class="devices-container">
+                Search by Name: 
+                <input type="text" placeholder="Enter Device Name" name="name">
+                <input class="button" type="submit" value="Search" style="padding: 5px 18px">
+            </form>
+            <table class="table">
                 <tr>
                     <th>#</th>
                     <th>Name</th>

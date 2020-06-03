@@ -14,60 +14,60 @@ body {
     overflow-x: hidden;
     color: azure;
     margin: 0px;
-    
+
 }
 
 .header {
-  overflow: hidden;
-  font-family: "Courier New", Courier, monospace;
-  background-color: rgb(2,0,36);
-  background: radial-gradient(circle, slategrey 0%, #333333 50%, #333333 100%);
-  padding: 20px 10px;
-  border: slategrey solid 1px;
- 
+    overflow: hidden;
+    font-family: "Courier New", Courier, monospace;
+    background-color: rgb(2,0,36);
+    background: radial-gradient(circle, slategrey 0%, #333333 50%, #333333 100%);
+    padding: 20px 10px;
+    border: slategrey solid 1px;
+
 }
 
 .header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
-  border-radius: 4px;
-  color: azure;
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+    color: azure;
 }
 
 .header a.logo {
-  font-size: 25px;
-  font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .header a:hover {
-  background-color: slategray;
-  color: black;
+    background-color: slategray;
+    color: black;
 }
 
 .header a.active {
-  background-color: #91b8b3;
-  color: white;
+    background-color: #91b8b3;
+    color: white;
 }
 
 .header-right {
-  float: right;
+    float: right;
 }
 
 @media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .header-right {
-    float: none;
-  }
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .header-right {
+        float: none;
+    }
 }
 
 form {
@@ -88,100 +88,100 @@ form {
 }
 
 .table th h1 {
-	  font-weight: bold;
-	  font-size: 1em;
-  text-align: left;
-  color: slategrey;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: slategrey;
 }
 
 .table td {
-	  font-weight: normal;
-	  font-size: 1em;
-          -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-	  -moz-box-shadow: 0 2px 2px -2px #0E1119;
-	   box-shadow: 0 2px 2px -2px #0E1119;
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
 }
 
 .table {
-	text-align: left;
-	overflow: hidden;
-	width: 80%;
-	margin: 0 auto;
-        display: table;
-        padding: 0 0 8em 0;
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+    padding: 0 0 8em 0;
 }
 
 .table td, .container th {
-	  padding-bottom: 2%;
-	  padding-top: 2%;
-          padding-left:2%;  
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;  
 }
 
 /* Background-color of the odd rows */
 .table tr:nth-child(odd) {
-	  background-color: #323C50;
+    background-color: #323C50;
 }
 
 /* Background-color of the even rows */
 .table tr:nth-child(even) {
-	  background-color: #2C3446;
+    background-color: #2C3446;
 }
 
 .table th {
-	  background-color: #1F2739;
+    background-color: #1F2739;
 }
 
 .table td:first-child { color: azure; }
 
 .table tr:hover {
-   background-color: slategray;
--webkit-box-shadow: 0 6px 6px -6px #0E1119;
-	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
-	        box-shadow: 0 6px 6px -6px #0E1119;
+    background-color: slategray;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
 }
 
 .table td:hover {
-  background-color: slategray;
-  color: whitesmoke;
-  font-weight: bold;
-  
-  box-shadow: #7F7C21 -1px 1px, #91b8b3 -2px 2px, #6c7c7c -3px 3px, #6c7c7c -4px 4px, #6c7c7c -5px 5px, #6c7c7c -6px 6px;
-  transform: translate3d(6px, -6px, 0);
-  
-  transition-delay: 0s;
-	  transition-duration: 0.4s;
-	  transition-property: all;
-  transition-timing-function: line;
+    background-color: slategray;
+    color: whitesmoke;
+    font-weight: bold;
+
+    box-shadow: #7F7C21 -1px 1px, #91b8b3 -2px 2px, #6c7c7c -3px 3px, #6c7c7c -4px 4px, #6c7c7c -5px 5px, #6c7c7c -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
 }
 
 @media (max-width: 800px) {
-.container td:nth-child(4),
-.container th:nth-child(4) { display: none; }
+    .container td:nth-child(4),
+    .container th:nth-child(4) { display: none; }
 }
 
 .button {
-	box-shadow:inset 0px 1px 3px 0px #91b8b3;
-	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
-	background-color:#768d87;
-	border-radius:5px;
-	border:1px solid #566963;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:11px 23px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #2b665e;
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+    background-color:#768d87;
+    border-radius:5px;
+    border:1px solid #566963;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:11px 23px;
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
 }
 .button:hover {
-	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-	background-color:#6c7c7c;
+    background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+    background-color:#6c7c7c;
 }
 .button:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
 
 tr, td {
@@ -271,7 +271,7 @@ a:hover {
     bottom: 30px;
 }
 .tm-video-text-overlay h1 {
-	font-size: 3.4rem;
+    font-size: 3.4rem;
 }
 .tm-welcome-text {
     margin-top: 65px;
@@ -385,7 +385,7 @@ hr {
 .form-control {
     border-radius: 0;
     border-color: #666666;
-	color: #CCC;
+    color: #CCC;
     background: transparent;
     padding: 12px 15px;
 }
@@ -435,7 +435,7 @@ iframe {
 .form-control:focus {
     background-color: transparent;
     border-color: #CCCCCC;
-	color: #FFF;
+    color: #FFF;
     box-shadow: 0 0 0 0.2rem #cccccc14;
 }
 
@@ -483,9 +483,9 @@ p {
     .tm-video-text-overlay {
         left: 45%;
     }
-	.tm-video-text-overlay h1 {
-		font-size: 2.8rem;
-	}
+    .tm-video-text-overlay h1 {
+        font-size: 2.8rem;
+    }
     .tm-timeline-item {
         margin-left: 25px;
     }
@@ -543,4 +543,16 @@ p {
         min-width: auto;
         max-width: 125%;
     }
+}
+
+.devices-container {
+    width: 80%;
+    margin: 10px auto;
+    padding: 0;
+    position: relative;
+}
+
+.devices-create-btn {
+    float: right;
+    margin-top: -60px;
 }

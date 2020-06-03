@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
+        <servlet-name>IoTDevicesServlet</servlet-name>
+        <servlet-class>uts.isd.controller.IoTDevicesServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>uts.isd.controller.LoginServlet</servlet-class>
     </servlet>
@@ -19,6 +23,10 @@
     <servlet>
         <servlet-name>DeactivateAccServlet</servlet-name>
         <servlet-class>uts.isd.controller.DeactivateAccServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditDeviceServlet</servlet-name>
+        <servlet-class>uts.isd.controller.EditDeviceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>DeactivateAccServlet</servlet-name>
         <url-pattern>/DeactivateAccServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IoTDevicesServlet</servlet-name>
+        <url-pattern>/IoTDevices</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditDeviceServlet</servlet-name>
+        <url-pattern>/EditDevice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

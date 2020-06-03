@@ -19,8 +19,6 @@ CREATE TABLE DEVICE
    "QUANTITY" INTEGER
 );
 
-INSERT INTO DEVICE ("NAME", "TYPE", "PRICE", "QUANTITY") 
-
-    VALUES  ('Canon 800D Camera', 'Photography', 2000.0, 20),
+INSERT INTO DEVICE ("NAME", "TYPE", "PRICE", "QUANTITY") VALUES  ('Canon 800D Camera', 'Photography', 2000.0, 20),
     ('Samsung Galaxy S10', 'Mobile', 1399.0, 40);
             
