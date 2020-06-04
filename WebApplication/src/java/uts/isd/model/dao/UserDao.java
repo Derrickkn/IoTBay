@@ -145,4 +145,31 @@ public class UserDao {
         String query = "UPDATE ISDUSER.REGISTEREDUSER_TABLE SET ACTIVATED =  FALSE WHERE USERID = " + userID;
         statement.executeUpdate(query);
     }
+    
+    public ArrayList<registeredUser> getAllUsers() throws SQLException {
+        ArrayList<registeredUser> arrayList = new ArrayList();
+        String query = "select * from unregistereduser_table natural join registereduser_table";
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+                int userID = result.getInt(1);
+                String fName = result.getString(2);
+                String lName = result.getString(3);
+                String userEmail = result.getString(4);
+                String mobile = result.getString(5);
+                String userType = result.getString(6);
+                String userPassword = result.getString(7);
+                String paymentMethod = result.getString(8);
+                String paymentDetail = result.getString(9);
+                String savedAddress = result.getString(10);
+                boolean activated = result.getBoolean(11);
+                registeredUser registeredUser = new registeredUser(userID, userPassword, fName, lName, userEmail, mobile, userType);
+                registeredUser.setPaymentMethod(paymentMethod);
+                registeredUser.setPaymentDetail(paymentDetail);
+                registeredUser.setSavedAddress(savedAddress);
+                registeredUser.setActivated(activated);
+                arrayList.add(registeredUser);
+        }
+        return arrayList;
+    }
+    
 }
