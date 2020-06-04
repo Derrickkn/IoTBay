@@ -15,14 +15,7 @@
 	</head>
 	<body>
             <%
-                 staff staff = null;
-                if(session.getAttribute("staff")==null){
-             
-                    session.setAttribute("staff", staff);
-                    
-                }
-                else
-                    staff = (staff)session.getAttribute("staff");
+                 
                 
             %>
             <div class="header">

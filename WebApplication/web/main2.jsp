@@ -21,17 +21,23 @@
             if (session.getAttribute("regUser") == null) {
                 regUser = new registeredUser(103, "123", "Yu", "peng", "Yunpeng@aa.com", "123", "a");
                 session.setAttribute("regUser", regUser);
-            } else {
-                regUser = (registeredUser) session.getAttribute("regUser");
-            }
+            } else regUser = (registeredUser) session.getAttribute("regUser");
+            
+            String userType = regUser.getUserType();
 
         %>
 
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             <div class="header-right">
-                <a class="active" href="main.jsp">Main Page</a>
-                <a href="LogoutServlet">Logout</a>
+                 <% if (userType.equals("A")) { %>
+                     <a class="active" href="admindashboard.jsp">Dashboard</a>
+                     <a href="main.jsp">Main Page</a>
+                     <a href="LogoutServlet">Logout</a>
+                <% } else {%>
+                    <a class="active" href="main.jsp">Main Page</a>
+                    <a href="LogoutServlet">Logout</a>
+                <% } %> 
             </div>
         </div>
 
