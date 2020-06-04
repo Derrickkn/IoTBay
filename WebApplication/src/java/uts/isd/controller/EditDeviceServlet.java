@@ -8,27 +8,22 @@ package uts.isd.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uts.isd.model.Device;
-import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.DeviceDao;
 
 /**
  *
  * @author krystianhuang
  */
-public class IoTDevicesServlet extends BaseServlet {
-
+public class EditDeviceServlet extends BaseServlet {
     DeviceDao deviceDao;
 
-    public IoTDevicesServlet() throws ClassNotFoundException, SQLException {
+    public EditDeviceServlet() throws ClassNotFoundException, SQLException {
         this.deviceDao = new DeviceDao(dbConnector.openConnection());
     }
 
@@ -44,21 +39,6 @@ public class IoTDevicesServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        List<Device> devices = null;
-        try {
-            if (name != null && !name.equals("")) {
-                devices = deviceDao.searchDevicesByName(name);
-            } else {
-
-                devices = deviceDao.getAllDevices();
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(IoTDevicesServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        request.setAttribute("deviceList", devices == null ? new ArrayList() : devices);
-        request.getRequestDispatcher("IoTDevices.jsp").forward(request, response);
     }
 
     /**
@@ -72,6 +52,16 @@ public class IoTDevicesServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            String name = request.getParameter("name");
+            String type = request.getParameter("type");
+            String price = request.getParameter("price");
+            String stock = request.getParameter("stock");
+            deviceDao.addDevice(name, type, price, stock);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditDeviceServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect("IoTDevices");
     }
 
     /**

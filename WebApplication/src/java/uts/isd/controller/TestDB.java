@@ -23,8 +23,6 @@ public class TestDB {
         registeredUser user = userdao.getUser("o.mcnair@gmail.com", "yS2EgwWF");
         System.out.println(user.getFirstName());
         
-        userdao.addUser("testemail", "testpassword", "testmobile", "derrick", "nguyen");
-        
         //registeredUser customer = db.getRegisteredUser("O.McNair@gmail.com", "yS2EgwWF");
         //System.out.println(customer.getFirstName());
         //System.out.println(customer.getLastName());
