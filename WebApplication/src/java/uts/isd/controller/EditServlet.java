@@ -1,4 +1,5 @@
 package uts.isd.controller;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class EditServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         session.setAttribute("editError", null);
-        
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String mobile = request.getParameter("mobile");
@@ -33,24 +34,25 @@ public class EditServlet extends HttpServlet {
             session.setAttribute("editError", "Please fill in all required fields.");
             request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
         }
-        else {
-            if (validator.validateMobile(mobile)) {
-                session.setAttribute("editMobileError", "Please Enter a valid number"); 
+        else if (!validator.validateMobile(mobile)) {
+            session.setAttribute("editMobileError", "Please enter a valid number");
+            request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
+            
+        } else {
+            try {
+                DBConnector connector = new DBConnector();
+                Connection conn = connector.openConnection();
+                UserDao userdao = new UserDao(conn);
+                userdao.updateAll((int) session.getAttribute("userID"), fname, lname, email, password, mobile, address, pamynetDetail, paymentMethod);
+                registeredUser registeredUser = userdao.getUser(email, password);
+                session.setAttribute("regUser", registeredUser);
+                connector.closeConnection();
+            } catch (SQLException ex) {
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        try {
-                    DBConnector connector = new DBConnector();
-                    Connection conn = connector.openConnection();
-                    UserDao userdao = new UserDao(conn);
-                    userdao.updateAll((int)session.getAttribute("userID"), fname, lname, email, password, mobile, address, pamynetDetail, paymentMethod);
-                    registeredUser registeredUser = userdao.getUser(email, password);
-                    session.setAttribute("regUser", registeredUser);
-                    connector.closeConnection();
-                } catch (SQLException ex) {
-                    Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }  
-        request.getRequestDispatcher("main2.jsp").include(request, response);   
+            request.getRequestDispatcher("main2.jsp").include(request, response);
         }
     }
 }

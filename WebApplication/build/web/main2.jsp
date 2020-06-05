@@ -66,13 +66,13 @@
                 <thead>
                     <th>Address</th>
                     <th>Payment Method</th>
-                    <th>Payment Details</th>
+                    <% if (!paymentMethod.equals("Paypal")) { %> <th>Payment Details</th> <% } %>
                 </thead>
                 <tbody>
                     <tr>
                         <td><%=savedAddress%></td>
                         <td><%=paymentMethod%></td>
-                        <td><%=paymentDetail%></td>
+                        <% if (!paymentMethod.equals("Paypal")) { %><td><%=paymentDetail%></td> <% } %>
                     </tr>
                 </tbody>
             </table>
