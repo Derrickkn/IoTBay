@@ -21,6 +21,8 @@ public class EditServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         session.setAttribute("editError", null);
+        session.setAttribute("editMobileError", null);
+        session.setAttribute("editEmailError", null);
         session.setAttribute("userExistError", null);
 
         String email = request.getParameter("email");
@@ -37,7 +39,9 @@ public class EditServlet extends HttpServlet {
         } else if (!validator.validateMobile(mobile)) {
             session.setAttribute("editMobileError", "Please enter a valid number");
             request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
-
+        } else if (!validator.validateEmail(email)) {
+            session.setAttribute("editEmailError", "Please enter a valid email address");
+            request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
         } else {
             try {
                 DBConnector connector = new DBConnector();
