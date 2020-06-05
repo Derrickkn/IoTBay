@@ -20,7 +20,7 @@ public class order implements Serializable {
     private boolean orderPaid;
     private String shipmentAddress;
     private String orderStatus;
-    private float totalCost;
+    private double totalCost;
     private String paymentMethod;
     private int cardNo;
 
@@ -92,11 +92,11 @@ public class order implements Serializable {
         this.orderStatus = orderStatus;
     }
 
-    public float getTotalCost() {
+    public double getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(float totalCost) {
+    public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
 
