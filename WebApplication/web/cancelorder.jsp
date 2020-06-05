@@ -77,7 +77,7 @@
                                     System.out.print("Cancel Success");
                                  %>
                                     <div class="container">
-                                    <h3>Cancel Success!</h3>
+                                    <h3>Order cancelled!</h3>
                                     </div>
                                 <%
                                 }
@@ -96,7 +96,7 @@
                 }
          %>
          <div class="container">
-             <a href="main2.jsp" class="logo">Back</a>
+             <a class="button" href="main.jsp" class="logo">Back</a>
         </div>
          
     </body>

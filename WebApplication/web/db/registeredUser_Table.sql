@@ -8,6 +8,7 @@
  * Created: 26/05/2020
  */
 DROP TABLE RegisteredUser_Table;
+SELECT * FROM RegisteredUser_Table;
 CREATE TABLE RegisteredUser_Table (
 UserID INT NOT NULL, 
 Password VARCHAR(20) NOT NULL,

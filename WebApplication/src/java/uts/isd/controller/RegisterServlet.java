@@ -73,7 +73,7 @@ public class RegisterServlet extends HttpServlet {
         
         if (registeredUser != null) {
             session.setAttribute("regUser", registeredUser);
-            request.getRequestDispatcher("main2.jsp").include(request, response);
+            request.getRequestDispatcher("main.jsp").include(request, response);
         }
         
         }        

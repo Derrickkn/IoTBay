@@ -4,6 +4,7 @@
     Author     : Derrick
 --%>
 
+<%@page import="uts.isd.model.registeredUser"%>
 <%@page import="uts.isd.model.accessLog"%>
 <%@page import="java.util.ArrayList"%>
 <% 
@@ -19,11 +20,23 @@ int count = 1;
         <title>Access Logs</title>
     </head>
     <body>
+         <%
+                registeredUser regUser = null;
+                if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
+                else  regUser = (registeredUser)session.getAttribute("regUser");
+                 String userType = regUser.getUserType();
+         %>
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
-            <div class="header-right">
-                <a class="active" href="main.jsp">Main Page</a>
-                <a href="LogoutServlet">Logout</a>
+             <div class="header-right">
+                 <% if (userType.equals("A")) { %>
+                     <a class="active" href="admindashboard.jsp">Dashboard</a>
+                     <a href="main.jsp">Main Page</a>
+                     <a href="LogoutServlet">Logout</a>
+                <% } else {%>
+                    <a class="active" href="main.jsp">Main Page</a>
+                    <a href="LogoutServlet">Logout</a>
+                <% } %> 
             </div>
         </div>
         <div class="container">
@@ -46,7 +59,7 @@ int count = 1;
                 %>
             </table>
             <div class="left">
-                <a class="button" href="main2.jsp">Go Back</a>
+                <a class="button" href="main.jsp">Go Back</a>
             </div>
         </div>
     </body>

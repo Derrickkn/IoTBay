@@ -4,6 +4,7 @@
     Author     : Kira
 --%>
 
+<%@page import="uts.isd.model.registeredUser"%>
 <%@page import="uts.isd.model.staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,14 +16,23 @@
 	</head>
 	<body>
             <%
-                 
-                
+                registeredUser regUser = null;
+                if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
+                else  regUser = (registeredUser)session.getAttribute("regUser");
+                   
+                String userType = regUser.getUserType();    
             %>
             <div class="header">
                 <a href="#default" class="logo">&#10070 &#8464oTBay</a>
-                <div class="header-right">
-                    <a class="active" href="admindashboard.jsp">Dashboard</a>
-                    <a href="logout.jsp">Logout</a>
+                 <div class="header-right">
+                    <% if (userType.equals("A")) { %>
+                        <a class="active" href="admindashboard.jsp">Dashboard</a>
+                        <a href="main.jsp">Main Page</a>
+                        <a href="LogoutServlet">Logout</a>
+                   <% } else {%>
+                       <a class="active" href="main.jsp">Main Page</a>
+                       <a href="LogoutServlet">Logout</a>
+                   <% } %> 
                 </div>
             </div>
             <div class="container">

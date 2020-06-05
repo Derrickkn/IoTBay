@@ -1,7 +1,7 @@
 <%-- 
     Document   : deletecustomer
     Created on : Jun 2, 2020, 2:23:21 PM
-    Author     : silve
+    Author     : Kira
 --%>
 
 <%@page import="uts.isd.model.registeredUser"%>
@@ -22,9 +22,10 @@
                 <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             </div>
             <div class="container">
-		<h1>Customer deleted!</h1>
+		<h2>Warning: you are going to delete this customer from the system. Proceed?</h2>
                 <div class="left">
-                    <a class="button" href="cusmanage.jsp">Back</a>       
+                    <a class="button" href="cusmanage.jsp">Cancel</a>
+                    <a class="button" href="DeactivateAccServlet">DEACTIVATE ACCOUNT</a>    
                 </div>
             </div>
 	</body>

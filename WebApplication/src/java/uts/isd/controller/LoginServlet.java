@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
             if (registeredUser != null && registeredUser.isActivated()) {
                 session.setAttribute("regUser", registeredUser);
                 session.setAttribute("userID", registeredUser.getUserID());
-                request.getRequestDispatcher("main2.jsp").include(request, response);
+                request.getRequestDispatcher("main.jsp").include(request, response);
             }
             
             else if (registeredUser == null ) {

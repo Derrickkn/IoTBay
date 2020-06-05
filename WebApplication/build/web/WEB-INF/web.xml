@@ -29,12 +29,8 @@
         <servlet-class>uts.isd.controller.EditDeviceServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>cusManageServlet</servlet-name>
-        <servlet-class>uts.isd.controller.cusManageServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>staffManageServlet</servlet-name>
-        <servlet-class>uts.isd.controller.staffManageServlet</servlet-class>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <servlet-class>uts.isd.controller.adminDashboardServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -65,12 +61,8 @@
         <url-pattern>/EditDevice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>cusManageServlet</servlet-name>
-        <url-pattern>/cusManageServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>staffManageServlet</servlet-name>
-        <url-pattern>/staffManageServlet</url-pattern>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <url-pattern>/adminDashboardServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

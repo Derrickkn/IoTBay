@@ -50,7 +50,7 @@ public class EditServlet extends HttpServlet {
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }  
-        request.getRequestDispatcher("main2.jsp").include(request, response);   
+        request.getRequestDispatcher("main.jsp").include(request, response);   
         }
     }
 }

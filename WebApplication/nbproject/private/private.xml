@@ -3,28 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/db/productOrderLine_Table.sql</file>
-            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/cusmanage.jsp</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/staffManageServlet.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/deactivateaccount.jsp</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/EditServlet.java</file>
-            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/admindashboard.jsp</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/main2.jsp</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/main.jsp</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/model/staff.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/cancelorder.jsp</file>
-            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/LogoutServlet.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/deletestaff.jsp</file>
-            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/BaseServlet.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/DeactivateAccServlet.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/RegisterServlet.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/db/registeredUser_Table.sql</file>
-            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/db/product_Table.sql</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/editcustomer.jsp</file>
-            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/deletecustomer.jsp</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/IoTDevicesServlet.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/login.jsp</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/staffmanage.jsp</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/LoginServlet.java</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/cusmanage.jsp</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/db/productOrderLine_Table.sql</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/model/dao/UserDao.java</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/EditDeviceServlet.java</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/admindashboard.jsp</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/TestDB.java</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/LogoutServlet.java</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/BaseServlet.java</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/db/product_Table.sql</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/deletecustomer.jsp</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/Validator.java</file>
             <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/web/editcustomerdetails.jsp</file>
+            <file>file:/C:/Users/silve/Documents/GitHub/IoTBay/IoTBay/WebApplication/src/java/uts/isd/controller/cusManageServlet.java</file>
         </group>
     </open-files>
 </project-private>
