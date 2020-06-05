@@ -11,6 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% String editError = (String) session.getAttribute("editError"); %>
 <% String editMobileError = (String) session.getAttribute("editMobileError"); %>
+<% String userExistError = (String) session.getAttribute("userExistError"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -67,7 +68,7 @@
                                 <option value="Paypal" <% if (paymentMethod.equals("Paypal")) { %> selected <% } %>>Paypal</option>
                             </select>
                         </td></tr><%=paymentMethod%>
-                    <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><%=editMobileError%><td></tr>
+                    <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><% if (editMobileError != null) {%><%=editMobileError%><%}%><% if (userExistError != null) {%><%=userExistError%><%}%><td></tr>
                     <tr><td><a class="button" href="main2.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td><td>
                     <tr><td colspan="2"><a class="button" href="deactivateaccount.jsp">DEACTIVATE ACCOUNT</a></td></td></tr>
             </form>

@@ -21,6 +21,7 @@ public class EditServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         session.setAttribute("editError", null);
+        session.setAttribute("userExistError", null);
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -33,26 +34,33 @@ public class EditServlet extends HttpServlet {
         if (validator.isFieldEmpty(email) || validator.isFieldEmpty(password) || validator.isFieldEmpty(mobile) || validator.isFieldEmpty(fname) || validator.isFieldEmpty(lname)) {
             session.setAttribute("editError", "Please fill in all required fields.");
             request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
-        }
-        else if (!validator.validateMobile(mobile)) {
+        } else if (!validator.validateMobile(mobile)) {
             session.setAttribute("editMobileError", "Please enter a valid number");
             request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
-            
+
         } else {
             try {
                 DBConnector connector = new DBConnector();
                 Connection conn = connector.openConnection();
                 UserDao userdao = new UserDao(conn);
-                userdao.updateAll((int) session.getAttribute("userID"), fname, lname, email, password, mobile, address, pamynetDetail, paymentMethod);
-                registeredUser registeredUser = userdao.getUser(email, password);
-                session.setAttribute("regUser", registeredUser);
-                connector.closeConnection();
+                registeredUser currentDetails = (registeredUser) session.getAttribute("regUser");
+                if (!userdao.userExists(email) || currentDetails.getEmail().equals(email)) {
+                    userdao.updateAll((int) session.getAttribute("userID"), fname, lname, email, password, mobile, address, pamynetDetail, paymentMethod);
+                    registeredUser registeredUser = userdao.getUser(email, password);
+                    session.setAttribute("regUser", registeredUser);
+                    connector.closeConnection();
+                    request.getRequestDispatcher("main2.jsp").include(request, response);
+
+                } else {
+                    session.setAttribute("userExistError", "Email address already taken!");
+                    request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
+
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            request.getRequestDispatcher("main2.jsp").include(request, response);
         }
     }
 }
