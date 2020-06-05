@@ -53,7 +53,7 @@ public class EditServlet extends HttpServlet {
                     registeredUser registeredUser = userdao.getUser(email, password);
                     session.setAttribute("regUser", registeredUser);
                     connector.closeConnection();
-                    request.getRequestDispatcher("main2.jsp").include(request, response);
+                    request.getRequestDispatcher("main.jsp").include(request, response);
 
                 } else {
                     session.setAttribute("userExistError", "Email address already taken!");

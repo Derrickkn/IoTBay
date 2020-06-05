@@ -33,7 +33,7 @@
                 <a href="#default" class="logo">&#10070 &#8464oTBay</a>
                  <div class="header-right">
                 <% if (userType.equals("A")) { %>
-                     <a class="active" href="admindashboard.jsp">Dashboard</a>
+                     <a class="active" href="adminDashboardServlet">Dashboard</a>
                      <a href="main.jsp">Main Page</a>
                      <a href="LogoutServlet">Logout</a>
                 <% } else {%>

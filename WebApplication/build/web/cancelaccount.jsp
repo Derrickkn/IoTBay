@@ -58,7 +58,7 @@
                 }
          %>
          <div class="container">
-             <a href="main2.jsp" class="logo">Back</a>
+             <a href="main.jsp" class="logo">Back</a>
         </div>
          
     </body>
