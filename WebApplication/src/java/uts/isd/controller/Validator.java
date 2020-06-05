@@ -28,8 +28,8 @@ package uts.isd.controller;
       return validate(passwordPattern,password); 
    }    
    
-   public boolean validateMobile(String password){
-      return validate(mobilePattern,password); 
+   public boolean validateMobile(String mobile){
+      return validate(mobilePattern, mobile); 
    }    
    
    
