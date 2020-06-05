@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; carset=UTF-8">
         <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Main Page</title>
     </head>
     <body>
@@ -24,12 +25,12 @@
             } else {
                 regUser = (registeredUser) session.getAttribute("regUser");
             }
-
         %>
 
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             <div class="header-right">
+                <a href="viewPaymentServlet"><span class="fa fa-credit-card"></span></a>
                 <a class="active" href="main.jsp">Main Page</a>
                 <a href="LogoutServlet">Logout</a>
             </div>
@@ -37,21 +38,27 @@
 
         <!-- Customer Dashboard -->
         <!-- Includes: 1. show user's  info; 2. cancel user's order account -->
-        <% String savedAddress = regUser.getSavedAddress(); 
-           String paymentMethod = regUser.getPaymentMethod(); 
-           String paymentDetail = regUser.getPaymentDetail();
-           if (savedAddress == null || savedAddress.equals("")) { savedAddress = "Not Set"; }
-           if (paymentMethod == null || paymentMethod.equals("")) { paymentMethod = "Not Set"; }
-           if (paymentDetail == null || paymentDetail.equals("")) { paymentDetail = "Not Set"; }
+        <% String savedAddress = regUser.getSavedAddress();
+            String paymentMethod = regUser.getPaymentMethod();
+            String paymentDetail = regUser.getPaymentDetail();
+            if (savedAddress == null || savedAddress.equals("")) {
+                savedAddress = "Not Set";
+            }
+            if (paymentMethod == null || paymentMethod.equals("")) {
+                paymentMethod = "Not Set";
+            }
+            if (paymentDetail == null || paymentDetail.equals("")) {
+                paymentDetail = "Not Set";
+            }
         %>
         <div class="container">
             <h1>Customer Dashboard</h1>
             <table class="table">
                 <thead>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -64,15 +71,15 @@
             </table>
             <table class="table">
                 <thead>
-                    <th>Address</th>
-                    <th>Payment Method</th>
-                    <% if (!paymentMethod.equals("Paypal")) { %> <th>Payment Details</th> <% } %>
+                <th>Address</th>
+                <th>Payment Method</th>
+                <th>Payment Details</th>
                 </thead>
                 <tbody>
                     <tr>
                         <td><%=savedAddress%></td>
                         <td><%=paymentMethod%></td>
-                        <% if (!paymentMethod.equals("Paypal")) { %><td><%=paymentDetail%></td> <% } %>
+                        <td><%=paymentDetail%></td>
                     </tr>
                 </tbody>
             </table>
