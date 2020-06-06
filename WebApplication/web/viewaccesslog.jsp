@@ -21,14 +21,18 @@ int count = 1;
     </head>
     <body>
          <%
-                registeredUser regUser = null;
-                if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
-                else  regUser = (registeredUser)session.getAttribute("regUser");
-                 String userType = regUser.getUserType();
+            //getting user of the current session
+            registeredUser regUser = null;
+            if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
+            else  regUser = (registeredUser)session.getAttribute("regUser");
+            //getting the user type
+            String userType = regUser.getUserType();
          %>
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
+            <!-- administrator dashboard only displays when  administrator is logged in-->
              <div class="header-right">
+             <!-- checks for user type A, which is administrator-->
                  <% if (userType.equals("A")) { %>
                      <a class="active" href="admindashboard.jsp">Dashboard</a>
                      <a href="main.jsp">Main Page</a>

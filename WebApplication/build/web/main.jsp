@@ -18,19 +18,22 @@
     </head>
     <body>
         <%
+            //getting user of the current session
             registeredUser regUser = null;
             if (session.getAttribute("regUser") == null) {
                 regUser = new registeredUser(103, "123", "Yu", "peng", "Yunpeng@aa.com", "123", "a");
                 session.setAttribute("regUser", regUser);
             } else regUser = (registeredUser) session.getAttribute("regUser");
-            
+            //getting the user type
             String userType = regUser.getUserType();
 
         %>
 
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
+             <!-- administrator dashboard only displays when  administrator is logged in-->
             <div class="header-right">
+             <!-- checks for user type A, which is administrator-->
                  <% if (userType.equals("A")) { %>
                      <a class="active" href="adminDashboardServlet">Dashboard</a>
                      <a href="main.jsp">Main Page</a>
@@ -51,6 +54,7 @@
            if (paymentMethod == null || paymentMethod.equals("")) { paymentMethod = "Not Set"; }
            if (paymentDetail == null || paymentDetail.equals("")) { paymentDetail = "Not Set"; }
         %>
+        <div id="site-content">
         <div class="container">
             <h1>Customer Dashboard</h1>
             <table class="table">
@@ -73,13 +77,13 @@
                 <thead>
                     <th>Address</th>
                     <th>Payment Method</th>
-                    <th>Payment Details</th>
+                    <% if (!paymentMethod.equals("Paypal")) { %> <th>Payment Details</th> <% } %>
                 </thead>
                 <tbody>
                     <tr>
                         <td><%=savedAddress%></td>
-                        <td><%=paymentMethod%></td>
-                        <td><%=paymentDetail%></td>
+                        <td><%=paymentMethod%></td>      
+                        <% if (!paymentMethod.equals("Paypal")) { %><td><%=paymentDetail%></td> <% } %>
                     </tr>
                 </tbody>
             </table>

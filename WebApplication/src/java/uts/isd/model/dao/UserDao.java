@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import uts.isd.model.accessLog;
 import uts.isd.model.registeredUser;
+import uts.isd.model.staff;
 
 public class UserDao {
     
@@ -172,5 +173,26 @@ public class UserDao {
         return arrayList;
     }
     
-    
+     public ArrayList<staff> getAllStaff() throws SQLException {
+        ArrayList<staff> arrayList = new ArrayList();
+        String query = "select * from staff_table natural join unregistereduser_table";
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+                int userID = result.getInt(1);
+                String staffPassword = result.getString(2);
+                String EContact = result.getString(3);
+                String staffType = result.getString(4);
+                String fName = result.getString(5);
+                String lName = result.getString(6);
+                String staffEmail = result.getString(7);       
+                String phone = result.getString(8);
+                String userType = result.getString(9);
+                staff staff = new staff(staffPassword, staffType, userID, fName, lName, staffEmail, phone, userType);
+                staff.setPassword(staffPassword);
+                staff.setEmergencyContact(EContact);
+                staff.setStaffType(staffType);
+                arrayList.add(staff);
+        }
+        return arrayList;
+    }
 }

@@ -32,6 +32,26 @@
         <servlet-name>specificpayServlet</servlet-name>
         <servlet-class>uts.isd.controller.specificpayServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <servlet-class>uts.isd.controller.adminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>staffEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusDeleteServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>staffDeleteServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffDeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -63,6 +83,26 @@
     <servlet-mapping>
         <servlet-name>specificpayServlet</servlet-name>
         <url-pattern>/specificpayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <url-pattern>/adminDashboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusEditServlet</servlet-name>
+        <url-pattern>/cusEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffEditServlet</servlet-name>
+        <url-pattern>/staffEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusDeleteServlet</servlet-name>
+        <url-pattern>/cusDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffDeleteServlet</servlet-name>
+        <url-pattern>/staffDeleteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

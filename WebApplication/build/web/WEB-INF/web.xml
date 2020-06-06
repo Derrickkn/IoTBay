@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>IoTDevicesServlet</servlet-name>
-        <servlet-class>uts.isd.controller.IoTDevicesServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>uts.isd.controller.LoginServlet</servlet-class>
     </servlet>
@@ -25,12 +21,36 @@
         <servlet-class>uts.isd.controller.DeactivateAccServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditDeviceServlet</servlet-name>
-        <servlet-class>uts.isd.controller.EditDeviceServlet</servlet-class>
+        <servlet-name>confirmPaymentServlet</servlet-name>
+        <servlet-class>uts.isd.controller.confirmPaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewPaymentServlet</servlet-name>
+        <servlet-class>uts.isd.controller.viewPaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>specificpayServlet</servlet-name>
+        <servlet-class>uts.isd.controller.specificpayServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>adminDashboardServlet</servlet-name>
         <servlet-class>uts.isd.controller.adminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>staffEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusDeleteServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>staffDeleteServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffDeleteServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -53,16 +73,36 @@
         <url-pattern>/DeactivateAccServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>IoTDevicesServlet</servlet-name>
-        <url-pattern>/IoTDevices</url-pattern>
+        <servlet-name>confirmPaymentServlet</servlet-name>
+        <url-pattern>/confirmPaymentServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditDeviceServlet</servlet-name>
-        <url-pattern>/EditDevice</url-pattern>
+        <servlet-name>viewPaymentServlet</servlet-name>
+        <url-pattern>/viewPaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>specificpayServlet</servlet-name>
+        <url-pattern>/specificpayServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>adminDashboardServlet</servlet-name>
         <url-pattern>/adminDashboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusEditServlet</servlet-name>
+        <url-pattern>/cusEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffEditServlet</servlet-name>
+        <url-pattern>/staffEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusDeleteServlet</servlet-name>
+        <url-pattern>/cusDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffDeleteServlet</servlet-name>
+        <url-pattern>/staffDeleteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

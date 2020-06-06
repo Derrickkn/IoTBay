@@ -54,7 +54,7 @@
                         
                         // Order not exits
                         if(!orderdao.orderexist(Integer.parseInt(orderid))){
-                            System.out.println("Order not exists!");
+                            System.out.println("Order do not exist!");
                          %>
                                <div class="container">
                                <h3>Order not exists!</h3>
