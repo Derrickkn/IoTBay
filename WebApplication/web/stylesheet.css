@@ -163,7 +163,22 @@ form {
     .container td:nth-child(4),
     .container th:nth-child(4) { display: none; }
 }
-
+.adminpanel {
+    box-shadow:inset 0px 1px 3px 0px #91b8b3;
+    background:linear-gradient(to bottom, slategray 5%, #333333 100%);
+    background-color: slategray;
+    border-radius:5px;
+    border:1px solid slategray;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:40px 23px;
+    text-decoration:none;
+    text-shadow:0px -1px 0px #2b665e;
+}
 .button {
     box-shadow:inset 0px 1px 3px 0px #91b8b3;
     background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);

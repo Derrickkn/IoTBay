@@ -22,14 +22,28 @@
     </head>
     <body>
         <%
-            registeredUser regUser = (registeredUser) session.getAttribute("regUser");
+           //getting user of the current session
+           registeredUser regUser = null;
+           if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
+           else  regUser = (registeredUser)session.getAttribute("regUser");
+           //getting the user type
+           String userType = regUser.getUserType();
         %>
 
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             <div class="header-right">
-                <a class="active" href="main.jsp">Main Page</a>
+                
+                <% if (userType.equals("A")) { %>
+                <a class="active" href="adminDashboardServlet">Dashboard</a>
+                <a href="IoTDevices">Devices</a>
+                <a href="main.jsp">Main Page</a>
                 <a href="LogoutServlet">Logout</a>
+                <% } else {%>
+                <a class="active" href="main.jsp">Main Page</a>
+                <a href="IoTDevices">Devices</a>
+                <a href="LogoutServlet">Logout</a>
+                <% } %> 
             </div>
         </div>
         <%

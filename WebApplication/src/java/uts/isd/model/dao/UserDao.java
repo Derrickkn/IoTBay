@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  * @author Derrick
+ *  Edited by: Kira
  */
 
 package uts.isd.model.dao;
@@ -18,6 +19,10 @@ import uts.isd.model.registeredUser;
 import uts.isd.model.staff;
 
 public class UserDao {
+
+    public static void deleteRegisteredUser(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private Statement statement;
     
@@ -60,6 +65,12 @@ public class UserDao {
     //Deletes a registered user by their userid.
     public void deleteRegisteredUser(int userID) throws SQLException {
         String query = "DELETE FROM registeredUser_Table where userid = " + userID;
+        statement.executeUpdate(query);
+    }
+    
+    //Deletes a registered user by their userid.
+    public void deletesStaff(int staffID) throws SQLException {
+        String query = "DELETE FROM staff_Table where userid = " + staffID;
         statement.executeUpdate(query);
     }
     

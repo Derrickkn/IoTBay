@@ -10,16 +10,42 @@
         <title>IoT Devices</title>
     </head>
     <body>
+         <%
+            registeredUser regUser = null;
+            if (session.getAttribute("regUser") == null) {
+                regUser = new registeredUser(103, "123", "Yu", "peng", "Yunpeng@aa.com", "123", "a");
+                session.setAttribute("regUser", regUser);
+            } else {
+                regUser = (registeredUser) session.getAttribute("regUser");
+            }
+
+            String userType = regUser.getUserType();
+
+        %>
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
+            <div class="header-right">
+                   <!-- checks for user type A, which is administrator-->    
+                <% if (userType.equals("A")) { %>
+                <a class="active" href="adminDashboardServlet">Dashboard</a>
+                <a href="main.jsp">Main Page</a>
+                <a href="IoTDevices">Devices</a>
+                <a href="LogoutServlet">Logout</a>
+                <% } else {%>
+                <a class="active" href="main.jsp">Main Page</a>
+                <a href="IoTDevices">Devices</a>
+                <a href="LogoutServlet">Logout</a>
+                <% } %> 
+            </div>
         </div>
         <%
             registeredUser user = (registeredUser) session.getAttribute("regUser");
+            
         %>
         <div class="container">
             <div class="devices-container">
                 <h1>IoT Devices</h1>
-                <% if (user != null && user.getUserType().equals("S")) {%>
+                <% if (user != null && user.getUserType().equals("S")||user.getUserType().equals("A")) {%>
                 <a class="button devices-create-btn" href="createDevice.jsp">Create</a>
                 <%}%>
             </div>
@@ -49,7 +75,7 @@
                     <td><%= device.getPrice()%></td>
                     <td><%= device.getQuantity()%></td>
                     <td>
-                        <% if (user != null && user.getUserType().equals("S")) {%>
+                        <% if (user != null && user.getUserType().equals("S")||user.getUserType().equals("A")) {%>
                         <form action="DeleteDeviceServlet" method="POST" class="inline-form">
                             <input name="deviceId" value="<%= device.getId()%>" style="display: none">
                             <button type="submit">Delete</button>
@@ -61,8 +87,9 @@
                 <%
                     }
                 %>
-
+            
             </table>
+            <a class="button" href="main.jsp">Cancel</a>    
         </div>
     </body>
 </html>

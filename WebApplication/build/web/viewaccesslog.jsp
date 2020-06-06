@@ -36,9 +36,11 @@ int count = 1;
                  <% if (userType.equals("A")) { %>
                      <a class="active" href="admindashboard.jsp">Dashboard</a>
                      <a href="main.jsp">Main Page</a>
+                     <a href="IoTDevices">Devices</a>
                      <a href="LogoutServlet">Logout</a>
                 <% } else {%>
                     <a class="active" href="main.jsp">Main Page</a>
+                    <a href="IoTDevices">Devices</a>
                     <a href="LogoutServlet">Logout</a>
                 <% } %> 
             </div>

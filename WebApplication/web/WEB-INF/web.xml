@@ -44,6 +44,10 @@
         <servlet-name>DeleteDeviceServlet</servlet-name>
         <servlet-class>uts.isd.controller.DeleteDeviceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <servlet-class>uts.isd.controller.adminDashboardServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>specificpayServlet</servlet-name>
         <url-pattern>/specificpayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminDashboardServlet</servlet-name>
+        <url-pattern>/adminDashboardServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

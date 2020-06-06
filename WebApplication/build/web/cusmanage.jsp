@@ -34,11 +34,13 @@
                     <% if (userType.equals("A")) { %>
                         <a class="active" href="adminDashboardServlet">Dashboard</a>
                         <a href="main.jsp">Main Page</a>
+                        <a href="IoTDevices">Devices</a>
                         <a href="LogoutServlet">Logout</a>
-                   <% } else {%>
-                       <a class="active" href="main.jsp">Main Page</a>
-                       <a href="LogoutServlet">Logout</a>
-                   <% } %> 
+                    <% } else {%>
+                        <a class="active" href="main.jsp">Main Page</a>
+                        <a href="IoTDevices">Devices</a>
+                        <a href="LogoutServlet">Logout</a>
+                    <% } %> 
                 </div>
             </div>
             <div class="container">
@@ -72,25 +74,28 @@
                             <td><%=x.getPassword()%></td>
                             <td><%=x.getUserType()%></td>
                         </tr>
-                        <%                            
-                            }}
-                        %>
+                        
                     </tbody>
-                   
-                </table>
+                        <%                            
+                        }}
+                        %>
+                </table>       
                 <div class="left">
-                     <form method="post" action="cusEditServlet">
+                  
+                     <form  method="post" action="cusEditServlet">
                          <p>Select user by ID to modify</p>
                         <label for="userID">Staff ID:</label>
                         <input type="text" id="userID" name="userID"><br><br>
                         <input class="button" type="submit" value="Edit">
                     </form>
+                   
                     <form method="post" action="cusDeleteServlet">
-                         <p>Select user by ID to modify</p>
+                         <p>Select user by ID to delete</p>
                         <label for="userID">Staff ID:</label>
                         <input type="text" id="userID" name="userID"><br><br>
-                        <input class="button" type="submit" value="Edit">
+                        <input class="button" type="submit" value="Delete">
                     </form>
+                        
                     <a class="button" href="admindashboard.jsp">Cancel</a>         
                 </div>
 	</body>
