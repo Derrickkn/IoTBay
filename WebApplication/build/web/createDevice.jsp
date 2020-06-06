@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="uts.isd.model.Device"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% String loginError = (String) session.getAttribute("loginError");%>
+<% String error = (String) session.getAttribute("DeviceCreateError");%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,11 +17,16 @@
             <div class="devices-container">
                 <h1>Create Device</h1>
                 <form method="post" action="EditDevice">
+                    <%
+                        if (error != null && !error.isEmpty()) {
+                    %>
+                    <div id="errorMsg" style="color: red;"><%= error%></div>
+                    <%}%>
                     <table>
-                        <tr><td>Name</td><td><input type="text" placeholder="Enter name" name="name"></td></tr>
-                        <tr><td>Type</td><td><input type="text" placeholder="Enter Type" name="type"></td></tr>
-                        <tr><td>Price</td><td><input type="text" placeholder="Enter Price" name="price"></td></tr>
-                        <tr><td>Stock</td><td><input type="text" placeholder="Enter Stock" name="stock"><td></tr>
+                        <tr><td>Name</td><td><input type="text" placeholder="Enter name" name="name" id="name"></td></tr>
+                        <tr><td>Type</td><td><input type="text" placeholder="Enter Type" name="type" id="type"></td></tr>
+                        <tr><td>Price</td><td><input type="text" placeholder="Enter Price" name="price" id="price"></td></tr>
+                        <tr><td>Stock</td><td><input type="text" placeholder="Enter Stock" name="stock" id="stock"><td></tr>
                         <tr><td><input class="button" type="submit" value="Submit"></td></tr> 
                     </table>
                 </form>

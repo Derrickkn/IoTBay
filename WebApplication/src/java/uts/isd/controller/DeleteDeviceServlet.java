@@ -8,27 +8,23 @@ package uts.isd.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import uts.isd.model.Device;
-import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.DeviceDao;
 
 /**
  *
  * @author krystianhuang
  */
-public class IoTDevicesServlet extends BaseServlet {
+public class DeleteDeviceServlet extends BaseServlet {
 
     DeviceDao deviceDao;
 
-    public IoTDevicesServlet() throws ClassNotFoundException, SQLException {
+    public DeleteDeviceServlet() throws ClassNotFoundException, SQLException {
         this.deviceDao = new DeviceDao(dbConnector.openConnection());
     }
 
@@ -44,16 +40,7 @@ public class IoTDevicesServlet extends BaseServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String deviceId = request.getParameter("deviceId");
-        List<Device> devices = null;
-        try {
-            devices = deviceDao.searchDevices(deviceId, name);
-        } catch (SQLException ex) {
-            Logger.getLogger(IoTDevicesServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        request.setAttribute("deviceList", devices == null ? new ArrayList() : devices);
-        request.getRequestDispatcher("IoTDevices.jsp").forward(request, response);
+        
     }
 
     /**
@@ -67,6 +54,13 @@ public class IoTDevicesServlet extends BaseServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String id = request.getParameter("deviceId");
+        try {
+            deviceDao.deleteDevice(id);
+            response.sendRedirect("IoTDevices");
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteDeviceServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

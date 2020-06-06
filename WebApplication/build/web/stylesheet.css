@@ -24,9 +24,6 @@ body {
     background: radial-gradient(circle, slategrey 0%, #333333 50%, #333333 100%);
     padding: 20px 10px;
     border: slategrey solid 1px;
-    position: fixed;
-    top: 0;
-    width: 100%;
 
 }
 
@@ -78,6 +75,10 @@ form {
     padding: 20px;
 }
 
+.inline-form {
+    background-color: transparent;
+    display: inline;
+}
 
 .container {
     margin-top: 100px;
@@ -188,23 +189,6 @@ form {
     top:1px;
 }
 
-.adminpanel{
-    
-    box-shadow:inset 0px 1px 3px 0px slategrey;
-    background:linear-gradient(to bottom, slategrey 5%, #333333 100%);
-    background-color: #333333;
-    border-radius:5px;
-    border:1px solid slategrey;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:15px;
-    font-weight:bold;
-    padding:50px 23px;
-    text-decoration:none;
-    text-shadow:0px -1px 0px #2b665e;
-}
 tr, td {
     padding: 7px;
 }
@@ -577,5 +561,3 @@ p {
     float: right;
     margin-top: -60px;
 }
-
-
