@@ -54,6 +54,8 @@ VALUES  (41,'2019-02-20',50001,TRUE,'VIC, Telford, 12 Myrtle Street','Delivered'
         (15,'2019-05-10',50017,TRUE,'NT, Coonawarra, 41 Marion St','Shipping',400.00),
         (17,'2019-05-10',50018,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Delivered',50.00),
         (17,'2019-05-20',50019,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Shipping',80.00),
-        (17,'2019-05-30',50020,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Shipping',220.00);
+        (17,'2019-05-30',50020,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Shipping',220.00),
+        (1,'2019-09-30',50021,TRUE,'VIC, Dinner Plain, 36 Frouds Road','Shipping',140.00);
+
 
 Select * from Order_table where userID = 141;
