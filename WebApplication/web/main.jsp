@@ -22,8 +22,10 @@
             if (session.getAttribute("regUser") == null) {
                 regUser = new registeredUser(103, "123", "Yu", "peng", "Yunpeng@aa.com", "123", "a");
                 session.setAttribute("regUser", regUser);
-            } else regUser = (registeredUser) session.getAttribute("regUser");
-            
+            } else {
+                regUser = (registeredUser) session.getAttribute("regUser");
+            }
+
             String userType = regUser.getUserType();
 
         %>
@@ -31,34 +33,41 @@
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             <div class="header-right">
-                 <% if (userType.equals("A")) { %>
-                     <a class="active" href="adminDashboardServlet">Dashboard</a>
-                     <a href="main.jsp">Main Page</a>
-                     <a href="LogoutServlet">Logout</a>
+                <a href="IoTDevices">Devices</a>
+                <% if (userType.equals("A")) { %>
+                <a class="active" href="adminDashboardServlet">Dashboard</a>
+                <a href="main.jsp">Main Page</a>
+                <a href="LogoutServlet">Logout</a>
                 <% } else {%>
-                    <a class="active" href="main.jsp">Main Page</a>
-                    <a href="LogoutServlet">Logout</a>
+                <a class="active" href="main.jsp">Main Page</a>
+                <a href="LogoutServlet">Logout</a>
                 <% } %> 
             </div>
         </div>
 
         <!-- Customer Dashboard -->
         <!-- Includes: 1. show user's  info; 2. cancel user's order account -->
-        <% String savedAddress = regUser.getSavedAddress(); 
-           String paymentMethod = regUser.getPaymentMethod(); 
-           String paymentDetail = regUser.getPaymentDetail();
-           if (savedAddress == null || savedAddress.equals("")) { savedAddress = "Not Set"; }
-           if (paymentMethod == null || paymentMethod.equals("")) { paymentMethod = "Not Set"; }
-           if (paymentDetail == null || paymentDetail.equals("")) { paymentDetail = "Not Set"; }
+        <% String savedAddress = regUser.getSavedAddress();
+            String paymentMethod = regUser.getPaymentMethod();
+            String paymentDetail = regUser.getPaymentDetail();
+            if (savedAddress == null || savedAddress.equals("")) {
+                savedAddress = "Not Set";
+            }
+            if (paymentMethod == null || paymentMethod.equals("")) {
+                paymentMethod = "Not Set";
+            }
+            if (paymentDetail == null || paymentDetail.equals("")) {
+                paymentDetail = "Not Set";
+            }
         %>
         <div class="container">
             <h1>Customer Dashboard</h1>
             <table class="table">
                 <thead>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -71,9 +80,9 @@
             </table>
             <table class="table">
                 <thead>
-                    <th>Address</th>
-                    <th>Payment Method</th>
-                    <th>Payment Details</th>
+                <th>Address</th>
+                <th>Payment Method</th>
+                <th>Payment Details</th>
                 </thead>
                 <tbody>
                     <tr>
@@ -103,13 +112,12 @@
                 <th>Order Cost</th>
                 </thead>
                 <tbody>
-                    <%  
+                    <%
                         OrderDao orderdao = new OrderDao();
                         List<order> res = orderdao.selectOrdersByUserid(regUser.getUserID());
 
                     %>
-                    <%                            
-                        for (order o : res) {
+                    <%                        for (order o : res) {
                     %>
                     <tr>
                         <td><%=o.getOrderID()%></td>

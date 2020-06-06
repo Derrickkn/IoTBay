@@ -75,6 +75,11 @@ form {
     padding: 20px;
 }
 
+.inline-form {
+    background-color: transparent;
+    display: inline;
+}
+
 .container {
     margin-top: 100px;
     margin-left: 23.5%;

@@ -33,8 +33,15 @@ public class DeviceDao {
         return devices;
     }
 
-    public List<Device> searchDevicesByName(String name) throws SQLException {
-        String query = "select * from device where name like '%" + name + "%'";
+    public List<Device> searchDevices(String id, String name) throws SQLException {
+        String query = "select * from device where id >0";
+        if(id != null && !id.isEmpty()) {
+            query  = query + " and id=" + id;
+        }
+        if(name != null && !name.isEmpty()) {
+            query  = query + " and name like '%" + name + "%'";
+        }
+        System.out.println("======="+query);
         ResultSet result = statement.executeQuery(query);
         List<Device> devices = new ArrayList();
         while (result.next()) {
@@ -45,6 +52,16 @@ public class DeviceDao {
 
     public void addDevice(String name, String type, String price, String quantity) throws SQLException {
         String query = "INSERT INTO DEVICE (\"NAME\", \"TYPE\", \"PRICE\", \"QUANTITY\") VALUES  ('" + name + "', '" + type + "', " + price + ", " + quantity + ")";
+        statement.executeUpdate(query);
+    }
+
+    public void updateDevice(String id, String name, String type, String price, String quantity) throws SQLException {
+        String query = "UPDATE DEVICE SET NAME='" + name + "', TYPE='" + type + "', PRICE=" + price + ", QUANTITY=" + quantity + " WHERE ID=" + id;
+        statement.executeUpdate(query);
+    }
+
+    public void deleteDevice(String id) throws SQLException {
+        String query = "delete from DEVICE where ID=" + id;
         statement.executeUpdate(query);
     }
 
