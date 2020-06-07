@@ -21,6 +21,8 @@ import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.PaymentDBManager;
 import uts.isd.model.payment;
 import uts.isd.controller.Validator;
+import uts.isd.model.registeredUser;
+import uts.isd.model.unregisteredUser;
 
 /**
  *
@@ -32,10 +34,23 @@ public class confirmPaymentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        registeredUser regUser = null;
+        unregisteredUser user = null;
+        //set default userID in the case of not having a regUser or User or Order
+        int userID = 1;
         //retrieve parameters entered by user
         String method = request.getParameter("paymethod");
         String cardNo = request.getParameter("cardNo");
         String change = request.getParameter("change");
+        //retrieve an unregisteredUser variable and store it in user and set userID to userID of unregisteredUser
+        if ((unregisteredUser) session.getAttribute("User") != null) {
+            user = (unregisteredUser) session.getAttribute("User");
+            userID = user.getUserID();
+        } //retrieve an registeredUser variable and store it in user and set userID to userID of registeredUser
+        else if ((registeredUser) session.getAttribute("regUser") != null) {
+            regUser = (registeredUser) session.getAttribute("regUser");
+            userID = regUser.getUserID();
+        }
         //set session attributes as null
         //Order order= (Order) session.getAttribute("order);
         session.setAttribute("sucess", null);
@@ -64,11 +79,23 @@ public class confirmPaymentServlet extends HttpServlet {
                 //check whether either options were clicked so system can perform crud operations
                 if (change != null) {
                     if (change.equals("update")) {
-                        //needs further refinement //int userID= order.getUserID()
-                        paymentDB.updatePayment(1, method, cardNo);
+                        //needs further refinement //int userID= order.getUserID() or user.getUserID() or regUser.getUser()
+                        paymentDB.updatePayment(userID, method, cardNo);
+                        //update the java bean to reflect of changed card details
+                        if (regUser != null) {
+                            regUser.setPaymentMethod(method);
+                            regUser.setPaymentDetail(cardNo);
+                            session.setAttribute("regUser", regUser);
+                        }
                     } else if (change.equals("delete")) {
                         //needs further refinement //int userID= order.getUserID()
                         paymentDB.deletePayment(1);
+                        //if regUser exists it changes the current regUser payment details to an empty string;
+                        if (regUser != null) {
+                            regUser.setPaymentMethod("");
+                            regUser.setPaymentDetail("");
+                            session.setAttribute("regUser", regUser);
+                        }
                     }
                 }
                 session.setAttribute("orderid", orderID);

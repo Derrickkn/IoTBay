@@ -4,6 +4,10 @@
     Author     : bappa
 --%>
 
+<<<<<<< Updated upstream
+=======
+<%@page import="uts.isd.model.unregisteredUser"%>
+>>>>>>> Stashed changes
 <%@page import="uts.isd.model.registeredUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +23,24 @@
         <%
             String success = (String) session.getAttribute("success");
             String message = (success == null) ? "" : success;
+<<<<<<< Updated upstream
             registeredUser regUser = (registeredUser) session.getAttribute("regUser");
+=======
+            //declares and initialises regUser/user/order and sets null
+            registeredUser regUser = null;
+            unregisteredUser user = null;
+            order order = null;
+            //check whether order exists and stores session into order bean
+            if ((order) session.getAttribute("order") != null) {
+                order = (order) session.getAttribute("order");
+            }
+            //checks whether regUser or Uesr session exists then saves into respective variable
+            if ((registeredUser) session.getAttribute("regUser") != null) {
+                regUser = (registeredUser) session.getAttribute("regUser");
+            } else if ((unregisteredUser) session.getAttribute("User") != null) {
+                user = (unregisteredUser) session.getAttribute("User");
+            }
+>>>>>>> Stashed changes
         %>
     </head>
     <body>
@@ -39,6 +60,13 @@
         </div>
         <div class="container">
             <center><p style="color:#45f542;"><%=message%></p></center>
+<<<<<<< Updated upstream
+=======
+                <% if (order != null) {%>
+            <center><p style="color:#45f542">Your order costs: <%=order.getTotalCost()%></p></center>
+            <center><p style="color:#45f542">Your orderID is <%=order.getOrderID()%></p></center>
+                <% } %>
+>>>>>>> Stashed changes
         </div>
     </body>
 </html>

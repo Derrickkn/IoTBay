@@ -59,7 +59,7 @@
             <center><span class="fa fa-cc-mastercard" style="font-size:36px"></span></center>
                 <% } else if (regUser.getPaymentMethod().equals("Visa")) { %>
             <center><span class="fa fa-cc-visa" style="font-size:36px"></span></center>
-                <% } else if (regUser.getPaymentMethod().equals("American Express")) {%>
+                <% } else if (regUser.getPaymentMethod().equals("AmericanExpress")) {%>
             <center><span class="fa fa-cc-amex" style="font-size:36px"></span></center>
                 <% } else { %>
             <center><p>No Payment Method saved</p></center>
