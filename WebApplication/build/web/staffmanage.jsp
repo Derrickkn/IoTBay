@@ -14,7 +14,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; carset=UTF-8">
                 <link rel="stylesheet" href="stylesheet.css">
-		<title>Staff Management</title>
+		<title>Staff Record Management</title>
 	</head>
 	<body>
             <%
@@ -44,7 +44,7 @@
             </div>
             </div>
             <div class="container">
-                <h1>Staff Detail Management</h1>
+                <h1>Staff Record Management</h1>
                 <table class="table">
                     <!-- table heater -->
                     <thead>
@@ -78,7 +78,8 @@
                     </tbody>
                 </table>
                <div class="left">
-                    <form method="post" action="staffEditServlet">
+                    <a class="button" href="staffcreate.jsp">Create New Record</a>   
+                    <form method="post" action="editstaff.jsp">
                         <p>Select user by ID to modify:</p>
                         <label for="userID">Staff ID:</label>
                         <input type="text" id="userID" name="userID"><br><br>

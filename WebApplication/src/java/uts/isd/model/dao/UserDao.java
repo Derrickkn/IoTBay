@@ -69,7 +69,7 @@ public class UserDao {
     }
     
     //Deletes a registered user by their userid.
-    public void deletesStaff(int staffID) throws SQLException {
+    public void deleteStaff(int staffID) throws SQLException {
         String query = "DELETE FROM staff_Table where userid = " + staffID;
         statement.executeUpdate(query);
     }
@@ -107,6 +107,31 @@ public class UserDao {
                 registeredUser.setSavedAddress(savedAddress);
                 registeredUser.setActivated(activated);
                 return registeredUser;
+            }
+        }
+        return null;
+    }
+    
+    //Gets a Staff from the staff database only if both email and password is correct. Returns a staff(staff) as a bean.
+    public staff getStaff(String email, String password) throws SQLException {
+        String query = "select * from staff_table natural join unregistereduser_table where upper(email) = " + "upper('" + email+ "')";
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+            if (result.getString(4).toUpperCase().equals(email.toUpperCase()) && result.getString(7).equals(password)) {
+                int userID = result.getInt(1);
+                String staffPassword = result.getString(2);
+                String EContact = result.getString(3);
+                String staffType = result.getString(4);
+                String fName = result.getString(5);
+                String lName = result.getString(6);
+                String staffEmail = result.getString(7);       
+                String phone = result.getString(8);
+                String userType = result.getString(9);
+                staff staff = new staff(staffPassword, staffType, userID, fName, lName, staffEmail, phone, userType);
+                staff.setPassword(staffPassword);
+                staff.setEmergencyContact(EContact);
+                staff.setStaffType(staffType);
+                return staff;
             }
         }
         return null;

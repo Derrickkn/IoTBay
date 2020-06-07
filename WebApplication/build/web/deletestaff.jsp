@@ -1,7 +1,7 @@
 <%-- 
     Document   : deletestaff
     Created on : Jun 2, 2020, 2:32:26 PM
-    Author     : silve
+    Author     : Kira
 --%>
 
 <%@page import="uts.isd.model.staff"%>
