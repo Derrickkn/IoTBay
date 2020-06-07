@@ -53,12 +53,13 @@
             </div>
         </div>            
         <div class="container">
+            <% if (regUser != null) { %>
             <center><h3>Your Payment History</h3></center>
                 <%if (regUser.getPaymentMethod().equals("Mastercard")) {%>
             <center><span class="fa fa-cc-mastercard" style="font-size:36px"></span></center>
                 <% } else if (regUser.getPaymentMethod().equals("Visa")) { %>
             <center><span class="fa fa-cc-visa" style="font-size:36px"></span></center>
-                <% } else if (regUser.getPaymentMethod().equals("American Express")) {%>
+                <% } else if (regUser.getPaymentMethod().equals("AmericanExpress")) {%>
             <center><span class="fa fa-cc-amex" style="font-size:36px"></span></center>
                 <% } else { %>
             <center><p>No Payment Method saved</p></center>
@@ -97,7 +98,8 @@
                 <p><span class="fa fa-calendar" style="font-size:24px"></span> : <%=pay.getDatepaid()%></p>
             </div>
             <%
-                        count += 1;
+                            count += 1;
+                        }
                     }
                 }
             %>
