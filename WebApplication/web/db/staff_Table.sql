@@ -37,3 +37,5 @@ VALUES  (121,'Ux5MOah1','Archer (0246995987)','Manager'),
         (138,'E3frjFA4','Lilly (0740184410)','Employee'),
         (139,'7JeYVmC7','Connor (0261723424)','Employee'),
         (140,'2BaYFL61','Angus (0240133669)','Employee');
+
+SELECT * FROM staff_table;

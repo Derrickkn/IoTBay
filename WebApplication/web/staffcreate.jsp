@@ -48,17 +48,17 @@
 		<h1>Create New Staff Record</h1>
 		<form method="post" action="staffCreateServlet">
 			<table>
-				<tr><td>First Name</td><td><input type="text" placeholder="Enter name" name="fname"></td></tr>
-                                <tr><td>Last Name</td><td><input type="text" placeholder="Enter name" name="lname"></td></tr>
+				<tr><td>First Name</td><td><input type="text" placeholder="Enter first name" name="fname"></td></tr>
+                                <tr><td>Last Name</td><td><input type="text" placeholder="Enter last name" name="lname"></td></tr>
 				<tr><td>Email</td><td><input type="text" placeholder="Enter email" name="email"></td><td><% if (regEmailError != null) { %> <%=regEmailError%> <%}%> <td></tr>
 				<tr><td>Password</td><td><input type="password" placeholder="Enter password" name="password"><td><% if (regPasswordError != null) { %> <%=regPasswordError%> <%}%> <td></td></tr>
                                 <tr><td>Mobile</td><td><input type="tel" placeholder="Enter mobile" name="mobile"></td><td><% if (regMobileError != null) { %> <%=regMobileError%> <%}%><td></tr>
-                                <tr><td>User Type</td>
+                                <tr><td>E-Contact</td><td><input type="text" placeholder="Enter contact name" name="ecantact"></td></tr>
                               
                                 <tr><td><input class="button" type="submit" value="Create"></td><td><% if (regError != null) { %> <%=regError%> <%}%><% if (userExistError != null) { %> <%=userExistError%> <%}%><td></tr>
 			</table>
 		</form>
-                <a class="button" href="cusmanage.jsp">Cancel</a>  
+                <a class="button" href="staffmanage.jsp">Cancel</a>  
             </div>
 	</body>
 </html>

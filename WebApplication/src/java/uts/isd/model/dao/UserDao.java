@@ -62,6 +62,25 @@ public class UserDao {
         statement.executeUpdate(unregisteredQuery);
     }
     
+     public void addStaff(String email, String firstName, String lastName, String password, String mobile, String EContact) throws SQLException {
+        
+        ResultSet result = statement.executeQuery("SELECT max(USERID) from staff_table");
+        int userID = 0;
+        while (result.next()) {
+            userID = result.getInt(1) + 1;
+        }
+        
+        //Query for adding a new row in the staff users table.
+        String staffQuery = "INSERT INTO staff_Table (UserID, Password, EContact, StaffType)";
+        staffQuery += "VALUES (" + userID + ", '" + password + "', '" + EContact + "', 'S')";
+        statement.executeUpdate(staffQuery);
+        
+        //Query for adding a new row in the registered users table.
+        String unregisteredQuery = "INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType)";
+        unregisteredQuery += "VALUES (" + userID + ", '" + firstName + "', '" + lastName + "', '" + email + "', '" + mobile + "', 'S')";
+        statement.executeUpdate(unregisteredQuery);
+    }
+    
     //Deletes a registered user by their userid.
     public void deleteRegisteredUser(int userID) throws SQLException {
         String query = "DELETE FROM registeredUser_Table where userid = " + userID;

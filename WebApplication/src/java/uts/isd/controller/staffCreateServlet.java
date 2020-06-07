@@ -34,44 +34,62 @@ public class staffCreateServlet extends HttpServlet {
         Validator validator = new Validator();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        session.setAttribute("loginError", null);
+        String mobile = request.getParameter("mobile");
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String EContact = request.getParameter("econtact");
+
+        session.setAttribute("regError", null);
+        session.setAttribute("regEmailError", null);
+        session.setAttribute("regPasswordError", null);
+        session.setAttribute("regMobileError", null);
+        session.setAttribute("userExistError", null);
         
-        if (validator.isLoginEmpty(email,password)) {
-            session.setAttribute("loginError", "Please fill in all login fields!");
+        if (validator.isFieldEmpty(email) || validator.isFieldEmpty(password) || validator.isFieldEmpty(mobile) || validator.isFieldEmpty(fname) || validator.isFieldEmpty(lname)) {
+            session.setAttribute("regError", "Please fill in all fields!");
+        } else {
+            if (!validator.validateEmail(email)) {
+                session.setAttribute("regEmailError", "Invalid email format!");
+            }
+            if (!validator.validatePassword(password)) {
+                session.setAttribute("regPasswordError", "Password must be more than 8 characters!");
+            }
+            if (!validator.validatePassword(password)) {
+                session.setAttribute("regMobileError", "Please enter a valid number.");
+            } else {
+                try {
+                    DBConnector connector = new DBConnector();
+                    Connection conn = connector.openConnection();
+                    UserDao userdao = new UserDao(conn);
+                    if (!userdao.userExists(email)) {
+                        userdao.addStaff(email, fname, lname, password, mobile, EContact);
+                        staff = userdao.getStaff(email, password);
+                    }
+                    else {
+                        session.setAttribute("userExistError", "User already exists!");
+                    }
+                    if (staff != null) {
+                        session.setAttribute("accessLogID", userdao.accessLogStart(staff.getUserID()));
+                        session.setAttribute("accessLogs", userdao.getAccessLogs(staff.getUserID()));
+                        session.setAttribute("userID", staff.getUserID());
+                    }
+                    connector.closeConnection();
+                } catch (SQLException ex) {
+                    Logger.getLogger(staffCreateServlet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(staffCreateServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
-        else if (!validator.validateEmail(email)) {
-            session.setAttribute("loginError", "Please enter a valid email address!");
-        }
-        
-        if (validator.isLoginEmpty(email,password) || !validator.validateEmail(email)) {
+
+        if (staff == null) {
             request.getRequestDispatcher("staffcreate.jsp").include(request, response);
+            session.setAttribute("regError", "Email address already exists!");
         }
-        
-        else {
-            try {
-                DBConnector connector = new DBConnector();
-                Connection conn = connector.openConnection();
-                UserDao userdao = new UserDao(conn);
-                staff = userdao.getStaff(email, password);
-                connector.closeConnection();
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            if (staff != null) {
-            
-                request.getRequestDispatcher("staffmanage.jsp").include(request, response);
-            }
-            
-            else if (staff == null ) {
-                session.setAttribute("loginError", "Incorrect email or password!");
-                request.getRequestDispatcher("staffcreate.jsp").include(request, response);
-            }
-            else {
-                request.getRequestDispatcher("staffcreate.jsp").include(request, response);
-            }
+
+        if (staff != null) {
+            session.setAttribute("staff", staff);
+            request.getRequestDispatcher("staffmanage.jsp").include(request, response);
         }
     }
     
