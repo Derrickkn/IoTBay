@@ -1,9 +1,10 @@
 <%-- 
     Document   : admindashboard
     Created on : Jun 2, 2020, 2:43:05 PM
-    Author     : silve
+    Author     : Kira
 --%>
 
+<%@page import="uts.isd.model.registeredUser"%>
 <%@page import="uts.isd.model.staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,32 +12,39 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; carset=UTF-8">
                 <link rel="stylesheet" href="stylesheet.css">
-		<title>Admin Dashboard</title>
+		<title>Administrator Dashboard</title>
 	</head>
 	<body>
             <%
-                 staff staff = null;
-                if(session.getAttribute("staff")==null){
-             
-                    session.setAttribute("staff", staff);
-                    
-                }
-                else
-                    staff = (staff)session.getAttribute("staff");
-                
+                //getting user of the current session
+                registeredUser regUser = null;
+                if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
+                else  regUser = (registeredUser)session.getAttribute("regUser");
+                //getting the user type  
+                String userType = regUser.getUserType();    
             %>
             <div class="header">
                 <a href="#default" class="logo">&#10070 &#8464oTBay</a>
-                <div class="header-right">
-                    <a class="active" href="admindashboard.jsp">Dashboard</a>
-                    <a href="logout.jsp">Logout</a>
+                 <!-- administrator dashboard only displays when  administrator is logged in-->
+                 <div class="header-right">
+                   <!-- checks for user type A, which is administrator-->
+                     <% if (userType.equals("A")) { %>
+                        <a class="active" href="adminDashboardServlet">Dashboard</a>
+                        <a href="main.jsp">Main Page</a>
+                        <a href="IoTDevices">Devices</a>
+                        <a href="LogoutServlet">Logout</a>
+                    <% } else {%>
+                        <a class="active" href="main.jsp">Main Page</a>
+                        <a href="IoTDevices">Devices</a>
+                        <a href="LogoutServlet">Logout</a>
+                    <% } %> 
                 </div>
             </div>
             <div class="container">
                 <h1>Administrator Dashboard</h1>
                 
                 <div class="left">
-                    <a class="button" href="cusmanage.jsp">Customer Management</a> <a class="button" href="staffmanage.jsp">Staff Management</a>       
+                    <a class="adminpanel" href="cusmanage.jsp">Customer Management</a> <a class="adminpanel" href="staffmanage.jsp">Staff Management</a>       
                 </div>
 	</body>
 </html>

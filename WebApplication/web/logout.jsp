@@ -17,7 +17,6 @@
             </div>            
             <div class="container">
                 <p>You are currently logged out, please click <a href="index.jsp">here</a> to go to the index page.</p>
-                <% session.invalidate(); %>
             </div>
 	</body>
 </html>
