@@ -48,6 +48,22 @@
         <servlet-name>adminDashboardServlet</servlet-name>
         <servlet-class>uts.isd.controller.adminDashboardServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>staffEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusCreateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusCreateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>staffCreateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffCreateServlet</servlet-class>
+    </servlet>
      <servlet>
         <servlet-name>CancelOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.CancelOrderServlet</servlet-class>
@@ -72,8 +88,6 @@
         <servlet-name>UpdateOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.UpdateOrderServlet</servlet-class>
     </servlet>
-    
-    
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -122,6 +136,22 @@
         <servlet-name>adminDashboardServlet</servlet-name>
         <url-pattern>/adminDashboardServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffEditServlet</servlet-name>
+        <url-pattern>/staffEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusEditServlet</servlet-name>
+        <url-pattern>/cusEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusCreateServlet</servlet-name>
+        <url-pattern>/cusCreateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffCreateServlet</servlet-name>
+        <url-pattern>/staffCreateServlet</url-pattern>
+    </servlet-mapping>
      <servlet-mapping>
         <servlet-name>CancelOrderServlet</servlet-name>
         <url-pattern>/CancelOrderServlet</url-pattern>
@@ -146,8 +176,6 @@
         <servlet-name>UpdateOrderServlet</servlet-name>
         <url-pattern>/UpdateOrderServlet</url-pattern>
     </servlet-mapping>
-    
-    
     <session-config>
         <session-timeout>
             30
