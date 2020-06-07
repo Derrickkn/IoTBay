@@ -4,9 +4,14 @@
     Author     : HH
 --%>
 
+<%@page import="uts.isd.model.order"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page import="uts.isd.model.registeredUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.dao.OrderDao"%>
+<% String ordercancelError = (String) session.getAttribute("ordercancelError"); %>
+<% registeredUser regUser = (registeredUser) session.getAttribute("regUser"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,81 +28,54 @@
                 </div>
         </div>
         
-         <%
-            
-            if(session.getAttribute("regUser") == null){
-                 System.out.print("Login First");   
-         %>
-            <div class="container">
-            <h3>Login First!</h3>
-        </div>
-         <%
-             }
-       
-             else {
-                     
-                    registeredUser regUser = (registeredUser)session.getAttribute("regUser");
-                    String orderid = request.getParameter("orderid");
-                    //OrderID can not be empty
-                    if( orderid ==null || orderid.equals("null") || orderid.length()==0){
-                 
-                        System.out.print("OrderID Can not Be Empty!");
-                    %>
-                               <div class="container">
-                               <h3>OrderID Can not Be Empty!</h3>
-                               </div>
+        <div class="container">
+            <h1>Cancel Order</h1>
+            <table class="table">
+                <thead>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Tracking Number</th>
+                <th>Order Paid</th>
+                <th>Order Status</th>
+                <th>Order Cost</th>
+                </thead>
+                <tbody>
                     <%
-                     }
-                     else{
                         OrderDao orderdao = new OrderDao();
-                        
-                        
-                        // Order not exits
-                        if(!orderdao.orderexist(Integer.parseInt(orderid))){
-                            System.out.println("Order do not exist!");
-                         %>
-                               <div class="container">
-                               <h3>Order not exists!</h3>
-                               </div>
-                        <%
+                        List<order> res = orderdao.selectOrdersByUserid(regUser.getUserID());
+
+                    %>
+                    <%                        for (order o : res) {
+                    %>
+                    <tr>
+                        <td><%=o.getOrderID()%></td>
+                        <td><%=o.getOrderDate()%></td>
+                        <td><%=o.getTrackingNo()%></td>
+                        <td><%=o.isOrderPaid()%></td>
+                        <td><%=o.getOrderStatus()%></td>
+                        <td><%=o.getTotalCost()%></td>
+                    </tr>
+                    <%
                         }
-                        else{
-                            //Can only cancel self order
-                            if(!orderdao.isorderowner(regUser.getUserID(), Integer.parseInt(orderid))){
-                                System.out.print("Can not cancel others order");
-                            %>
-                               <div class="container">
-                               <h3>Can not cancel others order!</h3>
-                               </div>
-                            <%
-                            }
-                            else{
-                                //success
-                                if(orderdao.cancelOrderByOrderId(Integer.parseInt(orderid))){
-                                    System.out.print("Cancel Success");
-                                 %>
-                                    <div class="container">
-                                    <h3>Order cancelled!</h3>
-                                    </div>
-                                <%
-                                }
-                                //fail
-                                else{
-                                    System.out.print("Cancel Fails");
-                                %>
-                                    <div class="container">
-                                    <h3>Cancel Fails!</h3>
-                                    </div>
-                                <%
-                                }
-                            }
-                            }
-                     }
-                }
-         %>
-         <div class="container">
-             <a class="button" href="main.jsp" class="logo">Back</a>
-        </div>
+                    %>
+                </tbody>
+            </table>
+             <form method="post" action="CancelOrderServlet">
+                <table>
+                    <tr><td>OrderID</td><td><input type="text" placeholder="order ID to be canceled" name="orderid"></td></tr>
+                   
+                    <tr><td><input class="button" type="submit" value="Cancel Order"></td>
+                        <td><a class="button" href="main.jsp">Back</a></td>
+                    </tr>
+                     
+                </table>
+
+            </form>
+                     <% if (ordercancelError != null) { %> <font color="red"><%=ordercancelError%><font> <%}%>
          
+            
+            
+        </div>
+           
     </body>
 </html>

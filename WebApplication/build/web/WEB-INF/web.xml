@@ -48,22 +48,32 @@
         <servlet-name>adminDashboardServlet</servlet-name>
         <servlet-class>uts.isd.controller.adminDashboardServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>staffEditServlet</servlet-name>
-        <servlet-class>uts.isd.controller.staffEditServlet</servlet-class>
+     <servlet>
+        <servlet-name>CancelOrderServlet</servlet-name>
+        <servlet-class>uts.isd.controller.CancelOrderServlet</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>SearchOrderByIdServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchOrderByIdServlet</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>SearchOrderByDateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchOrderByDateServlet</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <servlet-class>uts.isd.controller.CreateOrderServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>cusEditServlet</servlet-name>
-        <servlet-class>uts.isd.controller.cusEditServlet</servlet-class>
+        <servlet-name>LoadOrderInfodServlet</servlet-name>
+        <servlet-class>uts.isd.controller.LoadOrderInfodServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>cusCreateServlet</servlet-name>
-        <servlet-class>uts.isd.controller.cusCreateServlet</servlet-class>
+        <servlet-name>UpdateOrderServlet</servlet-name>
+        <servlet-class>uts.isd.controller.UpdateOrderServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>staffCreateServlet</servlet-name>
-        <servlet-class>uts.isd.controller.staffCreateServlet</servlet-class>
-    </servlet>
+    
+    
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -112,22 +122,32 @@
         <servlet-name>adminDashboardServlet</servlet-name>
         <url-pattern>/adminDashboardServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>staffEditServlet</servlet-name>
-        <url-pattern>/staffEditServlet</url-pattern>
+     <servlet-mapping>
+        <servlet-name>CancelOrderServlet</servlet-name>
+        <url-pattern>/CancelOrderServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>cusEditServlet</servlet-name>
-        <url-pattern>/cusEditServlet</url-pattern>
+        <servlet-name>SearchOrderByIdServlet</servlet-name>
+        <url-pattern>/SearchOrderByIdServlet</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>SearchOrderByDateServlet</servlet-name>
+        <url-pattern>/SearchOrderByDateServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>cusCreateServlet</servlet-name>
-        <url-pattern>/cusCreateServlet</url-pattern>
+        <servlet-name>CreateOrderServlet</servlet-name>
+        <url-pattern>/CreateOrderServlet</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>LoadOrderInfodServlet</servlet-name>
+        <url-pattern>/LoadOrderInfodServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>staffCreateServlet</servlet-name>
-        <url-pattern>/staffCreateServlet</url-pattern>
+        <servlet-name>UpdateOrderServlet</servlet-name>
+        <url-pattern>/UpdateOrderServlet</url-pattern>
     </servlet-mapping>
+    
+    
     <session-config>
         <session-timeout>
             30

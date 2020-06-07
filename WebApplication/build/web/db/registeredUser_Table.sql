@@ -16,8 +16,8 @@ PaymentMethod VARCHAR(20),
 Payment VARCHAR(20),
 SavedAddress VARCHAR(100),
 Activated BOOLEAN NOT NULL,
-CONSTRAINT RegisteredUser_PK PRIMARY KEY (UserID),
-CONSTRAINT RegisteredUser_FK FOREIGN KEY (UserID) REFERENCES UnregisteredUser_Table(UserID));
+CONSTRAINT RegisteredUser_PK PRIMARY KEY (UserID)
+);
 
 INSERT INTO RegisteredUser_Table (UserID, Password, PaymentMethod, Payment, SavedAddress, Activated)
     VALUES (101,'yS2EgwWF','Mastercard','5109026761021066','QLD, Almaden, 4 Glen William Road',TRUE),
