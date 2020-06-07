@@ -9,7 +9,7 @@
  */
 
 drop table unregisteredUser_Table;  
-CREATE TABLE UnregisteredUser_Table (
+CREATE TABLE unregisteredUser_Table (
 UserID INT NOT NULL,
 FName VARCHAR(20) NOT NULL,
 LName VARCHAR(20) NOT NULL,
@@ -18,7 +18,7 @@ Phone VARCHAR(10) NOT NULL,
 UserType Char NOT NULL,
 CONSTRAINT UnregisteredUser_PK PRIMARY KEY (UserID));
 
-INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType) 
+INSERT INTO unregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType) 
     VALUES  (000,'Portal', 'Admin', 'iotbay@admin.com','0000000000', 'A'),
             (101,'Owen', 'McNair', 'O.McNair@gmail.com','0461151366', 'R'),
             (102,'Natalie', 'Camden', 'Nat.Camden@gmail.com','0291826799', 'R'),
@@ -64,4 +64,4 @@ INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType
             (142,'Samuel', 'Davitt', 'Sam.Dav@hotmail.com','0353503156', 'U'),
             (143,'Spencer', 'Murnin', 'Spence.M1928@outlook.com','0740642625', 'U');
          
-SELECT * FROM UnregisteredUser_Table;
+

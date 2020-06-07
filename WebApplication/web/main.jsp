@@ -9,6 +9,7 @@
 <%@page import="uts.isd.model.registeredUser"%>
 <%@page import="uts.isd.model.dao.OrderDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% String orderError = (String) session.getAttribute("orderError"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -113,6 +114,7 @@
                 <th>Order Paid</th>
                 <th>Order Status</th>
                 <th>Order Cost</th>
+                <th>Shipment Address</th>
                 </thead>
                 <tbody>
                     <%
@@ -120,7 +122,7 @@
                         List<order> res = orderdao.selectOrdersByUserid(regUser.getUserID());
 
                     %>
-                    <%                        for (order o : res) {
+                    <%   for (order o : res) {
                     %>
                     <tr>
                         <td><%=o.getOrderID()%></td>
@@ -129,24 +131,20 @@
                         <td><%=o.isOrderPaid()%></td>
                         <td><%=o.getOrderStatus()%></td>
                         <td><%=o.getTotalCost()%></td>
+                        <td><%=o.getShipmentAddress() %></td>
                     </tr>
                     <%
                         }
                     %>
                 </tbody>
             </table>
-            <form method="post" action="cancelorder.jsp">
-                <table>
-                    <tr><td>OrderID</td><td><input type="text" placeholder="order ID to be canceled" name="orderid"></td></tr>
-                    <!--                                <tr><td>UserUD</td><td><input type="text" placeholder="order ID to be canceled" name="orderid"></td></tr>
-                                                    <tr><td>UserID</td><td name="userid"><%=regUser.getUserID()%></td></tr>-->
-                    <tr><td><input class="button" type="submit" value="Cancel Order"></td></tr>            
-                </table>
-
-            </form>
-
-
-
+            
+            <div class="left">
+                <a class="button" href="cancelorder.jsp">Cancel Order</a>
+                <a class="button" href="searchorder.jsp">Search Order</a> 
+                <a class="button" href="updateorder.jsp">Update Order</a>
+                <a class="button" href="createorder.jsp">Create Order</a> 
+            </div>
         </div>
     </body>
 </html>
