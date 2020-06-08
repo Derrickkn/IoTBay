@@ -9,11 +9,14 @@
 <%@page import="uts.isd.model.staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.dao.OrderDao"%>
+<<<<<<< HEAD
 <% staff s = (staff)session.getAttribute("staff");%>
 <% String editError = (String) session.getAttribute("editError"); %>
 <% String editEmailError = (String) session.getAttribute("editEmailError"); %>
 <% String editMobileError = (String) session.getAttribute("editMobileError"); %>
 <% String userExistError = (String) session.getAttribute("userExistError"); %>
+=======
+>>>>>>> origin/Luke
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,8 +29,14 @@
                 //getting user of the current session
                 registeredUser regUser = null;
                 if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
+<<<<<<< HEAD
                 else  regUser = (registeredUser)session.getAttribute("regUser");
                 //getting the user type   
+=======
+                //getting the user type
+                else  regUser = (registeredUser)session.getAttribute("regUser");
+                   
+>>>>>>> origin/Luke
                 String userType = regUser.getUserType();
             %>
             <div class="header">
@@ -50,7 +59,11 @@
             <div class="container">
                 <h1>Staff Record Management</h1>
                 <table class="table">
+<<<<<<< HEAD
                     <!-- table header -->
+=======
+                    <!-- table heater -->
+>>>>>>> origin/Luke
                     <thead>
                         <th>Staff ID</th>
                         <th>First Name</th>
@@ -77,6 +90,7 @@
                             <td><%=x.getUserType()%></td>
                         </tr>
                         <%                            
+<<<<<<< HEAD
                           }}
                         %>
                     </tbody>
@@ -140,6 +154,27 @@
                     </form> 
                     <% } %>
                     <a class="button" href="admindashboard.jsp">Cancel</a> <a class="button" href="cuscreate.jsp">Create New Record</a> 
+=======
+                            }}
+                        %>
+                    </tbody>
+                </table>
+               <div class="left">
+                    <a class="button" href="staffcreate.jsp">Create New Record</a>   
+                    <form method="post" action="editstaff.jsp">
+                        <p>Select user by ID to modify:</p>
+                        <label for="userID">Staff ID:</label>
+                        <input type="text" id="userID" name="userID"><br><br>
+                        <input class="button" type="submit" value="Edit">
+                    </form>
+                    <form method="post" action="staffDeleteServlet">
+                        <p>Select user by ID to remove:</p>
+                        <label for="userID">Staff ID:</label>
+                        <input type="text" id="userID" name="userID"><br><br>
+                        <input class="button" type="submit" value="Delete">
+                    </form>
+                    <a class="button" href="admindashboard.jsp">Cancel</a>     
+>>>>>>> origin/Luke
                 </div>
 	</body>
 </html>

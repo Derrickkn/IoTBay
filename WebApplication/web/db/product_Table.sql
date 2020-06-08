@@ -8,6 +8,15 @@
  * Created: 26/05/2020
  */
 
+CREATE TABLE Product_Table (
+ProductID INT NOT NULL,
+"Name" VARCHAR(35) NOT NULL,
+Price FLOAT(10) NOT NULL,
+Description VARCHAR(100) NOT NULL,
+Quantity INT NOT NULL,
+SuppliedDate DATE,
+CONSTRAINT Product_PK PRIMARY KEY (ProductID));
+
 //new table
 CREATE TABLE Product_Table (
 ProductID INT NOT NULL  GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
@@ -18,7 +27,6 @@ Quantity INT NOT NULL,
 SuppliedDate DATE,
 CONSTRAINT Product_PK PRIMARY KEY (ProductID));
 
-//new recordset
 INSERT INTO Product_Table ("Name", Price, Description, Quantity, SuppliedDate)
     VALUES  ('Google Home',140.00,'Voice activation smart device.',20,'2019-01-10'),
             ('Amazon Echo',130.00,'Voice activation smart device.',20,'2019-01-10'),

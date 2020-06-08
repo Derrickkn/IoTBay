@@ -33,9 +33,9 @@
 
         <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
-            <!-- administrator dashboard only displays when  administrator is logged in-->
+             <!-- administrator dashboard only displays when  administrator is logged in-->
             <div class="header-right">
-                <!-- checks for user type A, which is administrator-->
+               <!-- checks for user type A, which is administrator-->
                 <% if (userType.equals("A")) { %>
                 <a class="active" href="adminDashboardServlet">Dashboard</a>
                 <a href="main.jsp">Main Page</a>
@@ -43,10 +43,9 @@
                 <a href="LogoutServlet">Logout</a>
                 <% } else {%>
                 <a class="active" href="main.jsp">Main Page</a>
-                <a href="viewPaymentServlet">Payments</a>
-                   <a href="IoTDevices">Devices</a>
-                    <a href="LogoutServlet">Logout</a>
-                    <% } %> 
+                <a href="IoTDevices">Devices</a>
+                <a href="LogoutServlet">Logout</a>
+                <% } %> 
             </div>
         </div>
 
@@ -132,14 +131,14 @@
                         <td><%=o.isOrderPaid()%></td>
                         <td><%=o.getOrderStatus()%></td>
                         <td><%=o.getTotalCost()%></td>
-                        <td><%=o.getShipmentAddress()%></td>
+                        <td><%=o.getShipmentAddress() %></td>
                     </tr>
                     <%
                         }
                     %>
                 </tbody>
             </table>
-
+            
             <div class="left">
                 <a class="button" href="cancelorder.jsp">Cancel Order</a>
                 <a class="button" href="searchorder.jsp">Search Order</a> 

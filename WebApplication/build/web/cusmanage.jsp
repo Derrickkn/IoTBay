@@ -9,11 +9,14 @@
 <%@page import="uts.isd.model.registeredUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.dao.OrderDao"%>
+<<<<<<< HEAD
 <% registeredUser u = (registeredUser)session.getAttribute("user");  %>
 <% String editError = (String) session.getAttribute("editError"); %>
 <% String editEmailError = (String) session.getAttribute("editEmailError"); %>
 <% String editMobileError = (String) session.getAttribute("editMobileError"); %>
 <% String userExistError = (String) session.getAttribute("userExistError"); %>
+=======
+>>>>>>> origin/Luke
 <!DOCTYPE html>
 <html>
 	<head>
@@ -86,6 +89,7 @@
                         %>
                 </table>       
                 <div class="left">
+<<<<<<< HEAD
                      <table>
                      <tr>
                      <td>
@@ -159,6 +163,24 @@
                     </form> 
                     <% } %>
                     <a class="button" href="admindashboard.jsp">Cancel</a> <a class="button" href="cuscreate.jsp">Create New Record</a> 
+=======
+                     <a class="button" href="cuscreate.jsp">Create New Record</a>   
+                     <form  method="post" action="editcustomerdetails.jsp">
+                         <p>Select user by ID to modify</p>
+                        <label for="userID">Staff ID:</label>
+                        <input type="text" id="userID" name="userID"><br><br>
+                        <input class="button" type="submit" value="Edit">
+                    </form>
+                   
+                    <form method="post" action="cusDeleteServlet">
+                         <p>Select user by ID to delete</p>
+                        <label for="userID">Staff ID:</label>
+                        <input type="text" id="userID" name="userID"><br><br>
+                        <input class="button" type="submit" value="Delete">
+                    </form>
+                        
+                    <a class="button" href="admindashboard.jsp">Cancel</a>         
+>>>>>>> origin/Luke
                 </div>
 	</body>
 </html>

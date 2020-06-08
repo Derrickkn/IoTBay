@@ -23,7 +23,7 @@
                                 <tr><td>Last Name</td><td><input type="text" placeholder="Enter name" name="lname"></td></tr>
 				<tr><td>Email</td><td><input type="text" placeholder="Enter email" name="email"></td><td><% if (regEmailError != null) { %> <%=regEmailError%> <%}%> <td></tr>
 				<tr><td>Password</td><td><input type="password" placeholder="Enter password" name="password"><td><% if (regPasswordError != null) { %> <%=regPasswordError%> <%}%> <td></td></tr>
-                                <tr><td>Mobile</td><td><input type="number" placeholder="Enter mobile" name="mobile" maxlength="10"></td><td><% if (regMobileError != null) { %> <%=regMobileError%> <%}%><td></tr>
+                                <tr><td>Mobile</td><td><input type="tel" placeholder="Enter mobile" name="mobile"></td><td><% if (regMobileError != null) { %> <%=regMobileError%> <%}%><td></tr>
                                 <tr><td><input class="button" type="submit" value="Sign Up"></td><td><% if (regError != null) { %> <%=regError%> <%}%><% if (userExistError != null) { %> <%=userExistError%> <%}%><td></tr>
 			</table>
 		</form>

@@ -86,9 +86,16 @@
                                 <option value="Mastercard" <% if (paymentMethod.equals("Mastercard")) { %> selected <% } %> >Mastercard</option>
                                 <option value="Paypal" <% if (paymentMethod.equals("Paypal")) { %> selected <% } %>>Paypal</option>
                             </select>
+<<<<<<< HEAD
                         </td></tr>
                     <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><% if (editMobileError != null) {%><%=editMobileError%><%}%><% if (editEmailError != null) {%><%=editEmailError%><%}%><% if (userExistError != null) {%><%=userExistError%><%}%><td></tr>
                     <tr><td><a class="button" href="cusmanage.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td><td>    
+=======
+                        </td></tr><%=paymentMethod%>
+                    <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><% if (editMobileError != null) {%><%=editMobileError%><%}%><% if (editEmailError != null) {%><%=editEmailError%><%}%><% if (userExistError != null) {%><%=userExistError%><%}%><td></tr>
+                    <tr><td><a class="button" href="cusmanage.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td><td>
+                    <tr><td colspan="2"><a class="button" href="deactivateaccount.jsp">DEACTIVATE ACCOUNT</a></td></td></tr>
+>>>>>>> origin/Luke
             </form>
         </div>
     </div>

@@ -58,7 +58,11 @@
                                 <tr><td><input class="button" type="submit" value="Create"></td><td><% if (regError != null) { %> <%=regError%> <%}%><% if (userExistError != null) { %> <%=userExistError%> <%}%><td></tr>
 			</table>
 		</form>
+<<<<<<< HEAD
                 <a class="button" href="staffmanage.jsp">Cancel</a>  
+=======
+                <a class="button" href="staffmanage.jsp">Cancel</a>
+>>>>>>> origin/Luke
             </div>
 	</body>
 </html>

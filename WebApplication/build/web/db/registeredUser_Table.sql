@@ -35,7 +35,7 @@ INSERT INTO RegisteredUser_Table (UserID, Password, PaymentMethod, Payment, Save
             (13,'k9CpBK78','Mastercard','5108306512768905','QLD, Hinchinbrook, 46 South Molle Boulevard',FALSE),
             (14,'8Tec5EFj','American Express','348157093982485','NSW, Marlow, 43 Berambing Crescent',TRUE),
             (15,'8HuP2Tot','Visa','4983107111310590','NT, Coonawarra, 41 Marion St',TRUE),
-            116,'2Pl70oE5','American Express','343978620195373','VIC, Sylvaterre, 19 Armstrong Street',TRUE),
+            (16,'2Pl70oE5','American Express','343978620195373','VIC, Sylvaterre, 19 Armstrong Street',TRUE),
             (17,'xL2NvuUV','Mastercard','5112877730520777','VIC, Dinner Plain, 36 Frouds Road',TRUE),
             (18,'bY5vVd1j','Visa','4983107111354321','WA, Helena Valley, 34 Foreshore Road',FALSE),
             (19,'3Mn4m0DH','American Express','377171155826054','VIC, Watchupga, 36 Sullivan Court',TRUE),

@@ -14,7 +14,11 @@ PaymentID INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 
 OrderID INT NOT NULL,
 paymentMethod VARCHAR(20),
 cardNo VARCHAR(20),
+<<<<<<< HEAD
 datePaid DATE,
+=======
+datePaid VARCHAR(20),
+>>>>>>> origin/Luke
 PRIMARY KEY (PaymentID),
 FOREIGN KEY (OrderID) REFERENCES order_Table(OrderID));
 
