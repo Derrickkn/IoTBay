@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.UserDao;
-import uts.isd.model.registeredUser;
 
 public class DeactivateAccServlet extends HttpServlet {
 
@@ -22,7 +21,8 @@ public class DeactivateAccServlet extends HttpServlet {
                 DBConnector connector = new DBConnector();
                 Connection conn = connector.openConnection();
                 UserDao userdao = new UserDao(conn);
-
+                
+                //Deactivate the users account.
                 userdao.deactivateAccount((int)session.getAttribute("userID"));
 
                 connector.closeConnection();
