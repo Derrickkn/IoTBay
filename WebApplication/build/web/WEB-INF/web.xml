@@ -64,19 +64,19 @@
         <servlet-name>staffCreateServlet</servlet-name>
         <servlet-class>uts.isd.controller.staffCreateServlet</servlet-class>
     </servlet>
-    <servlet>
+     <servlet>
         <servlet-name>CancelOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.CancelOrderServlet</servlet-class>
     </servlet>
-    <servlet>
+     <servlet>
         <servlet-name>SearchOrderByIdServlet</servlet-name>
         <servlet-class>uts.isd.controller.SearchOrderByIdServlet</servlet-class>
     </servlet>
-    <servlet>
+     <servlet>
         <servlet-name>SearchOrderByDateServlet</servlet-name>
         <servlet-class>uts.isd.controller.SearchOrderByDateServlet</servlet-class>
     </servlet>
-    <servlet>
+     <servlet>
         <servlet-name>CreateOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.CreateOrderServlet</servlet-class>
     </servlet>
@@ -87,14 +87,6 @@
     <servlet>
         <servlet-name>UpdateOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.UpdateOrderServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>cusDeleteServlet</servlet-name>
-        <servlet-class>uts.isd.controller.cusDeleteServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchUserByIDServlet</servlet-name>
-        <servlet-class>uts.isd.controller.SearchUserByIDServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -160,7 +152,7 @@
         <servlet-name>staffCreateServlet</servlet-name>
         <url-pattern>/staffCreateServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+     <servlet-mapping>
         <servlet-name>CancelOrderServlet</servlet-name>
         <url-pattern>/CancelOrderServlet</url-pattern>
     </servlet-mapping>
@@ -168,7 +160,7 @@
         <servlet-name>SearchOrderByIdServlet</servlet-name>
         <url-pattern>/SearchOrderByIdServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+     <servlet-mapping>
         <servlet-name>SearchOrderByDateServlet</servlet-name>
         <url-pattern>/SearchOrderByDateServlet</url-pattern>
     </servlet-mapping>
@@ -176,21 +168,13 @@
         <servlet-name>CreateOrderServlet</servlet-name>
         <url-pattern>/CreateOrderServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+     <servlet-mapping>
         <servlet-name>LoadOrderInfodServlet</servlet-name>
         <url-pattern>/LoadOrderInfodServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateOrderServlet</servlet-name>
         <url-pattern>/UpdateOrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>cusDeleteServlet</servlet-name>
-        <url-pattern>/cusDeleteServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchUserByIDServlet</servlet-name>
-        <url-pattern>/SearchUserByIDServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
