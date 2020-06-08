@@ -34,6 +34,7 @@ public class cusEditServlet extends HttpServlet {
         session.setAttribute("editEmailError", null);
         session.setAttribute("userExistError", null);
 
+        String userid = request.getParameter("userid");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String mobile = request.getParameter("mobile");
@@ -56,19 +57,19 @@ public class cusEditServlet extends HttpServlet {
                 DBConnector connector = new DBConnector();
                 Connection conn = connector.openConnection();
                 UserDao userdao = new UserDao(conn);
-                registeredUser currentDetails = (registeredUser) session.getAttribute("regUser");
+                registeredUser currentDetails = (registeredUser) session.getAttribute("user");
                 if (!userdao.userExists(email) || currentDetails.getEmail().equals(email)) {
-                    userdao.updateAll((int) session.getAttribute("userID"), fname, lname, email, password, mobile, address, pamynetDetail, paymentMethod);
-                    registeredUser registeredUser = userdao.getUser(email, password);
-                    session.setAttribute("regUser", registeredUser);
-                    connector.closeConnection();
-                    request.getRequestDispatcher("main.jsp").include(request, response);
+                    userdao.updateAll(Integer.parseInt(userid), fname, lname, email, password, mobile, address, pamynetDetail, paymentMethod);
+                    registeredUser tmp = userdao.getUser(email, password);
+                    session.setAttribute("user", tmp);
+                    
+                    request.getRequestDispatcher("cusmanage.jsp").include(request, response);
 
                 } else {
                     session.setAttribute("userExistError", "Email address already taken!");
-                    request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
-
+                    request.getRequestDispatcher("cusmanage.jsp").include(request, response);
                 }
+                connector.closeConnection();
             } catch (SQLException ex) {
                 Logger.getLogger(cusEditServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {

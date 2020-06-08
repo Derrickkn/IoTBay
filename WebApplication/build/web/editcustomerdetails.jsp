@@ -84,7 +84,8 @@
                             </select>
                         </td></tr>
                     <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><% if (editMobileError != null) {%><%=editMobileError%><%}%><% if (editEmailError != null) {%><%=editEmailError%><%}%><% if (userExistError != null) {%><%=userExistError%><%}%><td></tr>
-                    <tr><td><a class="button" href="main.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td><td>
+                    <tr><td><a class="button" href="main.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td>
+                    <td><a class="button" href="deactivateaccount.jsp">DECTIVATE THIS ACCOUNT</a></td><td>   
             </form>
         </div>
     </div>

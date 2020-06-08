@@ -96,6 +96,10 @@
         <servlet-name>SearchUserByIDServlet</servlet-name>
         <servlet-class>uts.isd.controller.SearchUserByIDServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchUserByIdServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchUserByIdServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>SearchUserByIDServlet</servlet-name>
         <url-pattern>/SearchUserByIDServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchUserByIdServlet</servlet-name>
+        <url-pattern>/SearchUserByIdServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

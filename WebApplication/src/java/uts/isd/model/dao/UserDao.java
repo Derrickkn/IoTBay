@@ -22,12 +22,6 @@ import java.util.List;
 
 public class UserDao {
 
-    public static DBConnector conn;
-    public UserDao() throws ClassNotFoundException, SQLException {
-        if(conn == null){
-            conn = new DBConnector();
-        }
-    }
     public static void deleteRegisteredUser(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -39,6 +33,7 @@ public class UserDao {
     }
     
     //Adds a user to the users database.
+    //Written by: Derrick
     public void addRegisteredUser(String email, String password, String mobile, String firstName, String lastName) throws SQLException {
         
         ResultSet result = statement.executeQuery("SELECT max(USERID) from unregistereduser_table");
@@ -58,6 +53,8 @@ public class UserDao {
         statement.executeUpdate(registeredQuery);
     }
     
+    //Written by: Derrick
+    //Adds unregistered user to the database
     public void addUnregisteredUser(String email, String mobile, String firstName, String lastName) throws SQLException {
         ResultSet result = statement.executeQuery("SELECT max(USERID) from unregistereduser_table");
         int userID = 0;
@@ -70,6 +67,8 @@ public class UserDao {
         statement.executeUpdate(unregisteredQuery);
     }
     
+    //Written by: Kira
+    //Adds staff member to a database
      public void addStaff(String email, String firstName, String lastName, String password, String mobile, String EContact) throws SQLException {
         
         ResultSet result = statement.executeQuery("SELECT max(USERID) from staff_table");
@@ -88,19 +87,22 @@ public class UserDao {
         unregisteredQuery += "VALUES (" + userID + ", '" + firstName + "', '" + lastName + "', '" + email + "', '" + mobile + "', 'S')";
         statement.executeUpdate(unregisteredQuery);
     }
-    
+     
+    //Written by: Derrick
     //Deletes a registered user by their userid.
     public void deleteRegisteredUser(int userID) throws SQLException {
         String query = "DELETE FROM registeredUser_Table where userid = " + userID;
         statement.executeUpdate(query);
     }
     
+    //Written by: Kira
     //Deletes a registered user by their userid.
     public void deleteStaff(int staffID) throws SQLException {
         String query = "DELETE FROM staff_Table where userid = " + staffID;
         statement.executeUpdate(query);
     }
     
+    //Written by: Derrick
     //Checks whether a user exists in the database given their email address.
     public boolean userExists(String email) throws SQLException {
         String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email+ "')";
@@ -111,7 +113,20 @@ public class UserDao {
         return false;
     }
     
+    //Written by: Kira
+    //Checks whether a user exists in the database given their userID.
+    public boolean userIDExists(int userid) throws SQLException {
+        String query = "select * from unregistereduser_table natural join registereduser_table where userid = " + userid;
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+            return result.getInt(1) == userid;
+        }
+        return false;
+    }
+    
+    
     //Gets a User from the users database only if both email and password is correct. Returns a user(registereduser) as a bean.
+    //Written by: Derrick
     public registeredUser getUser(String email, String password) throws SQLException {
         String query = "select * from unregistereduser_table natural join registereduser_table where upper(email) = " + "upper('" + email+ "')";
         ResultSet result = statement.executeQuery(query);
@@ -139,9 +154,10 @@ public class UserDao {
         return null;
     }
     
-    public List<registeredUser> selectUsersByUserid(int userid) throws SQLException {
-        List<registeredUser> List = new ArrayList<>();
-        String query = "select * from unregistereduser_table natural join registereduser_table";
+    //selects user based on their user is from the database
+    //Written by: Kira
+    public registeredUser selectUserById(int userid) throws SQLException {
+        String query = "select * from unregistereduser_table natural join registereduser_table where userid = " + userid;
         ResultSet result = statement.executeQuery(query);
         while (result.next()) {
             if (result.getInt(1) == userid) {
@@ -161,33 +177,14 @@ public class UserDao {
                 registeredUser.setPaymentDetail(paymentDetail);
                 registeredUser.setSavedAddress(savedAddress);
                 registeredUser.setActivated(activated);
-                List.add(registeredUser);
+                return registeredUser;
             }
-        }
-        return List;
-    }
-   
-    public registeredUser selectUserById(int userid) throws SQLException{
-        List<registeredUser> res1 = selectUsersByUserid(userid);
-        if(res1 == null || res1.size()==0)
-            return null;
-        for(registeredUser r : res1){
-            if(r.getUserID() == userid)
-                return r;
         }
         return null;
     }
-    
-     public boolean userExist(int userid) throws SQLException {
-        PreparedStatement ps;
-        String sql = "select * from unregistereduser_table natural join registereduser_table";
-        ps = conn.openConnection().prepareStatement(sql);
-        ps.setInt(1,userid);
-        ResultSet rs =  ps.executeQuery();
-        boolean res = rs.next();
-        return res;
-     } 
+      
     //Gets a Staff from the staff database only if both email and password is correct. Returns a staff(staff) as a bean.
+    //Written by: Kira
     public staff getStaff(String email, String password) throws SQLException {
         String query = "select * from staff_table natural join unregistereduser_table where upper(email) = " + "upper('" + email+ "')";
         ResultSet result = statement.executeQuery(query);
@@ -211,10 +208,10 @@ public class UserDao {
         }
         return null;
     }
-    
-    
+     
     
     //Creates an access log given a users id.
+    //Written by: Derrick
     public int accessLogStart(int userID) throws SQLException {
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
@@ -230,6 +227,7 @@ public class UserDao {
         return accessLogID;
     }
     
+    //Written by: Derrick
     public void accessLogEnd(int accessLogID) throws SQLException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -237,6 +235,7 @@ public class UserDao {
         statement.executeUpdate(query);
     }
     
+    //Written by: Derrick
     public ArrayList<accessLog> getAccessLogs(int userID) throws SQLException {
         ArrayList<accessLog> arrayList = new ArrayList();
         String query = "SELECT * FROM ISDUSER.ACCESSLOG_TABLE WHERE USERID = " + userID;
@@ -248,6 +247,7 @@ public class UserDao {
         return arrayList;
     }
     
+    //Written by: Derrick
     public void updateAll(int userID, String firstName, String lastName, String email, String password, String mobile, String address, String paymentDetail, String paymentMethod) throws SQLException {
         String query1 = "UPDATE ISDUSER.UNREGISTEREDUSER_TABLE SET FNAME = '" + firstName + "', LNAME = '" + lastName + "', EMAIL = '" + email + "', Phone = '" + mobile + "' WHERE USERID = " + userID;
         String query2 = "UPDATE ISDUSER.REGISTEREDUSER_TABLE SET PASSWORD = '" + password + "', PAYMENTMETHOD = '" + paymentMethod + "', PAYMENT = '" + paymentDetail + "', SAVEDADDRESS = '" + address + "' WHERE USERID =" + userID;
@@ -255,6 +255,7 @@ public class UserDao {
         statement.executeUpdate(query2);
     }
     
+    //Written by: Kira
      public void updateAllStaff(int userID, String firstName, String lastName, String email, String mobile, String password, String EContact, String staffType) throws SQLException {
         String query1 = "UPDATE ISDUSER.UNREGISTEREDUSER_TABLE SET FNAME = '" + firstName + "', LNAME = '" + lastName + "', EMAIL = '" + email + "', Phone = '" + mobile + "' WHERE USERID = " + userID;
         String query2 = "UPDATE ISDUSER.STAFF_TABLE SET PASSWORD = '" + password + "', ECONTACT = '" + EContact + "', STAFFTYPE = '" + staffType + "' WHERE USERID =" + userID;
@@ -262,11 +263,15 @@ public class UserDao {
         statement.executeUpdate(query2);
     }
     
+    //Written by: Derrick
+    //Deactivates user account
     public void deactivateAccount(int userID) throws SQLException {
         String query = "UPDATE ISDUSER.REGISTEREDUSER_TABLE SET ACTIVATED =  FALSE WHERE USERID = " + userID;
         statement.executeUpdate(query);
     }
     
+    //Written by: Derrick
+    //Gets all users and returns them as an arraylist.
     public ArrayList<registeredUser> getAllUsers() throws SQLException {
         ArrayList<registeredUser> arrayList = new ArrayList();
         String query = "select * from unregistereduser_table natural join registereduser_table";
@@ -293,6 +298,8 @@ public class UserDao {
         return arrayList;
     }
     
+    //Gets all staff members and returns them as an arraylist
+    //Written by: Kira
      public ArrayList<staff> getAllStaff() throws SQLException {
         ArrayList<staff> arrayList = new ArrayList();
         String query = "select * from staff_table natural join unregistereduser_table";

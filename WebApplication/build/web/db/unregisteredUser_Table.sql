@@ -63,5 +63,7 @@ INSERT INTO unregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType
             (141,'Sam', 'Standley', 'SamStandley@outlook.com','0883353112', 'U'),
             (142,'Samuel', 'Davitt', 'Sam.Dav@hotmail.com','0353503156', 'U'),
             (143,'Spencer', 'Murnin', 'Spence.M1928@outlook.com','0740642625', 'U');
+
+Select * from unregistereduser_table where userid = 149;
          
 
