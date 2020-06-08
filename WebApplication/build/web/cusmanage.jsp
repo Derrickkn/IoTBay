@@ -149,13 +149,13 @@
                             </select>
                         </td></tr>
                     <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><% if (editMobileError != null) {%><%=editMobileError%><%}%><% if (editEmailError != null) {%><%=editEmailError%><%}%><% if (userExistError != null) {%><%=userExistError%><%}%><td></tr>
-                    <tr><td><input class="button" type="submit" value="Save Changes"></td><td>
-                            <form method="post" action="cusDeleteServlet">
-                                <input class="button" type="submit" value="DELETE RECORD">
-                            </form> 
+                    <tr><td><input class="button" type="submit" value="Save Changes"></td>
                         </table>
                     </form>
-                  
+                    <form method="post" action="cusDeleteServlet">
+                        <input type="hidden" placeholder="Enter name" name="userid" value="<%=u.getUserID()%>" readonly>
+                        <input class="button" type="submit" value="DELETE RECORD">
+                    </form> 
                     <% } %>
                     <a class="button" href="admindashboard.jsp">Cancel</a> <a class="button" href="cuscreate.jsp">Create New Record</a> 
                 </div>
