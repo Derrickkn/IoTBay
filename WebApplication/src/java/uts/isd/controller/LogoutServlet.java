@@ -22,7 +22,8 @@ public class LogoutServlet extends HttpServlet {
                 DBConnector connector = new DBConnector();
                 Connection conn = connector.openConnection();
                 UserDao userdao = new UserDao(conn);
-                userdao.accessLogEnd((int)session.getAttribute("accessLogID"));
+                //Set the time of the user's logout.
+                userdao.accessLogEnd((int)session.getAttribute("accessLogID")); 
                 connector.closeConnection();
                 } catch (SQLException ex) {
                     Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -30,7 +31,7 @@ public class LogoutServlet extends HttpServlet {
                     Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        session.invalidate();
+        session.invalidate();//Delete the session.
         request.getRequestDispatcher("logout.jsp").include(request, response);
     }
 }

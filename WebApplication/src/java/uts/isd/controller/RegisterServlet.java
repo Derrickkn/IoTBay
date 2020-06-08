@@ -21,34 +21,37 @@ public class RegisterServlet extends HttpServlet {
         HttpSession session = request.getSession();
         registeredUser registeredUser = null;
         Validator validator = new Validator();
+        //Get registration form details.
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String mobile = request.getParameter("mobile");
         String fname = request.getParameter("fname");
         String lname = request.getParameter("lname");
-
+        //Set registration errors to null.
         session.setAttribute("regError", null);
         session.setAttribute("regEmailError", null);
         session.setAttribute("regPasswordError", null);
         session.setAttribute("regMobileError", null);
         session.setAttribute("userExistError", null);
         
+        //If any login field is empty.
         if (validator.isFieldEmpty(email) || validator.isFieldEmpty(password) || validator.isFieldEmpty(mobile) || validator.isFieldEmpty(fname) || validator.isFieldEmpty(lname)) {
-            session.setAttribute("regError", "Please fill in all fields!");
-        } else {
+            session.setAttribute("regError", "Please fill in all fields!"); //Set empty error.
+        } else { //If email address is of an invalid format
             if (!validator.validateEmail(email)) {
-                session.setAttribute("regEmailError", "Invalid email format!");
+                session.setAttribute("regEmailError", "Invalid email format!");//Set email error.
             }
-            if (!validator.validatePassword(password)) {
-                session.setAttribute("regPasswordError", "Password must be more than 8 characters!");
+            if (!validator.validatePassword(password)) { //If password is less than 8 characters
+                session.setAttribute("regPasswordError", "Password must be more than 8 characters!"); //Set password error
             }
-            if (!validator.validatePassword(password)) {
-                session.setAttribute("regMobileError", "Please enter a valid number.");
+            if (!validator.validateMobile(mobile)) { //If mobile format is invalid.
+                session.setAttribute("regMobileError", "Please enter a valid number.");// Set mobile error.
             } else {
                 try {
                     DBConnector connector = new DBConnector();
                     Connection conn = connector.openConnection();
                     UserDao userdao = new UserDao(conn);
+                    //If user email does not already exists in the database, register the account.
                     if (!userdao.userExists(email)) {
                         userdao.addRegisteredUser(email, password, mobile, fname, lname);
                         registeredUser = userdao.getUser(email, password);
@@ -56,6 +59,7 @@ public class RegisterServlet extends HttpServlet {
                     else {
                         session.setAttribute("userExistError", "User already exists!");
                     }
+                    //If user was successfully created, set accesslogs.
                     if (registeredUser != null) {
                         session.setAttribute("accessLogID", userdao.accessLogStart(registeredUser.getUserID()));
                         session.setAttribute("accessLogs", userdao.getAccessLogs(registeredUser.getUserID()));
@@ -69,12 +73,13 @@ public class RegisterServlet extends HttpServlet {
                 }
             }
         }
-
+        //If user was not created, email address was already taken.
         if (registeredUser == null) {
             request.getRequestDispatcher("register.jsp").include(request, response);
             session.setAttribute("regError", "Email address already exists!");
         }
-
+        
+        //If user is successfully created, redirect to main page.
         if (registeredUser != null) {
             session.setAttribute("regUser", registeredUser);
             request.getRequestDispatcher("main.jsp").include(request, response);
