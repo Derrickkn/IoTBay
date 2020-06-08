@@ -16,12 +16,12 @@
         <div class="header">
                 <a href="#default" class="logo">&#10070 &#8464oTBay</a>
                 <div class="header-right">
-                <a class="active" href="login.jsp">Login</a>
+                <a href="login.jsp">Login</a>
                 <a href="register.jsp">Register</a>
                 </div>
         </div>
         <div class="container">
-            <h3>Welcome to IoYbay portal, please login or register to use it!</h3>
+            <h3>Welcome to IoTbay portal, please login or register to use it!</h3>
         </div>
         
     </body>

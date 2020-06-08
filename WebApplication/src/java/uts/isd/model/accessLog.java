@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 package uts.isd.model;
-
 import java.io.Serializable;
 
 /**
  *
- * @author bappa
+ * @author group 57 isd
  */
 public class accessLog implements Serializable {
 

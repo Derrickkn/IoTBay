@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Kira
+ * @author group 57 isd
  */
 public class registeredUser extends unregisteredUser implements Serializable {
 
@@ -16,14 +16,11 @@ public class registeredUser extends unregisteredUser implements Serializable {
     private String paymentDetail;
     private String savedAddress;
     private boolean activated;
+    private int loyaltyPoints;
 
-    public registeredUser(String fname, String lname, String email, int mobile, String password, String paymentMethod, String paymentDetail, String savedAddress) {
-        super(fname, lname, email, mobile, 'R');       
+    public registeredUser(int UserID, String password, String firstName, String lastName, String email, String mobile, String userType) {
+        super(UserID, firstName, lastName, email, mobile, userType);
         this.password = password;
-        this.paymentMethod = paymentMethod;
-        this.paymentDetail = paymentDetail;
-        this.savedAddress = savedAddress;
-        this.activated = true;
     }
 
     public String getPassword() {
@@ -65,4 +62,14 @@ public class registeredUser extends unregisteredUser implements Serializable {
     public void setActivated(boolean activated) {
         this.activated = activated;
     }
+
+    public int getLoyaltyPoints() {
+        return loyaltyPoints;
+    }
+
+    public void setLoyaltyPoints(int loyaltyPoints) {
+        this.loyaltyPoints = loyaltyPoints;
+    }
+    
+    
 }

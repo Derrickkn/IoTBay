@@ -8,7 +8,8 @@
  * Created: 26/05/2020
  */
 
-CREATE TABLE UnregisteredUser_Table (
+drop table unregisteredUser_Table;  
+CREATE TABLE unregisteredUser_Table (
 UserID INT NOT NULL,
 FName VARCHAR(20) NOT NULL,
 LName VARCHAR(20) NOT NULL,
@@ -17,8 +18,9 @@ Phone VARCHAR(10) NOT NULL,
 UserType Char NOT NULL,
 CONSTRAINT UnregisteredUser_PK PRIMARY KEY (UserID));
 
-INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType) 
-    VALUES  (101,'Owen', 'McNair', 'O.McNair@gmail.com','0461151366', 'R'),
+INSERT INTO unregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType) 
+    VALUES  (000,'Portal', 'Admin', 'iotbay@admin.com','0000000000', 'A'),
+            (101,'Owen', 'McNair', 'O.McNair@gmail.com','0461151366', 'R'),
             (102,'Natalie', 'Camden', 'Nat.Camden@gmail.com','0291826799', 'R'),
             (103,'Jack', 'Greener', 'Jack.G@hotmail.com','0362364593', 'R'),
             (104,'Joseph', 'Sinclaire', 'Jo.Sinclaire@gmail.com','0246581357', 'R'),
@@ -60,4 +62,6 @@ INSERT INTO UnregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType
             (140,'Ava', 'Hannah', 'Ava.Han@outlook.com','0353703240', 'S'),
             (141,'Sam', 'Standley', 'SamStandley@outlook.com','0883353112', 'U'),
             (142,'Samuel', 'Davitt', 'Sam.Dav@hotmail.com','0353503156', 'U'),
-            (143'Spencer', 'Murnin', 'Spence.M1928@outlook.com','0740642625', 'U');
+            (143,'Spencer', 'Murnin', 'Spence.M1928@outlook.com','0740642625', 'U');
+         
+
