@@ -124,6 +124,16 @@ public class UserDao {
         return false;
     }
     
+    //Written by: Kira
+    //Checks whether a staff exists in the database given their userID.
+    public boolean staffIDExists(int staffid) throws SQLException {
+        String query = "select * from unregistereduser_table natural join staff_table where userid = " + staffid;
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+            return result.getInt(1) == staffid;
+        }
+        return false;
+    }
     
     //Gets a User from the users database only if both email and password is correct. Returns a user(registereduser) as a bean.
     //Written by: Derrick
@@ -178,6 +188,32 @@ public class UserDao {
                 registeredUser.setSavedAddress(savedAddress);
                 registeredUser.setActivated(activated);
                 return registeredUser;
+            }
+        }
+        return null;
+    }
+    
+    //selects user based on their user is from the database
+    //Written by: Kira
+    public staff selectStaffById(int staffid) throws SQLException {
+        String query = "select * from unregistereduser_table natural join registereduser_table where userid = " + staffid;
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+            if (result.getInt(1) == staffid) {
+                int userID = result.getInt(1);
+                String staffPassword = result.getString(2);
+                String EContact = result.getString(3);
+                String staffType = result.getString(4);
+                String fName = result.getString(5);
+                String lName = result.getString(6);
+                String staffEmail = result.getString(7);       
+                String phone = result.getString(8);
+                String userType = result.getString(9);
+                staff staff = new staff(staffPassword, staffType, userID, fName, lName, staffEmail, phone, userType);
+                staff.setPassword(staffPassword);
+                staff.setEmergencyContact(EContact);
+                staff.setStaffType(staffType);
+                return staff;
             }
         }
         return null;

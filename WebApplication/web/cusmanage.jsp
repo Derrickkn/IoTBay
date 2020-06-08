@@ -106,6 +106,7 @@
                         if (paymentDetail == null) {
                             paymentDetail = "";
                     }%>
+                    <!-- form appears only id user id is selected-->
                     <% if(u != null ){ %>
                     <hr>
                     <h3>Selected Record</h3>
