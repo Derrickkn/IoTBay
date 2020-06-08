@@ -10,7 +10,7 @@
 
 drop table unregisteredUser_Table;  
 CREATE TABLE unregisteredUser_Table (
-UserID INT NOT NULL,
+UserID INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 FName VARCHAR(20) NOT NULL,
 LName VARCHAR(20) NOT NULL,
 Email VARCHAR(30) NOT NULL,
@@ -18,6 +18,55 @@ Phone VARCHAR(10) NOT NULL,
 UserType Char NOT NULL,
 CONSTRAINT UnregisteredUser_PK PRIMARY KEY (UserID));
 
+//new recordset
+INSERT INTO UnregisteredUser_Table (FName, LName, Email, Phone, UserType) 
+    VALUES  ('Owen', 'McNair', 'O.McNair@gmail.com','0461151366', 'R'),
+            ('Natalie', 'Camden', 'Nat.Camden@gmail.com','0291826799', 'R'),
+            ('Jack', 'Greener', 'Jack.G@hotmail.com','0362364593', 'R'),
+            ('Joseph', 'Sinclaire', 'Jo.Sinclaire@gmail.com','0246581357', 'R'),
+            ('Harrison', 'Antill', 'Harry.Antill@outlook.com','0890859152', 'R'),
+            ('Sara', 'Fink', 'Sara.Fink@gmail.com','0353039688', 'R'),
+            ('Sophia', 'Wyndham', 'Soph.Wynham@outlook.com','0395821236', 'R'),
+            ('Rory', 'Oldfield', 'R.Oldfield@hotmail.com','0353430191', 'R'),
+            ('Kayla', 'Hernshiem', 'Kayla.H123@gmail.com','0890899026', 'R'),
+            ('Callum', 'Nettlefold', 'Cal.Net1@hotmail.com','0261363372', 'R'),
+            ('Alexis', 'Blair', 'Alexis.B01@outlook.com','0243906040', 'R'),
+            ('Alex', 'Mordaunt', 'Alex.Mordaunt@hotmail.com','0887941913', 'R'),
+            ('Sarah', 'Frodsham', 'Sarah.Frodsham@gmail.com','0394670151', 'R'),
+            ('Savannah', 'Dyson', 'Sav.Dyson@outlook.com','0362920956', 'R'),
+            ('Emma', 'Weatherburn', 'Emma.Weatherburn@hotmail.com','0295134983', 'R'),
+            ('Matilda', 'Kermadec', 'Matilda123@gmail.com','0887184332', 'R'),
+            ('Gabriel', 'Champion', 'Gab.Champ@hotmail.com','0889976748', 'R'),
+            ('Tayla', 'Ruatoka', 'Tay.Ruatoka@outlook.com','0882970079', 'R'),
+            ('Lola', 'Makutz', 'Lola.Makutz@gmail.com','0894089484', 'R'),
+            ('Zane', 'Billson', 'Zane.B123@outlook.com','0293189184', 'R'),
+            ('Zachary', 'Howitt', 'Zach.Howitt@gmail.com','0882630618', 'S'),
+            ('Nicholas', 'Boniwell', 'Nich.Boniwell@hotmail.com','0395487371', 'S'),
+            ('Kate', 'Allen', 'Kate.Allen@outlook.com','0887533689', 'S'),
+            ('Jai', 'Osman', 'J.Osman@hotmail.com','0749693952', 'S'),
+            ('Jackson', 'Gratwick', 'Jackson.Grat1@gmail.com','0749400944', 'S'),
+            ('Zane', 'Prowse', 'ZP1995@gmail.com','0753888527', 'S'),
+            ('Joshua', 'Butlin', 'JoshB2000@gmail.com','0261994188', 'S'),
+            ('Dakota', 'Gascoigne', 'Dakota1@hotmail.com','0882344861', 'S'),
+            ('Nate', 'Nolan', 'N.Nolan12@outlook.com','0745974168', 'S'),
+            ('Justin', 'Swanton', 'J.Swanton1980@outlook.com','0753085560', 'S'),
+            ('Sebastion', 'Kevin', 'Seb.Kev@outlook.com','0353910125', 'S'),
+            ('Savannah', 'Caire', 'Savannah.C@outlook.com','0745729444', 'S'),
+            ('Amber', 'Duryea', 'Amber.Duryea@hotmail.com','0240811565', 'S'),
+            ('Max', 'Berrick', 'Max.Berrick@gmail.com','0267112401', 'S'),
+            ('Jett', 'Lake', 'JLake@gmail.com','0353096853', 'S'),
+            ('Piper', 'Kennerly', 'Pip.Kennerly@gmail.com','0353387998', 'S'),
+            ('Poppy', 'Purton', 'P.P123@gmail.com','0267364201', 'S'),
+            ('Alana', 'Marden', 'Alana.Marden@hotmail.com','0267562735', 'S'),
+            ('Nathan', 'Chevalier', 'Nath.Chev12@hotmail.com','0883389732', 'S'),
+            ('Ava', 'Hannah', 'Ava.Han@outlook.com','0353703240', 'S'),
+            ('Sam', 'Standley', 'SamStandley@outlook.com','0883353112', 'U'),
+            ('Samuel', 'Davitt', 'Sam.Dav@hotmail.com','0353503156', 'U'),
+            ('Spencer', 'Murnin', 'Spence.M1928@outlook.com','0740642625', 'U'),
+            ('Portal', 'Admin', 'iotbay@admin.com','0000000000', 'A');
+
+
+//old
 INSERT INTO unregisteredUser_Table (UserID, FName, LName, Email, Phone, UserType) 
     VALUES  (000,'Portal', 'Admin', 'iotbay@admin.com','0000000000', 'A'),
             (101,'Owen', 'McNair', 'O.McNair@gmail.com','0461151366', 'R'),

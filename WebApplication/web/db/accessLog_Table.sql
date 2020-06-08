@@ -7,7 +7,7 @@
  * Author:  luke.galic
  * Created: 26/05/2020
  */
-
+//old
 CREATE TABLE AccessLog_Table (
 AccessLogID INT NOT NULL,
 UserID INT NOT NULL,
@@ -16,6 +16,16 @@ LoginEnd TIMESTAMP,
 CONSTRAINT AccessLog_PK PRIMARY KEY (AccessLogID),
 CONSTRAINT AccessLog_FK FOREIGN KEY (UserID) REFERENCES UnregisteredUser_Table(UserID));
 
+//new table
+CREATE TABLE AccessLog_Table (
+AccessLogID INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+UserID INT NOT NULL,
+LoginStart TIMESTAMP NOT NULL,
+LoginEnd TIMESTAMP,
+CONSTRAINT AccessLog_PK PRIMARY KEY (AccessLogID),
+CONSTRAINT AccessLog_FK FOREIGN KEY (UserID) REFERENCES UnregisteredUser_Table(UserID));
+
+//new recordset
 INSERT INTO AccessLog_Table (UserID, LoginStart, LoginEnd)
 VALUES  (1,'2020-02-20 10:20:20','2020-02-20 10:25:20'),
         (5,'2020-02-20 10:34:25','2020-02-20 10:44:25'),

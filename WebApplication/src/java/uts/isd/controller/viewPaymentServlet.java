@@ -34,14 +34,14 @@ public class viewPaymentServlet extends HttpServlet {
         HttpSession session = request.getSession();
         //retrieve regUser attribute
         registeredUser regUser = (registeredUser) session.getAttribute("regUser");
-        //declare and initialise string with regUser attribute
+        //declare and initializess cardNo with regUser attribute
         String cardNo = regUser.getPaymentDetail();
         //set sessions as null
         session.setAttribute("fielderr", null);
         session.setAttribute("paymentHistory", null);
         session.setAttribute("nopayment", null);
         session.setAttribute("arrayempty", true);
-        //validate user input and check whether it matches regular expression
+        //validate user input and check whether there are values in the strings
         if (cardNo.length() == 0 || cardNo.length()== 0) {
             session.setAttribute("fielderr", "You currently do not have a saved card number or method");
             request.getRequestDispatcher("paymentHistory.jsp").include(request, response);
