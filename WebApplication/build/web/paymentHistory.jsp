@@ -35,24 +35,33 @@
             }
         </style>
         <%
+            //stores session attributes (error messages/ objects/ arraylists) stored in local variables
             String noPayment = ((String) session.getAttribute("nopayment") == null) ? "" : (String) session.getAttribute("nopayment");
             ArrayList<payment> payment = (ArrayList<payment>) session.getAttribute("paymentHistory");
             registeredUser regUser = (registeredUser) session.getAttribute("regUser");
             String emptyfield = ((String) session.getAttribute("fielderr") == null) ? "" : (String) session.getAttribute("fielderr");
             boolean arrayempty = (Boolean) session.getAttribute("arrayempty");
             String error = ((String) session.getAttribute("searchpaymenterr") == null) ? "" : (String) session.getAttribute("searchpaymenterr");
-            int count = 1;
         %>
     </head>
-    <body> <div class="header">
+    <body>
+        <div class="header">
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             <div class="header-right">
-                <a class="active" href="viewPaymentServlet"><span class="fa fa-credit-card"></span></a>
-                <a href="main2.jsp">Main Page</a>
+                <a href="main.jsp">Main Page</a>
+                <% if (regUser != null) {%>
+                <a class= "active" href="viewPaymentServlet">Payment</a>
+                <% } %>
+                <a href="IoTDevices">Devices</a>
+                <% if (regUser != null) {%>
                 <a href="LogoutServlet">Logout</a>
+                <% } else {%>
+                <a href="index.jsp">Register</a>
+                <% }%>
             </div>
-        </div>            
+        </div>         
         <div class="container">
+            <!--checks the paymntmethod of user and displays icon that corrolates with paymentmethod, if no paymethod, system display message-->
             <% if (regUser != null) { %>
             <center><h3>Your Payment History</h3></center>
                 <%if (regUser.getPaymentMethod().equals("Mastercard")) {%>
@@ -61,6 +70,8 @@
             <center><span class="fa fa-cc-visa" style="font-size:36px"></span></center>
                 <% } else if (regUser.getPaymentMethod().equals("AmericanExpress")) {%>
             <center><span class="fa fa-cc-amex" style="font-size:36px"></span></center>
+                <% } else if (regUser.getPaymentMethod().equals("Paypal")) {%>
+            <center><span class="fa fa-cc-paypal" style="font-size:36px"></span></center>
                 <% } else { %>
             <center><p>No Payment Method saved</p></center>
                 <%  }%>
@@ -70,7 +81,6 @@
             <center><h5><%= emptyfield%></h5></center>
             <hr>
             <form method="post" action="specificpayServlet">
-                <center><h5 style="color:orange;"><%=emptyfield%></h5></center>
                 <center><h5 style="color:orange;"><%=error%></h5></center>
                 <h5>Looking for a specific purchase?</h5>
                 <div class="form-group">
@@ -81,11 +91,13 @@
                     <label for="date">Date</label>
                     <input type="text" placeholder= "please enter date e.g. yyyy-mm-dd" class= "form-control" name="date" id="date">
                 </div>
+                <!-- stores the userID and paymentDetail (cardNo) in hidden fields which is passsed to servlet-->
                 <input type="hidden" name="userID" value="<%=regUser.getUserID()%>"/>
                 <input type="hidden" name="cardNo" value="<%=regUser.getPaymentDetail()%>"/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             <hr>
+            <!--checks if the payment arrayList is empty, if yes a message is displayed, else the payment logs are displayed-->
             <%if (arrayempty) {%>
             <center><h5><%= noPayment%></h5></center>   
                     <% } else if (!arrayempty) {%>
@@ -98,7 +110,6 @@
                 <p><span class="fa fa-calendar" style="font-size:24px"></span> : <%=pay.getDatepaid()%></p>
             </div>
             <%
-                            count += 1;
                         }
                     }
                 }
