@@ -8,6 +8,7 @@
  * Created: 26/05/2020
  * Edited by: kira
  */
+//old
 DROP TABLE Order_Table;
 CREATE TABLE Order_Table (
 OrderID INT NOT NULL,
@@ -35,7 +36,7 @@ PRIMARY KEY (OrderID),
 FOREIGN (UserID) REFERENCES UnregisteredUser_Table(UserID));
 
 INSERT INTO Order_Table (UserID, OrderDate, TrackingNumber, OrderPaid, ShipmentAddress, OrderStatus, OrderCost)
-VALUES  (41,'2019-02-20',50001,TRUE,'VIC, Telford, 12 Myrtle Street','Delivered',140.00),
+VALUES  (41'2019-02-20',50001,TRUE,'VIC, Telford, 12 Myrtle Street','Delivered',140.00),
         (42,'2019-02-20',50002,TRUE,'QLD, Turkey Beach, 83 Masthead Drive','Shipping',140.00),
         (43,'2019-02-20',50003,TRUE,'NSW, Burwood North, 93 Edward Bennett Drive','Delivered',140.00),
         (1,'2019-02-20',50004,TRUE,'QLD, Almaden, 4 Glen William Road','Delivered',130.00),

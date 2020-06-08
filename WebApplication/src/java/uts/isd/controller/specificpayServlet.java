@@ -32,12 +32,12 @@ public class specificpayServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        //retrieve value of fields inputted by user and hidden fields
+        //retrieve value of fields entered by user and stores them in fields and retrieves hidden fields and stores in variable
         String payID = request.getParameter("paymentid");
         String specdate = request.getParameter("date");
         int ID = Integer.parseInt(request.getParameter("userID"));
         String cardNo = request.getParameter("cardNo");
-        //set session attributes
+        //set session attributes to null
         session.setAttribute("searchpaymenterr", null);   
         session.setAttribute("arrayempty", true);
         //create Validator instance
@@ -63,6 +63,7 @@ public class specificpayServlet extends HttpServlet {
                 PaymentDBManager paymentDB = new PaymentDBManager(conn);
                 //creates an ArrayList for fetching specific payment entered by user
                 ArrayList<payment> payment = paymentDB.fetchspecificpayment(cardNo, ID, Integer.parseInt(payID), specdate);
+                //if the payment log is not found or does not exists
                 if (payment.size() == 0) {
                     //validates whether there are any elements in payent arrayList and return an error message
                     session.setAttribute("nopayment", "you have no purchase history with payment ID: " + payID + " and date: " + specdate);

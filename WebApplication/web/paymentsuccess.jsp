@@ -43,6 +43,7 @@
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             <div class="header-right">
                 <a href="main.jsp">Main Page</a>
+                <!--checks whether a regUser exists since they can view certain tabs-->
                 <% if (regUser != null) {%>
                 <a href="viewPaymentServlet">Payment</a>
                 <% } %>
@@ -56,6 +57,7 @@
         </div>
         <div class="container">
             <center><p style="color:#45f542;"><%=message%></p></center>
+            <!--if order exists it displays order details-->
                 <% if (order != null) {%>
             <center><p style="color:#45f542">Your order costs: <%=order.getTotalCost()%></p></center>
             <center><p style="color:#45f542">Your orderID is <%=order.getOrderID()%></p></center>

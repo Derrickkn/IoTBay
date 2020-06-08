@@ -66,7 +66,7 @@
                 <% }%>
             </div>
         </div>
-            <!--checks whether a user (unregistered or registered) exists, If yes then system will show the form -->
+            <!--checks whether a user (unregistered or registered) exists, If yes then system will show the container which contains the form -->
         <% if (user != null || regUser != null) {%>
         <div class="container">
             <div class="row">
@@ -92,8 +92,8 @@
                             <input type="text" placeholder="e.g. 4122908758931098, no spaces and 16 characters" class= "form-control" name="cardNo" id="cardNo">
                         </div>
                         <div>
-                            <!-- if statement to check whether regUser userstupe is 'Registered' and check whether unregisteredUser is not null -->
-                            <%if (regUser.getUserType().equals("R") || user != null) {%>
+                            <!-- if statement to check whether regUser usertype is 'Registered' and check whether unregisteredUser is null -->
+                            <%if (regUser.getUserType().equals("R") || user == null) {%>
                             <label class="radio-inline"><input type="radio" name="change" value="update">Update payment detail</label>
                             <label class="radio-inline" style="float:right"><input type="radio" name="change" value="delete">Delete payment detail</label>
                             <!--store the orderid in a hidden field-->
