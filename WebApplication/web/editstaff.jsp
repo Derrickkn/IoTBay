@@ -71,8 +71,11 @@
                     <tr><td>Email*</td><td><input  type="text" placeholder="Enter email" name="email" value="<%=email%>"></td></tr>
                     <tr><td>Password*</td><td><input type="password" placeholder="Enter password" name="password" value="<%=password%>"> </td></tr>
                     <tr><td>Mobile*</td><td><input type="tel" placeholder="Enter mobile" name="mobile" value="<%=mobile%>"></td></tr>
+                    <tr><td>E-Contact</td><td><input type="tel" placeholder="Enter mobile" name="econtact" value="<%=EContact%>"></td></tr>
+                    <tr><td>Staff Type</td><td><input type="tel" placeholder="Enter mobile" name="stafftype" value="<%=staffType%>"></td></tr>
                     <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><% if (editMobileError != null) {%><%=editMobileError%><%}%><% if (editEmailError != null) {%><%=editEmailError%><%}%><% if (userExistError != null) {%><%=userExistError%><%}%><td></tr>
                     <tr><td><a class="button" href="main.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td><td>
+                </table>
             </form>
         </div>
     </div>

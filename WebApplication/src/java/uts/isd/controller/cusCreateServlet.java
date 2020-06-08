@@ -81,13 +81,12 @@ public class cusCreateServlet extends HttpServlet {
         }
 
         if (registeredUser == null) {
-            request.getRequestDispatcher("register.jsp").include(request, response);
+            request.getRequestDispatcher("cuscreate.jsp").include(request, response);
             session.setAttribute("regError", "Email address already exists!");
         }
 
         if (registeredUser != null) {
-            session.setAttribute("regUser", registeredUser);
-            request.getRequestDispatcher("main.jsp").include(request, response);
+            request.getRequestDispatcher("cusmanage.jsp").include(request, response);
         }
       }
     }

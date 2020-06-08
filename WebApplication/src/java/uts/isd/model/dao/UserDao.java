@@ -17,9 +17,17 @@ import java.util.ArrayList;
 import uts.isd.model.accessLog;
 import uts.isd.model.registeredUser;
 import uts.isd.model.staff;
+import java.sql.PreparedStatement;
+import java.util.List;
 
 public class UserDao {
 
+    public static DBConnector conn;
+    public UserDao() throws ClassNotFoundException, SQLException {
+        if(conn == null){
+            conn = new DBConnector();
+        }
+    }
     public static void deleteRegisteredUser(String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -131,6 +139,54 @@ public class UserDao {
         return null;
     }
     
+    public List<registeredUser> selectUsersByUserid(int userid) throws SQLException {
+        List<registeredUser> List = new ArrayList<>();
+        String query = "select * from unregistereduser_table natural join registereduser_table";
+        ResultSet result = statement.executeQuery(query);
+        while (result.next()) {
+            if (result.getInt(1) == userid) {
+                int userID = result.getInt(1);
+                String fName = result.getString(2);
+                String lName = result.getString(3);
+                String userEmail = result.getString(4);
+                String mobile = result.getString(5);
+                String userType = result.getString(6);
+                String userPassword = result.getString(7);
+                String paymentMethod = result.getString(8);
+                String paymentDetail = result.getString(9);
+                String savedAddress = result.getString(10);
+                boolean activated = result.getBoolean(11);
+                registeredUser registeredUser = new registeredUser(userID, userPassword, fName, lName, userEmail, mobile, userType);
+                registeredUser.setPaymentMethod(paymentMethod);
+                registeredUser.setPaymentDetail(paymentDetail);
+                registeredUser.setSavedAddress(savedAddress);
+                registeredUser.setActivated(activated);
+                List.add(registeredUser);
+            }
+        }
+        return List;
+    }
+   
+    public registeredUser selectUserById(int userid) throws SQLException{
+        List<registeredUser> res1 = selectUsersByUserid(userid);
+        if(res1 == null || res1.size()==0)
+            return null;
+        for(registeredUser r : res1){
+            if(r.getUserID() == userid)
+                return r;
+        }
+        return null;
+    }
+    
+     public boolean userExist(int userid) throws SQLException {
+        PreparedStatement ps;
+        String sql = "select * from unregistereduser_table natural join registereduser_table";
+        ps = conn.openConnection().prepareStatement(sql);
+        ps.setInt(1,userid);
+        ResultSet rs =  ps.executeQuery();
+        boolean res = rs.next();
+        return res;
+     } 
     //Gets a Staff from the staff database only if both email and password is correct. Returns a staff(staff) as a bean.
     public staff getStaff(String email, String password) throws SQLException {
         String query = "select * from staff_table natural join unregistereduser_table where upper(email) = " + "upper('" + email+ "')";
@@ -155,6 +211,8 @@ public class UserDao {
         }
         return null;
     }
+    
+    
     
     //Creates an access log given a users id.
     public int accessLogStart(int userID) throws SQLException {
@@ -193,6 +251,13 @@ public class UserDao {
     public void updateAll(int userID, String firstName, String lastName, String email, String password, String mobile, String address, String paymentDetail, String paymentMethod) throws SQLException {
         String query1 = "UPDATE ISDUSER.UNREGISTEREDUSER_TABLE SET FNAME = '" + firstName + "', LNAME = '" + lastName + "', EMAIL = '" + email + "', Phone = '" + mobile + "' WHERE USERID = " + userID;
         String query2 = "UPDATE ISDUSER.REGISTEREDUSER_TABLE SET PASSWORD = '" + password + "', PAYMENTMETHOD = '" + paymentMethod + "', PAYMENT = '" + paymentDetail + "', SAVEDADDRESS = '" + address + "' WHERE USERID =" + userID;
+        statement.executeUpdate(query1);
+        statement.executeUpdate(query2);
+    }
+    
+     public void updateAllStaff(int userID, String firstName, String lastName, String email, String mobile, String password, String EContact, String staffType) throws SQLException {
+        String query1 = "UPDATE ISDUSER.UNREGISTEREDUSER_TABLE SET FNAME = '" + firstName + "', LNAME = '" + lastName + "', EMAIL = '" + email + "', Phone = '" + mobile + "' WHERE USERID = " + userID;
+        String query2 = "UPDATE ISDUSER.STAFF_TABLE SET PASSWORD = '" + password + "', ECONTACT = '" + EContact + "', STAFFTYPE = '" + staffType + "' WHERE USERID =" + userID;
         statement.executeUpdate(query1);
         statement.executeUpdate(query2);
     }

@@ -63,4 +63,6 @@ VALUES  (121,'Ux5MOah1','Archer (0246995987)','Manager'),
         (139,'7JeYVmC7','Connor (0261723424)','Employee'),
         (140,'2BaYFL61','Angus (0240133669)','Employee');
 
-SELECT * FROM staff_table;
+select * from  staff_table;
+
+select * from unregistereduser_table natural join registereduser_table

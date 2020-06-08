@@ -41,6 +41,8 @@ public class staffEditServlet extends HttpServlet {
         String mobile = request.getParameter("mobile");
         String fname = request.getParameter("fname");
         String lname = request.getParameter("lname");
+        String econtact = request.getParameter("econtact");
+        String staffType = request.getParameter("stafftype");
         if (validator.isFieldEmpty(email) || validator.isFieldEmpty(password) || validator.isFieldEmpty(mobile) || validator.isFieldEmpty(fname) || validator.isFieldEmpty(lname)) {
             session.setAttribute("editError", "Please fill in all required fields.");
             request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
@@ -56,12 +58,13 @@ public class staffEditServlet extends HttpServlet {
                 Connection conn = connector.openConnection();
                 UserDao userdao = new UserDao(conn);
                 staff currentDetails = (staff) session.getAttribute("staff");
+                //selectedstaff  = userdao.GetStaff(email, password);
                 if (!userdao.userExists(email) || currentDetails.getEmail().equals(email)) {
-                    //userdao.updateAllStaff((int) session.getAttribute("staffID"), fname, lname, email, password, mobile, address, pamynetDetail, paymentMethod); //write an update staff
-                    registeredUser registeredUser = userdao.getUser(email, password);
-                    //session.setAttribute("staff", staff);
+                    userdao.updateAllStaff((int) session.getAttribute("staffID"), fname, lname, email, mobile, password, econtact, staffType); //write an update staff
+                    staff staff = userdao.getStaff(email, password);
+                    session.setAttribute("staff", staff);
                     connector.closeConnection();
-                    request.getRequestDispatcher("staff.jsp").include(request, response);
+                    request.getRequestDispatcher("staffmanage.jsp").include(request, response);
 
                 } else {
                     session.setAttribute("userExistError", "Email address already taken!");

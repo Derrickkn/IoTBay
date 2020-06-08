@@ -9,6 +9,7 @@
 <%@page import="uts.isd.model.registeredUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.dao.OrderDao"%>
+<% registeredUser u = (registeredUser)session.getAttribute("user");  %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -81,22 +82,51 @@
                         %>
                 </table>       
                 <div class="left">
-                     <a class="button" href="cuscreate.jsp">Create New Record</a>   
-                     <form  method="post" action="editcustomerdetails.jsp">
-                         <p>Select user by ID to modify</p>
-                        <label for="userID">Staff ID:</label>
-                        <input type="text" id="userID" name="userID"><br><br>
-                        <input class="button" type="submit" value="Edit">
-                    </form>
-                   
-                    <form method="post" action="cusDeleteServlet">
-                         <p>Select user by ID to delete</p>
-                        <label for="userID">Staff ID:</label>
-                        <input type="text" id="userID" name="userID"><br><br>
-                        <input class="button" type="submit" value="Delete">
-                    </form>
-                        
-                    <a class="button" href="admindashboard.jsp">Cancel</a>         
+                     <table>
+                     <tr>
+                     <td>
+                        <form  method="post" action="SearchUserByIDServlet">
+                            <p>Select user by ID to modify</p>
+                           <label for="userID">Staff ID:</label>
+                           <input type="text" id="userID" name="userid"><br><br>
+                           <input class="button" type="submit" value="Edit">
+                       </form>
+                    </td>
+                    <td>
+                        <form method="post" action="cusDeleteServlet">
+                             <p>Select user by ID to delete</p>
+                            <label for="userID">Staff ID:</label>
+                            <input type="text" id="userID" name="userid"><br><br>
+                            <input class="button" type="submit" value="Delete">
+                        </form>
+                        </td>
+                        </tr>
+                     </table>
+                    <% if(u!=null ){ %>
+                    <table class="table">
+                        <thead>
+                            <th>User ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Password</th> 
+                            <th>User Type</th>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                               <td><%=u.getUserID()%></td>
+                                <td><%=u.getFirstName()%></td>
+                                <td><%=u.getLastName()%></td>
+                                <td><%=u.getEmail()%></td>
+                                <td><%=u.getPassword()%></td>
+                                <td><%=u.getUserType()%></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+              <% } %>
+                    <a class="button" href="admindashboard.jsp">Cancel</a> <a class="button" href="cuscreate.jsp">Create New Record</a>        
                 </div>
 	</body>
 </html>

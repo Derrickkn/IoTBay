@@ -76,22 +76,29 @@
                             }}
                         %>
                     </tbody>
-                </table>
+               </table>
                <div class="left">
-                    <a class="button" href="staffcreate.jsp">Create New Record</a>   
-                    <form method="post" action="editstaff.jsp">
-                        <p>Select user by ID to modify:</p>
-                        <label for="userID">Staff ID:</label>
-                        <input type="text" id="userID" name="userID"><br><br>
-                        <input class="button" type="submit" value="Edit">
-                    </form>
-                    <form method="post" action="staffDeleteServlet">
-                        <p>Select user by ID to remove:</p>
-                        <label for="userID">Staff ID:</label>
-                        <input type="text" id="userID" name="userID"><br><br>
-                        <input class="button" type="submit" value="Delete">
-                    </form>
-                    <a class="button" href="admindashboard.jsp">Cancel</a>     
+                    <table>
+                        <tr>
+                        <td>
+                            <form method="post" action="editstaff.jsp">
+                                <p>Select user by ID to modify:</p>
+                                <label for="userID">Staff ID:</label>
+                                <input type="text" id="userID" name="userID"><br>
+                                <input class="button" type="submit" value="Edit">
+                            </form>
+                        </td>
+                        <td>
+                        <form method="post" action="staffDeleteServlet">
+                            <p>Select user by ID to remove:</p>
+                            <label for="userID">Staff ID:</label>
+                            <input type="text" id="userID" name="userID"><br>
+                            <input class="button" type="submit" value="Delete">
+                        </form>
+                        </td>
+                        </tr>
+                    </table>
+                    <a colspan="2" class="button" href="admindashboard.jsp">Cancel</a> <a class="button" href="staffcreate.jsp">Create New Record</a>    
                 </div>
 	</body>
 </html>

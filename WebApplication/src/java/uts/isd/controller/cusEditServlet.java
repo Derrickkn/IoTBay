@@ -25,7 +25,6 @@ import uts.isd.model.registeredUser;
  * @author Kira
  */
 public class cusEditServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -67,13 +66,13 @@ public class cusEditServlet extends HttpServlet {
 
                 } else {
                     session.setAttribute("userExistError", "Email address already taken!");
-                    request.getRequestDispatcher("editcustomer.jsp").include(request, response);
+                    request.getRequestDispatcher("editcustomerdetails.jsp").include(request, response);
 
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(cusEditServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(cusEditServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
