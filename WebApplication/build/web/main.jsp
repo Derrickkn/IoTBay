@@ -99,7 +99,8 @@
             </table>
             <div class="left">
                 <a class="button" href="editcustomerdetails.jsp">Edit Details</a>
-                <a class="button" href="viewaccesslog.jsp">View Access Logs</a>  
+                <a class="button" href="viewaccesslog.jsp">View Access Logs</a>
+                <a class="button" href="deactivateaccount.jsp">DEACTIVATE ACCOUNT</a>  
             </div>
         </div>
 
