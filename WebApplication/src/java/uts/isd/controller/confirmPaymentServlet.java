@@ -23,6 +23,7 @@ import uts.isd.model.payment;
 import uts.isd.controller.Validator;
 import uts.isd.model.registeredUser;
 import uts.isd.model.unregisteredUser;
+import uts.isd.model.order;
 
 /**
  *
@@ -35,6 +36,7 @@ public class confirmPaymentServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         registeredUser regUser = null;
+        order order = null;
         unregisteredUser user = null;
         //set default userID in the case of not having a regUser or User or Order
         int userID = 1;
@@ -42,6 +44,11 @@ public class confirmPaymentServlet extends HttpServlet {
         String method = request.getParameter("paymethod");
         String cardNo = request.getParameter("cardNo");
         String change = request.getParameter("change");
+        //stores order session variable in order and stores order.getUserID() in userID if order variable exists
+        if ((order) session.getAttribute("order") != null) {
+            order = (order) session.getAttribute("order");
+            userID = order.getUserID();
+        }
         //retrieve an unregisteredUser variable and store it in user and set userID to userID of unregisteredUser
         if ((unregisteredUser) session.getAttribute("User") != null) {
             user = (unregisteredUser) session.getAttribute("User");
@@ -89,7 +96,7 @@ public class confirmPaymentServlet extends HttpServlet {
                         }
                     } else if (change.equals("delete")) {
                         //needs further refinement //int userID= order.getUserID()
-                        paymentDB.deletePayment(1);
+                        paymentDB.deletePayment(userID);
                         //if regUser exists it changes the current regUser payment details to an empty string;
                         if (regUser != null) {
                             regUser.setPaymentMethod("");
@@ -98,7 +105,6 @@ public class confirmPaymentServlet extends HttpServlet {
                         }
                     }
                 }
-                session.setAttribute("orderid", orderID);
                 session.setAttribute("success", "You have successfully made a purchase");
                 request.getRequestDispatcher("paymentsuccess.jsp").include(request, response);
             } catch (ClassNotFoundException ex) {
