@@ -81,9 +81,9 @@ public class SearchStaffByIDServlet extends HttpServlet {
                   connector.closeConnection();
             
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(SearchUserByIDServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(SearchStaffByIDServlet.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (SQLException ex) {
-                    Logger.getLogger(SearchUserByIDServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(SearchStaffByIDServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
           
             }

@@ -49,6 +49,7 @@
             <a href="#default" class="logo">&#10070 &#8464oTBay</a>
             <div class="header-right">
                 <a href="main.jsp">Main Page</a>
+                <!--if statements to check whether a regUser exists which would then show tabs that are only visible for registered Users-->
                 <% if (regUser != null) {%>
                 <a class= "active" href="viewPaymentServlet">Payment</a>
                 <% } %>
@@ -61,7 +62,7 @@
             </div>
         </div>         
         <div class="container">
-            <!--checks the paymntmethod of user and displays icon that corrolates with paymentmethod, if no paymethod, system display message-->
+            <!--checks the payment of user and displays icon that corrolates with paymentmethod, if no paymethod, system display message-->
             <% if (regUser != null) { %>
             <center><h3>Your Payment History</h3></center>
                 <%if (regUser.getPaymentMethod().equals("Mastercard")) {%>
@@ -75,6 +76,7 @@
                 <% } else { %>
             <center><p>No Payment Method saved</p></center>
                 <%  }%>
+                <!--checks whether there is a cardNo-->
                 <%if (regUser.getPaymentDetail().length() != 0) {%>
             <center><p><%=regUser.getPaymentDetail()%></p></center>
                     <% }%>

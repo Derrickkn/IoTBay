@@ -9,7 +9,7 @@
 <%@page import="uts.isd.model.staff"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.dao.OrderDao"%>
-<% staff s = (staff)session.getAttribute("staff");  %>
+<% staff s = (staff)session.getAttribute("staff");%>
 <% String editError = (String) session.getAttribute("editError"); %>
 <% String editEmailError = (String) session.getAttribute("editEmailError"); %>
 <% String editMobileError = (String) session.getAttribute("editMobileError"); %>
@@ -26,9 +26,8 @@
                 //getting user of the current session
                 registeredUser regUser = null;
                 if(session.getAttribute("regUser")==null) session.setAttribute("regUser", regUser);
-                //getting the user type
                 else  regUser = (registeredUser)session.getAttribute("regUser");
-                   
+                //getting the user type   
                 String userType = regUser.getUserType();
             %>
             <div class="header">
@@ -51,7 +50,7 @@
             <div class="container">
                 <h1>Staff Record Management</h1>
                 <table class="table">
-                    <!-- table heater -->
+                    <!-- table header -->
                     <thead>
                         <th>Staff ID</th>
                         <th>First Name</th>
@@ -78,7 +77,7 @@
                             <td><%=x.getUserType()%></td>
                         </tr>
                         <%                            
-                            }}
+                          }}
                         %>
                     </tbody>
                </table>
@@ -87,8 +86,8 @@
                      <tr>
                      <td>
                         <form method="post" action="SearchStaffByIDServlet">
-                            <p>Select user by ID to edit or remove: </p>
-                           <label for="staffid">User ID:</label>
+                            <p>Select staff by ID to edit or remove: </p>
+                           <label for="">Staff ID:</label>
                            <input type="text" id="staffid" name="staffid"><br><br>
                            <input class="button" type="submit" value="Edit/Delete">
                        </form>
