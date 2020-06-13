@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.OrderDao;
 import uts.isd.model.registeredUser;
-import uts.isd.model.dao.UserDao;
 import uts.isd.model.order;
 
 public class SearchOrderByIdServlet extends HttpServlet {

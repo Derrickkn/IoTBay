@@ -27,8 +27,25 @@ public class staffDeleteServlet extends HttpServlet {
 
     @Override
      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("staffId");
-        //UserDao.deleteStaff(id);
+         HttpSession session = request.getSession();
+         try {
+                DBConnector connector = new DBConnector();
+                Connection conn = connector.openConnection();
+                UserDao userdao = new UserDao(conn);
+                
+                //String id = request.getParameter("StaffId");
+                
+                userdao.deleteStaff((int)session.getAttribute("StaffId"));
+
+               
+
+                connector.closeConnection();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DeactivateAccServlet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(DeactivateAccServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+      
         request.getRequestDispatcher("deletestaff.jsp").include(request, response);
     }
 

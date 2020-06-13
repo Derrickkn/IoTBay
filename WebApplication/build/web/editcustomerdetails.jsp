@@ -82,12 +82,19 @@
                                 <option value="Mastercard" <% if (paymentMethod.equals("Mastercard")) { %> selected <% } %> >Mastercard</option>
                                 <option value="Paypal" <% if (paymentMethod.equals("Paypal")) { %> selected <% } %>>Paypal</option>
                             </select>
-                        </td></tr><%=paymentMethod%>
+                        </td></tr>
                     <tr><td colspan='2'><% if (editError != null) {%> <%=editError%><%}%><% if (editMobileError != null) {%><%=editMobileError%><%}%><% if (editEmailError != null) {%><%=editEmailError%><%}%><% if (userExistError != null) {%><%=userExistError%><%}%><td></tr>
-                    <tr><td><a class="button" href="main.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td><td>
-                    <tr><td colspan="2"><a class="button" href="deactivateaccount.jsp">DEACTIVATE ACCOUNT</a></td></td></tr>
+<<<<<<< HEAD
+                    <tr><td><a class="button" href="main.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td>
+                    <td><a class="button" href="deactivateaccount.jsp">DECTIVATE THIS ACCOUNT</a></td><td>   
             </form>
         </div>
     </div>
 </body>
+=======
+                    <tr><td><a class="button" href="main.jsp">Cancel</a></td><td><input class="button" type="submit" value="Save Changes"></td><td>
+            </form>
+        </div>
+    </body>
+>>>>>>> origin/Luke
 </html>

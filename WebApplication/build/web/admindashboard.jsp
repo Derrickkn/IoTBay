@@ -37,14 +37,22 @@
                         <a class="active" href="main.jsp">Main Page</a>
                         <a href="IoTDevices">Devices</a>
                         <a href="LogoutServlet">Logout</a>
+<<<<<<< HEAD
                     <% } %> 
+=======
+                    <% } %>
+>>>>>>> origin/Luke
                 </div>
             </div>
             <div class="container">
                 <h1>Administrator Dashboard</h1>
                 
                 <div class="left">
+<<<<<<< HEAD
                     <a class="adminpanel" href="cusmanage.jsp">Customer Management</a> <a class="adminpanel" href="staffmanage.jsp">Staff Management</a>       
+=======
+                    <a class="adminpanel" href="usermanage.jsp">User Management</a> <a class="adminpanel" href="cusmanage.jsp">Customer Management</a> <a class="adminpanel" href="staffmanage.jsp">Staff Management</a>       
+>>>>>>> origin/Luke
                 </div>
 	</body>
 </html>

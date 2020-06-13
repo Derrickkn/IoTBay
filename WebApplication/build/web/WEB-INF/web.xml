@@ -48,19 +48,35 @@
         <servlet-name>adminDashboardServlet</servlet-name>
         <servlet-class>uts.isd.controller.adminDashboardServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
+        <servlet-name>staffEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cusCreateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusCreateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>staffCreateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.staffCreateServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CancelOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.CancelOrderServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>SearchOrderByIdServlet</servlet-name>
         <servlet-class>uts.isd.controller.SearchOrderByIdServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>SearchOrderByDateServlet</servlet-name>
         <servlet-class>uts.isd.controller.SearchOrderByDateServlet</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>CreateOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.CreateOrderServlet</servlet-class>
     </servlet>
@@ -72,8 +88,35 @@
         <servlet-name>UpdateOrderServlet</servlet-name>
         <servlet-class>uts.isd.controller.UpdateOrderServlet</servlet-class>
     </servlet>
-    
-    
+    <servlet>
+<<<<<<< HEAD
+        <servlet-name>cusDeleteServlet</servlet-name>
+        <servlet-class>uts.isd.controller.cusDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchUserByIDServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchUserByIDServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchUserByIdServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchUserByIdServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchStaffByIDServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchStaffByIDServlet</servlet-class>
+=======
+        <servlet-name>userEditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.userEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>userDeleteServlet</servlet-name>
+        <servlet-class>uts.isd.controller.userDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>userCreateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.userCreateServlet</servlet-class>
+>>>>>>> origin/Luke
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -122,7 +165,23 @@
         <servlet-name>adminDashboardServlet</servlet-name>
         <url-pattern>/adminDashboardServlet</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffEditServlet</servlet-name>
+        <url-pattern>/staffEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusEditServlet</servlet-name>
+        <url-pattern>/cusEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cusCreateServlet</servlet-name>
+        <url-pattern>/cusCreateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>staffCreateServlet</servlet-name>
+        <url-pattern>/staffCreateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CancelOrderServlet</servlet-name>
         <url-pattern>/CancelOrderServlet</url-pattern>
     </servlet-mapping>
@@ -130,7 +189,7 @@
         <servlet-name>SearchOrderByIdServlet</servlet-name>
         <url-pattern>/SearchOrderByIdServlet</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>SearchOrderByDateServlet</servlet-name>
         <url-pattern>/SearchOrderByDateServlet</url-pattern>
     </servlet-mapping>
@@ -138,7 +197,7 @@
         <servlet-name>CreateOrderServlet</servlet-name>
         <url-pattern>/CreateOrderServlet</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>LoadOrderInfodServlet</servlet-name>
         <url-pattern>/LoadOrderInfodServlet</url-pattern>
     </servlet-mapping>
@@ -146,8 +205,35 @@
         <servlet-name>UpdateOrderServlet</servlet-name>
         <url-pattern>/UpdateOrderServlet</url-pattern>
     </servlet-mapping>
-    
-    
+    <servlet-mapping>
+<<<<<<< HEAD
+        <servlet-name>cusDeleteServlet</servlet-name>
+        <url-pattern>/cusDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchUserByIDServlet</servlet-name>
+        <url-pattern>/SearchUserByIDServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchUserByIdServlet</servlet-name>
+        <url-pattern>/SearchUserByIdServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchStaffByIDServlet</servlet-name>
+        <url-pattern>/SearchStaffByIDServlet</url-pattern>
+=======
+        <servlet-name>userEditServlet</servlet-name>
+        <url-pattern>/userEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userDeleteServlet</servlet-name>
+        <url-pattern>/userDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userCreateServlet</servlet-name>
+        <url-pattern>/userCreateServlet</url-pattern>
+>>>>>>> origin/Luke
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
